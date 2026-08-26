@@ -1,17 +1,68 @@
+---
+import "../styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090d16" />
     <title>FrancescFe Portfolio</title>
   </head>
   <body>
-    <main>
-      <h1>FrancescFe Portfolio</h1>
-      <p>
-        The static site foundation is ready for the approved portfolio
-        experience.
-      </p>
+    <main class="foundation">
+      <div class="foundation__content">
+        <p class="foundation__label">Foundation ready</p>
+        <h1>FrancescFe Portfolio</h1>
+        <p class="foundation__summary">
+          The global design tokens and local typography are ready for the shared
+          portfolio experience.
+        </p>
+      </div>
     </main>
   </body>
 </html>
+
+<style>
+  .foundation {
+    display: grid;
+    min-block-size: 100vh;
+    inline-size: min(
+      100%,
+      calc(
+        var(--content-site-max) + var(--viewport-padding-inline) +
+          var(--viewport-padding-inline)
+      )
+    );
+    margin-inline: auto;
+    padding: var(--space-10) var(--viewport-padding-inline);
+    align-items: center;
+  }
+
+  .foundation__content {
+    display: grid;
+    max-inline-size: var(--content-prose-max);
+    gap: var(--space-4);
+  }
+
+  .foundation__label {
+    color: var(--color-accent-default);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-label-line-height);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: var(--type-display-size);
+    font-weight: var(--type-display-weight);
+    line-height: var(--type-display-line-height);
+  }
+
+  .foundation__summary {
+    max-inline-size: var(--content-prose-max);
+    color: var(--color-text-secondary);
+  }
+</style>

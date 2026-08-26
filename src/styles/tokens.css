@@ -1,0 +1,155 @@
+:root {
+  color-scheme: dark;
+
+  /* Primitive color palette */
+  --primitive-color-ink: #090d16;
+  --primitive-color-ink-deep: #090a0f;
+  --primitive-color-charcoal: #12141d;
+  --primitive-color-slate-50: #f8fafc;
+  --primitive-color-slate-400: #94a3b8;
+  --primitive-color-slate-500: #64748b;
+  --primitive-color-slate-600: #475569;
+  --primitive-color-slate-800: #1e293b;
+  --primitive-color-slate-900: #0f172a;
+  --primitive-color-teal-300: #5eead4;
+  --primitive-color-teal-400: #2dd4bf;
+  --primitive-color-teal-900: #134e4a;
+  --primitive-color-emerald-500: #10b981;
+  --primitive-color-blue-500: #3b82f6;
+  --primitive-color-orange-500: #f97316;
+  --primitive-color-red-500: #ef4444;
+
+  /* Semantic colors */
+  --color-bg-canvas: var(--primitive-color-ink);
+  --color-bg-deep: var(--primitive-color-ink-deep);
+  --color-surface-default: var(--primitive-color-slate-900);
+  --color-surface-raised: var(--primitive-color-charcoal);
+  --color-surface-hover: var(--primitive-color-slate-800);
+  --color-text-primary: var(--primitive-color-slate-50);
+  --color-text-secondary: var(--primitive-color-slate-400);
+  --color-text-tertiary: var(--primitive-color-slate-500);
+  --color-text-disabled: var(--primitive-color-slate-600);
+  --color-border-subtle: var(--primitive-color-slate-800);
+  --color-border-strong: var(--primitive-color-slate-600);
+  --color-accent-default: var(--primitive-color-teal-400);
+  --color-accent-subtle: var(--primitive-color-teal-900);
+  --color-accent-hover: var(--primitive-color-teal-300);
+  --color-status-success: var(--primitive-color-emerald-500);
+  --color-status-info: var(--primitive-color-blue-500);
+  --color-status-warning: var(--primitive-color-orange-500);
+  --color-status-error: var(--primitive-color-red-500);
+  --color-overlay: rgb(0 0 0 / 64%);
+
+  /* Typography */
+  --font-family-mono:
+    "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --type-display-size: 36px;
+  --type-display-line-height: 44px;
+  --type-display-weight: var(--font-weight-extra-bold);
+  --type-h1-size: 36px;
+  --type-h1-line-height: 44px;
+  --type-h1-weight: var(--font-weight-bold);
+  --type-h2-size: 32px;
+  --type-h2-line-height: 40px;
+  --type-h2-weight: var(--font-weight-extra-bold);
+  --type-h3-size: 18px;
+  --type-h3-line-height: 26px;
+  --type-h3-weight: var(--font-weight-bold);
+  --type-title-size: 16px;
+  --type-title-line-height: 24px;
+  --type-title-weight: var(--font-weight-bold);
+  --type-body-size: 14px;
+  --type-body-line-height: 22px;
+  --type-body-weight: var(--font-weight-regular);
+  --type-body-sm-size: 13px;
+  --type-body-sm-line-height: 20px;
+  --type-body-sm-weight: var(--font-weight-regular);
+  --type-label-size: 13px;
+  --type-label-line-height: 18px;
+  --type-label-weight: var(--font-weight-bold);
+  --type-meta-size: 12px;
+  --type-meta-line-height: 18px;
+  --type-meta-weight: var(--font-weight-medium);
+  --type-caption-size: 11px;
+  --type-caption-line-height: 16px;
+  --type-caption-weight: var(--font-weight-regular);
+  --letter-spacing-default: 0;
+  --letter-spacing-uppercase: 0.04em;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* Shape, borders and elevation */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 999px;
+  --border-default: 1px solid;
+  --elevation-none: none;
+  --elevation-raised: 0 8px 24px rgb(0 0 0 / 24%);
+  --elevation-floating: 0 12px 32px rgb(0 0 0 / 32%);
+
+  /* Layout */
+  --content-site-max: 1280px;
+  --content-reading-max: 960px;
+  --content-prose-max: 80ch;
+  --viewport-padding-inline: var(--space-5);
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
+  --anchor-scroll-offset: 80px;
+  --interactive-target-min: 44px;
+
+  /* Motion and focus */
+  --motion-duration-fast: 120ms;
+  --motion-duration-default: 180ms;
+  --motion-duration-slow: 240ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --focus-ring: 2px solid var(--color-accent-default);
+  --focus-ring-offset: 3px;
+}
+
+/* CSS custom properties cannot be used as media-query conditions. These
+ * transitions intentionally mirror --breakpoint-tablet and
+ * --breakpoint-desktop above. */
+@media (min-width: 768px) {
+  :root {
+    --type-display-size: 44px;
+    --type-display-line-height: 52px;
+    --viewport-padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --type-display-size: 56px;
+    --type-display-line-height: 64px;
+    --viewport-padding-inline: var(--space-11);
+    --anchor-scroll-offset: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-default: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+}
