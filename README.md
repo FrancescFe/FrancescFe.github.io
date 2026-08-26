@@ -42,6 +42,18 @@ npm run dev
 | `npm run check`        | Run Astro and TypeScript diagnostics                |
 | `npm run validate`     | Run formatting, linting, diagnostics, and the build |
 
+## Continuous delivery
+
+Pull Requests targeting `main` run the **Validate** check. The workflow installs the exact dependency graph from `package-lock.json` with `npm ci`, then runs `npm run validate`, including the production build. This check must pass before a Pull Request can be merged.
+
+Every push to `main` starts the GitHub Pages deployment workflow. Maintainers can also start it manually from the repository's **Actions** tab. The build job validates the application before it uploads the static `dist/` artifact, and the deployment job publishes that artifact to the `github-pages` environment at [francescfe.github.io](https://francescfe.github.io/). Pull Request events never trigger a deployment.
+
+To diagnose a failed run:
+
+1. Open the failed workflow in the repository's **Actions** tab and inspect the first failing step.
+2. Reproduce validation locally from a clean dependency installation with `npm ci` followed by `npm run validate`.
+3. Fix the reported problem and push the change so GitHub reruns the workflow. A failed build prevents the deployment job from starting.
+
 ## Source structure
 
 ```text
