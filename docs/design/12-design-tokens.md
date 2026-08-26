@@ -112,156 +112,195 @@ The single visual typeface for v1 is **JetBrains Mono**.
 
 Implementation fallback stack:
 
-```css
+```
 "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace
-Font files should be self-hosted as local woff2 assets rather than loaded from a third-party runtime service.
+```
 
-Type scale
-Token	Weight	Size	Line height
-type/display	800	56px	64px
-type/h1	700	36px	44px
-type/h2	800	32px	40px
-type/h3	700	18px	26px
-type/title	700	16px	24px
-type/body	400	14px	22px
-type/body-sm	400	13px	20px
-type/label	700	13px	18px
-type/meta	500	12px	18px
-type/caption	400	11px	16px
-Letter spacing
-Context	Value
-Body and headings	0
-Uppercase labels and eyebrows	0.04em
-Long-form measure
+Font files should be self-hosted as local `woff2` assets rather than loaded from a third-party runtime service.
 
-Normal prose should not exceed:
+### Type scale
 
-80ch
+| Token          | Weight | Size | Line height |
+|----------------|-------:|-----:|------------:|
+| `type/display` |    800 | 56px |        64px |
+| `type/h1`      |    700 | 36px |        44px |
+| `type/h2`      |    800 | 32px |        40px |
+| `type/h3`      |    700 | 18px |        26px |
+| `type/title`   |    700 | 16px |        24px |
+| `type/body`    |    400 | 14px |        22px |
+| `type/body-sm` |    400 | 13px |        20px |
+| `type/label`   |    700 | 13px |        18px |
+| `type/meta`    |    500 | 12px |        18px |
+| `type/caption` |    400 | 11px |        16px |
+
+### Letter spacing
+
+| Context                       | Value    |
+|-------------------------------|----------|
+| Body and headings             | `0`      |
+| Uppercase labels and eyebrows | `0.04em` |
+
+### Long-form measure
+
+Normal prose should not exceed `80ch`.
 
 This applies particularly to:
 
-project descriptions;
-Resume descriptions;
-Privacy Policy paragraphs.
-4. Spacing
+- project descriptions;
+- Resume descriptions;
+- Privacy Policy paragraphs.
 
-The spacing scale uses a 4px base unit.
+---
 
-Token	Value
-space/1	4px
-space/2	8px
-space/3	12px
-space/4	16px
-space/5	20px
-space/6	24px
-space/7	32px
-space/8	40px
-space/9	48px
-space/10	64px
-space/11	80px
-space/12	96px
+## 4. Spacing
+
+The spacing scale uses a `4px` base unit.
+
+| Token      | Value |
+|------------|------:|
+| `space/1`  |   4px |
+| `space/2`  |   8px |
+| `space/3`  |  12px |
+| `space/4`  |  16px |
+| `space/5`  |  20px |
+| `space/6`  |  24px |
+| `space/7`  |  32px |
+| `space/8`  |  40px |
+| `space/9`  |  48px |
+| `space/10` |  64px |
+| `space/11` |  80px |
+| `space/12` |  96px |
 
 Arbitrary spacing values should be avoided unless required by a documented component constraint.
 
-5. Radius
-Token	Value
-radius/none	0
-radius/sm	4px
-radius/md	6px
-radius/lg	8px
-radius/xl	12px
-radius/full	999px
-6. Borders
-Token	Value
-border/default	1px solid
+---
+
+## 5. Radius
+
+| Token         | Value |
+|---------------|------:|
+| `radius/none` |     0 |
+| `radius/sm`   |   4px |
+| `radius/md`   |   6px |
+| `radius/lg`   |   8px |
+| `radius/xl`   |  12px |
+| `radius/full` | 999px |
+
+---
+
+## 6. Borders
+
+| Token            | Value       |
+|------------------|-------------|
+| `border/default` | `1px solid` |
 
 Border color must be provided through semantic color tokens.
 
-The default panel and card border is:
+The default panel and card border is `1px solid color/border/subtle`.
 
-1px solid color/border/subtle
+---
 
-7. Elevation
+## 7. Elevation
 
 Elevation is intentionally restrained because the interface relies primarily on background and border contrast.
 
-Token	Value	Usage
-elevation/none	none	Standard surfaces
-elevation/raised	0 8px 24px rgb(0 0 0 / 24%)	Raised panels and emphasized surfaces
-elevation/floating	0 12px 32px rgb(0 0 0 / 32%)	Floating controls such as scroll-to-top
+| Token                | Value                          | Usage                                   |
+|----------------------|--------------------------------|-----------------------------------------|
+| `elevation/none`     | `none`                         | Standard surfaces                       |
+| `elevation/raised`   | `0 8px 24px rgb(0 0 0 / 24%)`  | Raised panels and emphasized surfaces   |
+| `elevation/floating` | `0 12px 32px rgb(0 0 0 / 32%)` | Floating controls such as scroll-to-top |
 
 Elevation should not be used as the only mechanism for communicating interactivity.
 
-8. Content widths
-Token	Value
-content/site-max	1280px
-content/reading-max	960px
-content/prose-max	80ch
+---
+
+## 8. Content widths
+
+| Token                 | Value    |
+|-----------------------|----------|
+| `content/site-max`    | `1280px` |
+| `content/reading-max` | `960px`  |
+| `content/prose-max`   | `80ch`   |
 
 The main site container is horizontally centered.
 
-9. Viewport padding
-Range	Horizontal padding
-Desktop (>=1200px)	80px
-Tablet (768px–1199px)	40px
-Mobile (<768px)	20px
+---
 
-Padding must not cause the content width to exceed content/site-max.
+## 9. Viewport padding
 
-10. Breakpoints
+| Range                   | Horizontal padding |
+|-------------------------|-------------------:|
+| Desktop (`>=1200px`)    |               80px |
+| Tablet (`768px–1199px`) |               40px |
+| Mobile (`<768px`)       |               20px |
+
+Padding must not cause the content width to exceed `content/site-max`.
+
+---
+
+## 10. Breakpoints
 
 The v1 system defines two layout breakpoints:
 
-Token	Value
-breakpoint/tablet	768px
-breakpoint/desktop	1200px
+| Token                | Value    |
+|----------------------|----------|
+| `breakpoint/tablet`  | `768px`  |
+| `breakpoint/desktop` | `1200px` |
 
 Supported layout ranges are therefore:
 
-Mobile: <768px
-Tablet: 768px–1199px
-Desktop: >=1200px
+- Mobile: `<768px`
+- Tablet: `768px–1199px`
+- Desktop: `>=1200px`
 
 Breakpoints should represent layout transitions rather than specific device models.
 
-11. Motion
+---
+
+## 11. Motion
 
 Motion should remain functional and restrained.
 
-Token	Value
-motion/duration/fast	120ms
-motion/duration/default	180ms
-motion/duration/slow	240ms
-motion/easing/standard	cubic-bezier(0.2, 0, 0, 1)
+| Token                     | Value                        |
+|---------------------------|------------------------------|
+| `motion/duration/fast`    | `120ms`                      |
+| `motion/duration/default` | `180ms`                      |
+| `motion/duration/slow`    | `240ms`                      |
+| `motion/easing/standard`  | `cubic-bezier(0.2, 0, 0, 1)` |
 
-motion/duration/fast should be used for simple state transitions such as color or border changes.
+`motion/duration/fast` should be used for simple state transitions such as color or border changes.
 
-motion/duration/default should be used for interactive surfaces and floating controls.
+`motion/duration/default` should be used for interactive surfaces and floating controls.
 
-motion/duration/slow should only be used where a larger spatial transition genuinely benefits comprehension.
+`motion/duration/slow` should only be used where a larger spatial transition genuinely benefits comprehension.
 
-When prefers-reduced-motion: reduce is active:
+When `prefers-reduced-motion: reduce` is active:
 
-non-essential animations must be disabled;
-scrolling must use immediate behavior rather than forced smooth scrolling;
-content must remain fully usable without animation.
-12. Focus
+- non-essential animations must be disabled;
+- scrolling must use immediate behavior rather than forced smooth scrolling;
+- content must remain fully usable without animation.
+
+---
+
+## 12. Focus
 
 Keyboard focus uses a clearly visible focus ring.
 
 Recommended implementation contract:
 
+```
 outline: 2px solid #2DD4BF;
 outline-offset: 3px;
+```
 
-Focus styling should use :focus-visible where supported.
+Focus styling should use `:focus-visible` where supported.
 
 Focus must not be represented by color change alone.
 
-13. Interactive target size
+---
 
-Interactive controls must provide a minimum target area of:
+## 13. Interactive target size
 
-44 × 44px
+Interactive controls must provide a minimum target area of `44 × 44px`.
 
 This requirement applies to icon-only controls such as scroll-to-top even when the visible icon itself is smaller.

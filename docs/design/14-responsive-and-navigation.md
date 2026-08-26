@@ -139,88 +139,95 @@ Code, command or matrix content must never be destructively wrapped merely to fi
 
 When necessary:
 
-```css
+```
 overflow-x: auto;
+```
+
 Normal prose inside technical panels may still wrap naturally.
 
-8. Anchor navigation
+---
+
+## 8. Anchor navigation
 
 Every project-detail section must expose a stable HTML fragment target.
 
 Recommended naming:
 
-#projects
-#project-numpairs
+- `#projects`
+- `#project-numpairs`
 
-Future projects should follow:
-
-#project-{slug}
+Future projects should follow `#project-{slug}`.
 
 Project cards should use standard links to those fragment identifiers.
 
 JavaScript must not be required for basic project navigation.
 
-9. Header offset
+---
+
+## 9. Header offset
 
 Because the shared header may occupy the top of the viewport, anchor targets must provide sufficient scroll margin.
 
 Recommended contract:
 
-Desktop:
-
-scroll-margin-top: 96px;
-
-Tablet and mobile:
-
-scroll-margin-top: 80px;
+- Desktop: `scroll-margin-top: 96px;`
+- Tablet and mobile: `scroll-margin-top: 80px;`
 
 This prevents section headings from being obscured after fragment navigation.
 
-10. Scroll behavior
+---
+
+## 10. Scroll behavior
 
 Normal motion preference may use:
 
+```
 scroll-behavior: smooth;
+```
 
 When the user requests reduced motion:
 
+```css
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 }
+```
 
 Fragment navigation must remain functional regardless of motion preference.
 
-11. Touch targets
+---
 
-Interactive controls must provide at least:
+## 11. Touch targets
 
-44 × 44px
-
-of usable target area.
+Interactive controls must provide at least `44 × 44px` of usable target area.
 
 This requirement applies even where the visible graphic is smaller.
 
-12. Focus and keyboard navigation
+---
+
+## 12. Focus and keyboard navigation
 
 All interactive elements must:
 
-be reachable using normal keyboard navigation;
-expose a visible focus-visible state;
-retain a logical tab order;
-use native semantic elements wherever possible.
+- be reachable using normal keyboard navigation;
+- expose a visible `focus-visible` state;
+- retain a logical tab order;
+- use native semantic elements wherever possible.
 
 Project-card anchor navigation, Resume navigation, footer links and scroll-to-top must not depend on pointer interaction.
 
-13. Responsive simplification principle
+---
+
+## 13. Responsive simplification principle
 
 When space becomes constrained, the interface should simplify in this order:
 
-reduce decorative or supporting metadata;
-reduce non-essential labels;
-collapse layout columns;
-reposition actions;
-preserve primary content and primary actions.
+1. reduce decorative or supporting metadata;
+2. reduce non-essential labels;
+3. collapse layout columns;
+4. reposition actions;
+5. preserve primary content and primary actions.
 
 Essential content or navigation should not simply disappear because the viewport becomes smaller.
