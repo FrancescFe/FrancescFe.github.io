@@ -1,0 +1,667 @@
+---
+import LegalSection from "../../components/LegalSection.astro";
+import PageContainer from "../../components/PageContainer.astro";
+import TextLink from "../../components/TextLink.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const canonicalPath = "/numpairs/privacy-policy/";
+const title = "NumPairs Privacy Policy | FrancescFe";
+const description =
+  "Learn how the NumPairs Android app handles local app data, optional sharing, backups, email inquiries, and privacy-policy website visits.";
+
+const sections = [
+  { id: "scope-and-developer", label: "Scope and developer" },
+  { id: "data-handled-by-the-app", label: "Data handled by the app" },
+  { id: "daily-challenge-and-sharing", label: "Daily Challenge and sharing" },
+  {
+    id: "backup-retention-and-deletion",
+    label: "Backup, retention, and deletion",
+  },
+  { id: "email-and-this-website", label: "Email and this website" },
+  {
+    id: "service-providers-and-disclosure",
+    label: "Service providers and disclosure",
+  },
+  { id: "your-choices-and-rights", label: "Your choices and rights" },
+  { id: "children", label: "Children" },
+  { id: "security", label: "Security" },
+  { id: "changes-to-this-policy", label: "Changes to this policy" },
+  { id: "contact", label: "Contact" },
+] as const;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  currentPath={canonicalPath}
+  headerVariant="compact"
+  footerVariant="minimal"
+  showScrollToTop
+  social={{
+    title: "NumPairs Privacy Policy",
+    description,
+    type: "article",
+  }}
+>
+  <div class="policy-page">
+    <PageContainer>
+      <article class="privacy-policy" aria-labelledby="privacy-policy-title">
+        <header class="privacy-policy__hero">
+          <p class="privacy-policy__eyebrow">[ legal_resource ]</p>
+          <p class="privacy-policy__product">NumPairs · Android</p>
+          <h1 id="privacy-policy-title">Privacy Policy</h1>
+          <p class="privacy-policy__summary">
+            NumPairs is designed to work without an account and without sending
+            your gameplay data to the developer.
+          </p>
+
+          <dl class="privacy-policy__metadata">
+            <div>
+              <dt>Last updated</dt>
+              <dd><time datetime="2026-08-26">August 26, 2026</time></dd>
+            </div>
+            <div>
+              <dt>Package</dt>
+              <dd><code>org.cescfe.numpairs</code></dd>
+            </div>
+          </dl>
+        </header>
+
+        <section class="policy-summary" aria-labelledby="policy-summary-title">
+          <h2 id="policy-summary-title">At a glance</h2>
+          <ul>
+            <li>
+              <span aria-hidden="true">✓</span>
+              <span>No account or sign-in</span>
+            </li>
+            <li>
+              <span aria-hidden="true">✓</span>
+              <span>Gameplay stays on your device</span>
+            </li>
+            <li>
+              <span aria-hidden="true">✓</span>
+              <span>No ads, analytics, or trackers</span>
+            </li>
+            <li>
+              <span aria-hidden="true">✓</span>
+              <span>Sharing happens only when you choose it</span>
+            </li>
+          </ul>
+        </section>
+
+        <nav
+          class="policy-navigation"
+          aria-labelledby="policy-navigation-title"
+        >
+          <h2 id="policy-navigation-title">On this page</h2>
+          <ol>
+            {
+              sections.map((section) => (
+                <li>
+                  <a href={`#${section.id}`}>{section.label}</a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <div class="privacy-policy__sections">
+          <LegalSection
+            id="scope-and-developer"
+            number="1"
+            title="Scope and developer"
+          >
+            <p>
+              This policy explains how the NumPairs Android app and this
+              privacy-policy website handle information. NumPairs is published
+              by <strong>cescfe</strong>. Questions about this policy can be
+              sent to
+              <TextLink href="mailto:ferrucesc@gmail.com">
+                ferrucesc@gmail.com
+              </TextLink>.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="data-handled-by-the-app"
+            number="2"
+            title="Data handled by the app"
+          >
+            <p>
+              NumPairs has no user accounts, sign-in, advertising, analytics,
+              billing, proprietary server, or developer-operated remote data
+              collection. The app does not request internet access, transmit
+              gameplay or preference data to cescfe, or sell personal
+              information.
+            </p>
+            <p>
+              The app stores the following information locally on your device so
+              it can work:
+            </p>
+            <ul>
+              <li>
+                <strong>Preferences:</strong> your selected theme, haptic-feedback
+                choice, and preferred generated-game difficulty.
+              </li>
+              <li>
+                <strong>Interface progress:</strong> onboarding progress and whether
+                certain help or hint actions have been introduced.
+              </li>
+              <li>
+                <strong>Game progress:</strong> the current generated game needed
+                to resume play.
+              </li>
+              <li>
+                <strong>Daily Challenge progress:</strong> the current Daily Challenge
+                and local completion history used to show your calendar and completion
+                state.
+              </li>
+            </ul>
+            <p>
+              This information is used only to provide app features and
+              personalize your local experience. It is not sent to cescfe.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="daily-challenge-and-sharing"
+            number="3"
+            title="Daily Challenge and sharing"
+          >
+            <p>
+              NumPairs reads your device's current date and time-zone setting
+              locally to select the Daily Challenge for that date. It does not
+              collect precise or approximate location, and the date or time-zone
+              setting is not transmitted to cescfe.
+            </p>
+            <p>
+              After completing a Daily Challenge, you may choose to share
+              pre-written completion text. NumPairs then opens Android's system
+              share sheet. Nothing is shared unless you select this action and
+              choose a destination. The receiving app or service processes what
+              you share under its own privacy terms; NumPairs does not learn
+              which destination you choose.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="backup-retention-and-deletion"
+            number="4"
+            title="Backup, retention, and deletion"
+          >
+            <p>
+              NumPairs allows Android's backup and device-transfer features. If
+              those features are enabled for your device or account, Android may
+              back up or transfer app preferences, such as theme, haptics,
+              action-discovery state, and generated difficulty selections.
+              Onboarding state, saved generated-game sessions, and Daily
+              Challenge state and history are explicitly excluded from cloud
+              backup and device transfer.
+            </p>
+            <p>
+              Backup processing is performed by Android and your configured
+              backup provider, not by cescfe. The developer cannot access those
+              backups. Provider retention and deletion rules apply to backup
+              copies. You can learn more in
+              <TextLink
+                href="https://support.google.com/android/answer/2819582?hl=en"
+              >
+                Android's backup documentation
+              </TextLink>.
+            </p>
+            <p>
+              Local data remains on your device until it is replaced by normal
+              app use, you clear NumPairs storage in Android settings, or you
+              uninstall the app. You can manage or delete eligible backup data
+              through your device or backup-provider settings.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="email-and-this-website"
+            number="5"
+            title="Email and this website"
+          >
+            <h3>Email inquiries</h3>
+            <p>
+              If you email
+              <TextLink href="mailto:ferrucesc@gmail.com">
+                ferrucesc@gmail.com
+              </TextLink>, you voluntarily provide your email address, message,
+              and any information or attachments you include. This information
+              is used only to respond, investigate the request, keep necessary
+              support records, and meet legal obligations. It is retained only
+              as long as reasonably needed for those purposes, then deleted when
+              it is no longer required. Email is handled using Google's Gmail
+              service under the
+              <TextLink href="https://policies.google.com/privacy">
+                Google Privacy Policy
+              </TextLink>.
+            </p>
+
+            <h3>Privacy-policy website</h3>
+            <p>
+              This is a static website hosted by GitHub Pages. The site code
+              adds no forms, analytics, tracking pixels, advertising technology,
+              or cookies. A small first-party script only controls the optional
+              back-to-top button; the policy remains fully available without it
+              and it sends no data.
+            </p>
+            <p>
+              GitHub logs and stores a visitor's IP address for security when a
+              GitHub Pages site is visited and may process other technical and
+              website-usage data to host, secure, maintain, and improve its
+              services. That processing is controlled by GitHub and described in
+              <TextLink
+                href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+              >
+                GitHub's Pages documentation
+              </TextLink>
+              and
+              <TextLink
+                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+              >
+                GitHub's General Privacy Statement
+              </TextLink>.
+            </p>
+            <p>
+              cescfe does not receive visitor-level analytics from this site.
+              Following an external link, including an email link, takes you to
+              a service governed by that service's own terms and privacy
+              practices.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="service-providers-and-disclosure"
+            number="6"
+            title="Service providers and disclosure"
+          >
+            <p>
+              cescfe does not sell, rent, or use personal information for
+              advertising. The following providers are relevant only in the
+              circumstances described below.
+            </p>
+
+            <div
+              class="provider-table"
+              role="region"
+              aria-label="Service providers and their purposes"
+              tabindex="0"
+            >
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Provider</th>
+                    <th scope="col">When involved</th>
+                    <th scope="col">Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Android / configured provider</th>
+                    <td
+                      >When backup, device transfer, or sharing is enabled or
+                      initiated by you</td
+                    >
+                    <td>Provide the operating-system feature you chose</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GitHub</th>
+                    <td>When you visit this website</td>
+                    <td>Host and secure the static site</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Google Gmail</th>
+                    <td>When you email the privacy contact</td>
+                    <td
+                      >Deliver and store the correspondence so cescfe can
+                      respond</td
+                    >
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Information controlled by cescfe may also be disclosed if required
+              by applicable law, legal process, or a valid government request,
+              or when reasonably necessary to protect users, rights, or the
+              security of the app and website.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="your-choices-and-rights"
+            number="7"
+            title="Your choices and rights"
+          >
+            <p>You control app data directly on your device. You can:</p>
+            <ul>
+              <li>
+                choose whether to use Android backup or device-transfer
+                features;
+              </li>
+              <li>
+                choose whether and where to share Daily Challenge completion
+                text;
+              </li>
+              <li>
+                clear NumPairs storage or uninstall the app to remove local
+                data; and
+              </li>
+              <li>
+                manage backup copies through your device or backup-provider
+                settings.
+              </li>
+            </ul>
+            <p>
+              Depending on where you live, you may have rights to request
+              access, correction, deletion, restriction, objection, or
+              portability for personal information controlled by cescfe. Because
+              the app does not send data to cescfe, these requests will
+              generally concern email correspondence. Contact
+              <TextLink href="mailto:ferrucesc@gmail.com">
+                ferrucesc@gmail.com
+              </TextLink>
+              to make a request. You may also have the right to complain to your local
+              data-protection authority.
+            </p>
+            <p>
+              For information controlled independently by GitHub, Google, an
+              Android backup provider, or a sharing destination, use that
+              provider's privacy controls or contact channels.
+            </p>
+          </LegalSection>
+
+          <LegalSection id="children" number="8" title="Children">
+            <p>
+              NumPairs does not knowingly collect personal information remotely
+              from anyone, including children. Children should not send personal
+              information by email without a parent or guardian's permission. If
+              you believe a child has emailed personal information, contact
+              cescfe so it can be deleted where legally permitted.
+            </p>
+          </LegalSection>
+
+          <LegalSection id="security" number="9" title="Security">
+            <p>
+              App information is stored in NumPairs' private Android app storage
+              and protected by the safeguards provided by your device and
+              operating system. Email and hosted website data rely on the
+              security measures of their respective providers. No method of
+              storage or transmission is completely secure, but cescfe limits
+              the information it handles and uses it only for the purposes
+              described in this policy.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="changes-to-this-policy"
+            number="10"
+            title="Changes to this policy"
+          >
+            <p>
+              This policy may be updated if NumPairs features, data practices,
+              providers, or legal requirements change. The revised policy will
+              be published at this same URL with a new “Last updated” date.
+              Material changes will be highlighted here before or when they take
+              effect where reasonably possible.
+            </p>
+          </LegalSection>
+
+          <LegalSection
+            id="contact"
+            number="11"
+            title="Contact"
+            class="contact-section"
+          >
+            <p>
+              For privacy questions or requests, email
+              <TextLink href="mailto:ferrucesc@gmail.com">
+                ferrucesc@gmail.com
+              </TextLink>.
+            </p>
+            <p class="contact-section__identity">
+              NumPairs · <code>org.cescfe.numpairs</code> · cescfe
+            </p>
+          </LegalSection>
+        </div>
+
+        <p class="privacy-policy__document-label">
+          NumPairs privacy policy · Published by cescfe
+        </p>
+      </article>
+    </PageContainer>
+  </div>
+</BaseLayout>
+
+<style>
+  .policy-page {
+    background: var(--color-bg-deep);
+  }
+
+  .privacy-policy {
+    display: grid;
+    max-inline-size: var(--content-reading-max);
+    margin-inline: auto;
+    padding-block: var(--space-10) var(--space-11);
+    gap: var(--space-10);
+  }
+
+  .privacy-policy__hero {
+    display: grid;
+    padding: var(--space-7);
+    border: var(--border-default) var(--color-border-subtle);
+    gap: var(--space-3);
+  }
+
+  .privacy-policy__eyebrow {
+    color: var(--color-accent-default);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-label-line-height);
+    text-transform: uppercase;
+  }
+
+  .privacy-policy__product {
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .privacy-policy__summary {
+    max-inline-size: var(--content-prose-max);
+    color: var(--color-text-secondary);
+  }
+
+  .privacy-policy__metadata {
+    display: flex;
+    margin-block: var(--space-3) 0;
+    gap: var(--space-5) var(--space-9);
+    flex-wrap: wrap;
+  }
+
+  .privacy-policy__metadata div {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .privacy-policy__metadata dt {
+    color: var(--color-text-secondary);
+    font-size: var(--type-caption-size);
+    font-weight: var(--type-caption-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-caption-line-height);
+    text-transform: uppercase;
+  }
+
+  .privacy-policy__metadata dd {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .policy-summary,
+  .policy-navigation {
+    display: grid;
+    padding: var(--space-6);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    gap: var(--space-4);
+    background: var(--color-surface-default);
+  }
+
+  .policy-summary h2,
+  .policy-navigation h2 {
+    font-size: var(--type-title-size);
+    font-weight: var(--type-title-weight);
+    line-height: var(--type-title-line-height);
+  }
+
+  .policy-summary ul,
+  .policy-navigation ol {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-7);
+  }
+
+  .policy-summary ul {
+    list-style: none;
+  }
+
+  .policy-summary li {
+    display: flex;
+    min-block-size: var(--interactive-target-min);
+    gap: var(--space-3);
+    align-items: center;
+    color: var(--color-text-secondary);
+  }
+
+  .policy-summary li > span:first-child {
+    color: var(--color-status-success);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .policy-navigation ol {
+    padding-inline-start: var(--space-6);
+  }
+
+  .policy-navigation li {
+    padding-inline-start: var(--space-1);
+    color: var(--color-text-secondary);
+  }
+
+  .policy-navigation a {
+    display: inline-flex;
+    min-block-size: var(--interactive-target-min);
+    align-items: center;
+  }
+
+  .privacy-policy__sections {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .privacy-policy__sections :global(h3) {
+    color: var(--color-text-primary);
+    font-size: var(--type-title-size);
+    font-weight: var(--type-title-weight);
+    line-height: var(--type-title-line-height);
+  }
+
+  .provider-table {
+    max-inline-size: 100%;
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+  }
+
+  .provider-table:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  table {
+    inline-size: 100%;
+    min-inline-size: 720px;
+    border-collapse: collapse;
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+    text-align: start;
+  }
+
+  th,
+  td {
+    padding: var(--space-4);
+    border-block-end: var(--border-default) var(--color-border-subtle);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--color-surface-default);
+    color: var(--color-text-primary);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    line-height: var(--type-label-line-height);
+  }
+
+  tbody th {
+    color: var(--color-text-primary);
+  }
+
+  tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  :global(.contact-section) {
+    max-inline-size: 100%;
+    padding: var(--space-6);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-default);
+  }
+
+  .contact-section__identity,
+  .privacy-policy__document-label {
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .privacy-policy__document-label {
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  @media (max-width: 767px) {
+    .privacy-policy {
+      padding-block: var(--space-9) var(--space-10);
+      gap: var(--space-9);
+    }
+
+    .privacy-policy__hero,
+    .policy-summary,
+    .policy-navigation,
+    :global(.contact-section) {
+      padding: var(--space-5);
+    }
+
+    .privacy-policy__metadata {
+      flex-direction: column;
+    }
+
+    .policy-summary ul,
+    .policy-navigation ol {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
