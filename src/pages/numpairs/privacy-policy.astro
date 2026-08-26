@@ -47,48 +47,53 @@ const sections = [
   <div class="policy-page">
     <PageContainer>
       <article class="privacy-policy" aria-labelledby="privacy-policy-title">
-        <header class="privacy-policy__hero">
-          <p class="privacy-policy__eyebrow">[ legal_resource ]</p>
-          <p class="privacy-policy__product">NumPairs · Android</p>
-          <h1 id="privacy-policy-title">Privacy Policy</h1>
-          <p class="privacy-policy__summary">
-            NumPairs is designed to work without an account and without sending
-            your gameplay data to the developer.
-          </p>
+        <div class="privacy-policy__overview">
+          <header class="privacy-policy__hero">
+            <p class="privacy-policy__eyebrow">[ legal_resource ]</p>
+            <p class="privacy-policy__product">NumPairs · Android</p>
+            <h1 id="privacy-policy-title">Privacy Policy</h1>
+            <p class="privacy-policy__summary">
+              NumPairs is designed to work without an account and without
+              sending your gameplay data to the developer.
+            </p>
 
-          <dl class="privacy-policy__metadata">
-            <div>
-              <dt>Last updated</dt>
-              <dd><time datetime="2026-08-26">August 26, 2026</time></dd>
-            </div>
-            <div>
-              <dt>Package</dt>
-              <dd><code>org.cescfe.numpairs</code></dd>
-            </div>
-          </dl>
-        </header>
+            <dl class="privacy-policy__metadata">
+              <div>
+                <dt>Last updated</dt>
+                <dd><time datetime="2026-08-26">August 26, 2026</time></dd>
+              </div>
+              <div>
+                <dt>Package</dt>
+                <dd><code>org.cescfe.numpairs</code></dd>
+              </div>
+            </dl>
+          </header>
 
-        <section class="policy-summary" aria-labelledby="policy-summary-title">
-          <h2 id="policy-summary-title">At a glance</h2>
-          <ul>
-            <li>
-              <span aria-hidden="true">✓</span>
-              <span>No account or sign-in</span>
-            </li>
-            <li>
-              <span aria-hidden="true">✓</span>
-              <span>Gameplay stays on your device</span>
-            </li>
-            <li>
-              <span aria-hidden="true">✓</span>
-              <span>No ads, analytics, or trackers</span>
-            </li>
-            <li>
-              <span aria-hidden="true">✓</span>
-              <span>Sharing happens only when you choose it</span>
-            </li>
-          </ul>
-        </section>
+          <section
+            class="policy-summary"
+            aria-labelledby="policy-summary-title"
+          >
+            <h2 id="policy-summary-title">At a glance</h2>
+            <ul>
+              <li>
+                <span aria-hidden="true">✓</span>
+                <span>No account or sign-in</span>
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                <span>Gameplay stays on your device</span>
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                <span>No ads, analytics, or trackers</span>
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                <span>Sharing happens only when you choose it</span>
+              </li>
+            </ul>
+          </section>
+        </div>
 
         <nav
           class="policy-navigation"
@@ -120,6 +125,14 @@ const sections = [
               <TextLink href="mailto:ferrucesc@gmail.com">
                 ferrucesc@gmail.com
               </TextLink>.
+            </p>
+            <p>
+              NumPairs is open-source software. Its source code is publicly
+              available in the{" "}
+              <TextLink href="https://github.com/CescFe/numpairs">
+                NumPairs repository on GitHub
+              </TextLink>{" "}
+              under the MIT License.
             </p>
           </LegalSection>
 
@@ -452,6 +465,11 @@ const sections = [
     gap: var(--space-10);
   }
 
+  .privacy-policy__overview {
+    display: grid;
+    gap: var(--space-10);
+  }
+
   .privacy-policy__hero {
     display: grid;
     padding: var(--space-7);
@@ -644,9 +662,64 @@ const sections = [
     border-block-start: var(--border-default) var(--color-border-subtle);
   }
 
+  @media (min-width: 1200px) {
+    .privacy-policy {
+      max-inline-size: var(--content-site-max);
+      grid-template-columns:
+        minmax(184px, 240px)
+        minmax(0, var(--content-reading-max));
+      column-gap: var(--space-8);
+      justify-content: center;
+      row-gap: var(--space-10);
+    }
+
+    .privacy-policy__overview {
+      grid-column: 2;
+      grid-row: 1;
+      grid-template-columns: minmax(0, 5fr) minmax(280px, 3fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .privacy-policy__hero,
+    .policy-summary {
+      block-size: 100%;
+    }
+
+    .policy-summary ul,
+    .policy-navigation ol {
+      grid-template-columns: 1fr;
+    }
+
+    .policy-navigation {
+      position: sticky;
+      grid-column: 1;
+      grid-row: 2;
+      max-block-size: calc(100vh - var(--space-10));
+      padding: var(--space-5);
+      align-self: start;
+      inset-block-start: var(--space-7);
+      overflow-y: auto;
+    }
+
+    .privacy-policy__sections {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .privacy-policy__document-label {
+      grid-column: 2;
+      grid-row: 3;
+    }
+  }
+
   @media (max-width: 767px) {
     .privacy-policy {
       padding-block: var(--space-9) var(--space-10);
+      gap: var(--space-9);
+    }
+
+    .privacy-policy__overview {
       gap: var(--space-9);
     }
 
