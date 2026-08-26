@@ -1,0 +1,151 @@
+@import "./tokens.css";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-ExtraBold.woff2")
+    format("woff2");
+}
+
+html {
+  box-sizing: border-box;
+  min-block-size: 100%;
+  background: var(--color-bg-canvas);
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-block-size: 100vh;
+  margin: 0;
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--type-body-size);
+  font-synthesis: none;
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line-height);
+  overflow-wrap: break-word;
+}
+
+:where(h1, h2, h3, h4, p, ul, ol, pre, figure) {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-line-height);
+}
+
+h2 {
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-line-height);
+}
+
+h3 {
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+  line-height: var(--type-h3-line-height);
+}
+
+h4 {
+  font-size: var(--type-title-size);
+  font-weight: var(--type-title-weight);
+  line-height: var(--type-title-line-height);
+}
+
+:where(img, picture, video, canvas) {
+  display: block;
+  max-inline-size: 100%;
+}
+
+:where(img, video) {
+  block-size: auto;
+}
+
+:where(button, input, select, summary, textarea) {
+  color: inherit;
+  font: inherit;
+}
+
+:where(code, kbd, samp, pre) {
+  font-family: var(--font-family-mono);
+}
+
+pre {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
+a {
+  color: var(--color-accent-default);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+:where(a, button, input, select, summary, textarea, [tabindex]):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+:where(section, article, h1, h2, h3, h4)[id] {
+  scroll-margin-block-start: var(--anchor-scroll-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0ms !important;
+  }
+}
