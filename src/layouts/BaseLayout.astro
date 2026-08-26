@@ -1,0 +1,137 @@
+---
+import ScrollToTop from "../components/ScrollToTop.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { SITE } from "../config/site";
+import "../styles/global.css";
+import type {
+  HeaderNavigationItem,
+  SiteFooterVariant,
+  SiteHeaderVariant,
+} from "../types/shell";
+
+interface SocialMetadata {
+  title?: string;
+  description?: string;
+  image?: string | URL;
+  imageAlt?: string;
+  type?: "article" | "profile" | "website";
+  card?: "summary" | "summary_large_image";
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  social?: SocialMetadata;
+  currentPath?: string;
+  headerVariant?: SiteHeaderVariant;
+  headerNavigation?: readonly HeaderNavigationItem[];
+  footerVariant?: SiteFooterVariant;
+  showScrollToTop?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  social = {},
+  currentPath = Astro.url.pathname,
+  headerVariant = "default",
+  headerNavigation = [],
+  footerVariant = "full",
+  showScrollToTop = false,
+} = Astro.props;
+
+const baseUrl = Astro.site ?? new URL("/", Astro.url);
+const canonicalUrl = new URL(canonicalPath, baseUrl);
+const socialTitle = social.title ?? title;
+const socialDescription = social.description ?? description;
+const socialType = social.type ?? "website";
+const socialImageUrl = social.image
+  ? new URL(social.image, baseUrl)
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content={SITE.themeColor} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={socialType} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <meta name="twitter:card" content={social.card ?? "summary"} />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={socialDescription} />
+
+    {
+      socialImageUrl && (
+        <>
+          <meta property="og:image" content={socialImageUrl} />
+          <meta name="twitter:image" content={socialImageUrl} />
+          {social.imageAlt && (
+            <>
+              <meta property="og:image:alt" content={social.imageAlt} />
+              <meta name="twitter:image:alt" content={social.imageAlt} />
+            </>
+          )}
+        </>
+      )
+    }
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <SiteHeader
+      variant={headerVariant}
+      currentPath={currentPath}
+      navigation={headerNavigation}
+    />
+
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+
+    <SiteFooter variant={footerVariant} />
+    {showScrollToTop && <ScrollToTop />}
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: fixed;
+    z-index: 20;
+    display: inline-flex;
+    inset-block-start: var(--space-3);
+    inset-inline-start: var(--viewport-padding-inline);
+    min-block-size: var(--interactive-target-min);
+    padding-inline: var(--space-4);
+    border-radius: var(--radius-sm);
+    align-items: center;
+    background: var(--color-accent-default);
+    color: var(--color-bg-canvas);
+    font-weight: var(--font-weight-bold);
+    transform: translateY(calc(-100% - var(--space-5)));
+    transition: transform var(--motion-duration-fast)
+      var(--motion-easing-standard);
+  }
+
+  .skip-link:focus-visible {
+    color: var(--color-bg-canvas);
+    transform: translateY(0);
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import { SITE } from "../config/site";
+import type { SiteFooterVariant } from "../types/shell";
+import PageContainer from "./PageContainer.astro";
+import TextLink from "./TextLink.astro";
+
+interface Props {
+  variant?: SiteFooterVariant;
+  year?: number;
+}
+
+const { variant = "full", year = new Date().getUTCFullYear() } = Astro.props;
+---
+
+<footer class:list={["site-footer", `site-footer--${variant}`]}>
+  <PageContainer>
+    <div class="site-footer__inner">
+      <p class="site-footer__copyright">© {year} {SITE.name}.</p>
+
+      <nav aria-label="Professional profiles">
+        <ul class="site-footer__links">
+          <li>
+            <TextLink href={SITE.socialLinks.github} variant="standalone">
+              GitHub
+            </TextLink>
+          </li>
+          <li>
+            <TextLink href={SITE.socialLinks.linkedin} variant="standalone">
+              LinkedIn
+            </TextLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </PageContainer>
+</footer>
+
+<style>
+  .site-footer {
+    border-block-start: var(--border-default) var(--color-border-subtle);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer--minimal {
+    background: var(--color-bg-deep);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    min-block-size: 112px;
+    padding-block: var(--space-7);
+    gap: var(--space-5) var(--space-8);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-footer--minimal .site-footer__inner {
+    min-block-size: 88px;
+    padding-block: var(--space-5);
+  }
+
+  .site-footer__copyright {
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .site-footer__links {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-4);
+    align-items: center;
+    list-style: none;
+  }
+
+  @media (max-width: 767px) {
+    .site-footer__inner {
+      min-block-size: auto;
+      padding-block: var(--space-6);
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .site-footer__links {
+      margin-inline-start: calc(var(--space-2) * -1);
+      flex-wrap: wrap;
+    }
+  }
+</style>

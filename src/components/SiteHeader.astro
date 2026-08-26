@@ -1,0 +1,128 @@
+---
+import { SITE } from "../config/site";
+import type { HeaderNavigationItem, SiteHeaderVariant } from "../types/shell";
+import PageContainer from "./PageContainer.astro";
+import TextLink from "./TextLink.astro";
+
+interface Props {
+  variant?: SiteHeaderVariant;
+  currentPath?: string;
+  navigation?: readonly HeaderNavigationItem[];
+  secondaryLabel?: string;
+}
+
+const {
+  variant = "default",
+  currentPath = Astro.url.pathname,
+  navigation = [],
+  secondaryLabel = SITE.secondaryIdentity,
+} = Astro.props;
+---
+
+<header class:list={["site-header", `site-header--${variant}`]}>
+  <PageContainer>
+    <div class="site-header__inner">
+      <div class="site-header__identity">
+        <TextLink
+          href="/"
+          variant="identity"
+          selected={currentPath === "/"}
+          aria-label={`${SITE.name} homepage`}
+        >
+          <span class="site-header__bracket" aria-hidden="true">{"{"}</span>
+          <span>{SITE.identity}</span>
+          <span class="site-header__bracket" aria-hidden="true">{"}"}</span>
+        </TextLink>
+
+        {
+          variant === "default" && secondaryLabel && (
+            <span class="site-header__secondary">{secondaryLabel}</span>
+          )
+        }
+      </div>
+
+      {
+        navigation.length > 0 && (
+          <nav class="site-header__navigation" aria-label="Primary navigation">
+            <ul>
+              {navigation.map((item) => (
+                <li>
+                  <TextLink
+                    href={item.href}
+                    variant="navigation"
+                    selected={currentPath === item.href}
+                    disabled={item.disabled}
+                  >
+                    {item.label}
+                  </TextLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+    </div>
+  </PageContainer>
+</header>
+
+<style>
+  .site-header {
+    border-block-end: var(--border-default) var(--color-border-subtle);
+    background: var(--color-bg-canvas);
+  }
+
+  .site-header__inner {
+    display: flex;
+    min-block-size: 92px;
+    gap: var(--space-5);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-header--compact .site-header__inner {
+    min-block-size: 64px;
+  }
+
+  .site-header__identity {
+    display: flex;
+    min-inline-size: 0;
+    gap: var(--space-5);
+    align-items: center;
+  }
+
+  .site-header__bracket {
+    color: var(--color-accent-default);
+  }
+
+  .site-header__secondary {
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+    white-space: nowrap;
+  }
+
+  .site-header__navigation ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-3);
+    align-items: center;
+    list-style: none;
+  }
+
+  @media (max-width: 767px) {
+    .site-header__inner {
+      min-block-size: 76px;
+      gap: var(--space-3);
+    }
+
+    .site-header__secondary {
+      display: none;
+    }
+
+    .site-header--compact .site-header__inner {
+      min-block-size: 64px;
+    }
+  }
+</style>

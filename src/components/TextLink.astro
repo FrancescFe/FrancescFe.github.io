@@ -1,0 +1,133 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Variant = "identity" | "inline" | "navigation" | "standalone";
+
+interface Props extends Omit<HTMLAttributes<"a">, "href"> {
+  href: string;
+  variant?: Variant;
+  selected?: boolean;
+  disabled?: boolean;
+}
+
+const {
+  href,
+  variant = "inline",
+  selected = false,
+  disabled = false,
+  class: className,
+  ...attributes
+} = Astro.props;
+
+const ariaCurrent = selected ? "page" : attributes["aria-current"];
+const ariaDisabled = disabled ? "true" : attributes["aria-disabled"];
+const tabIndex = disabled ? -1 : attributes.tabindex;
+---
+
+<a
+  {...attributes}
+  class:list={[
+    "text-link",
+    `text-link--${variant}`,
+    { "text-link--selected": selected },
+    className,
+  ]}
+  href={disabled ? undefined : href}
+  aria-current={ariaCurrent}
+  aria-disabled={ariaDisabled}
+  tabindex={tabIndex}
+>
+  <slot />
+</a>
+
+<style>
+  .text-link {
+    color: var(--color-accent-default);
+    transition:
+      background-color var(--motion-duration-fast) var(--motion-easing-standard),
+      border-color var(--motion-duration-fast) var(--motion-easing-standard),
+      color var(--motion-duration-fast) var(--motion-easing-standard);
+  }
+
+  .text-link--inline,
+  .text-link--standalone {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .text-link--inline:visited {
+    color: var(--color-accent-default);
+  }
+
+  .text-link--identity,
+  .text-link--navigation,
+  .text-link--standalone {
+    display: inline-flex;
+    min-block-size: var(--interactive-target-min);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-link--identity {
+    gap: var(--space-2);
+    color: var(--color-text-primary);
+    font-size: var(--type-title-size);
+    font-weight: var(--type-title-weight);
+    line-height: var(--type-title-line-height);
+    text-decoration: none;
+  }
+
+  .text-link--navigation {
+    min-inline-size: var(--interactive-target-min);
+    padding-inline: var(--space-5);
+    border: var(--border-default) var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    line-height: var(--type-label-line-height);
+    text-decoration: none;
+  }
+
+  .text-link--standalone {
+    padding-inline: var(--space-2);
+    color: var(--color-text-secondary);
+  }
+
+  .text-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .text-link--navigation:hover {
+    border-color: var(--color-accent-hover);
+    background: var(--color-surface-hover);
+  }
+
+  .text-link:active {
+    color: var(--color-text-primary);
+  }
+
+  .text-link--navigation:active {
+    border-color: var(--color-accent-default);
+    background: var(--color-accent-subtle);
+  }
+
+  .text-link--selected {
+    color: var(--color-accent-default);
+  }
+
+  .text-link--navigation.text-link--selected {
+    border-color: var(--color-accent-default);
+    background: var(--color-accent-subtle);
+  }
+
+  .text-link[aria-disabled="true"] {
+    border-color: var(--color-border-subtle);
+    background: transparent;
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+  }
+</style>
