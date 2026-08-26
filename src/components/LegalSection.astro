@@ -1,0 +1,75 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"section">, "id"> {
+  id: string;
+  number: number | string;
+  title: string;
+}
+
+const { id, number, title, class: className, ...attributes } = Astro.props;
+const headingId = `${id}-title`;
+---
+
+<section
+  {...attributes}
+  id={id}
+  class:list={["legal-section", className]}
+  aria-labelledby={headingId}
+>
+  <header class="legal-section__header">
+    <span class="legal-section__number" aria-hidden="true">{number}.</span>
+    <h2 id={headingId}>{title}</h2>
+  </header>
+
+  <div class="legal-section__body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .legal-section {
+    display: grid;
+    max-inline-size: var(--content-prose-max);
+    gap: var(--space-4);
+  }
+
+  .legal-section__header {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
+
+  .legal-section__number {
+    flex: 0 0 auto;
+    color: var(--color-accent-default);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    line-height: var(--type-label-line-height);
+  }
+
+  h2 {
+    font-size: var(--type-h3-size);
+    font-weight: var(--type-h3-weight);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .legal-section__body {
+    display: grid;
+    gap: var(--space-4);
+    color: var(--color-text-secondary);
+  }
+
+  .legal-section__body :global(ul) {
+    margin-block: 0;
+    padding-inline-start: var(--space-6);
+  }
+
+  .legal-section__body :global(li + li) {
+    margin-block-start: var(--space-2);
+  }
+
+  .legal-section__body :global(strong) {
+    color: var(--color-text-primary);
+  }
+</style>
