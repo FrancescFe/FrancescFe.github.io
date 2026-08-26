@@ -1,42 +1,40 @@
 ---
-import "../styles/global.css";
+import PageContainer from "../components/PageContainer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "FrancescFe Portfolio";
+const description = "The technical portfolio of FrancescFe.";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#090d16" />
-    <title>FrancescFe Portfolio</title>
-  </head>
-  <body>
-    <main class="foundation">
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/"
+  currentPath="/"
+  headerVariant="default"
+  footerVariant="full"
+  showScrollToTop
+  social={{ title, description, type: "website" }}
+>
+  <PageContainer>
+    <section class="foundation" aria-labelledby="foundation-title">
       <div class="foundation__content">
         <p class="foundation__label">Foundation ready</p>
-        <h1>FrancescFe Portfolio</h1>
+        <h1 id="foundation-title">FrancescFe Portfolio</h1>
         <p class="foundation__summary">
-          The global design tokens and local typography are ready for the shared
+          The global design tokens and shared responsive shell are ready for the
           portfolio experience.
         </p>
       </div>
-    </main>
-  </body>
-</html>
+    </section>
+  </PageContainer>
+</BaseLayout>
 
 <style>
   .foundation {
     display: grid;
     min-block-size: 100vh;
-    inline-size: min(
-      100%,
-      calc(
-        var(--content-site-max) + var(--viewport-padding-inline) +
-          var(--viewport-padding-inline)
-      )
-    );
-    margin-inline: auto;
-    padding: var(--space-10) var(--viewport-padding-inline);
+    padding-block: var(--space-10);
     align-items: center;
   }
 

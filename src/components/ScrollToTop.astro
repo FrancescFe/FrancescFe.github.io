@@ -1,0 +1,106 @@
+---
+import IconButton from "./IconButton.astro";
+---
+
+<div class="scroll-to-top" data-scroll-to-top hidden>
+  <IconButton
+    class="scroll-to-top__button"
+    label="Scroll to top"
+    data-scroll-to-top-button
+    disabled
+  >
+    <svg
+      aria-hidden="true"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 16V4M10 4L5 9M10 4L15 9"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </IconButton>
+</div>
+
+<script>
+  const visibilityThreshold = 320;
+  const controls = document.querySelectorAll<HTMLElement>(
+    "[data-scroll-to-top]",
+  );
+
+  const setVisibility = () => {
+    const isAvailable = window.scrollY > visibilityThreshold;
+
+    controls.forEach((control) => {
+      const button = control.querySelector<HTMLButtonElement>(
+        "[data-scroll-to-top-button]",
+      );
+
+      control.hidden = !isAvailable;
+
+      if (button) {
+        button.disabled = !isAvailable;
+      }
+    });
+  };
+
+  controls.forEach((control) => {
+    const button = control.querySelector<HTMLButtonElement>(
+      "[data-scroll-to-top-button]",
+    );
+
+    button?.addEventListener("click", () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      window.scrollTo({
+        top: 0,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    });
+  });
+
+  let updatePending = false;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (updatePending) return;
+
+      updatePending = true;
+      window.requestAnimationFrame(() => {
+        setVisibility();
+        updatePending = false;
+      });
+    },
+    { passive: true },
+  );
+
+  setVisibility();
+</script>
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    z-index: 10;
+    inset-block-end: var(--space-7);
+    inset-inline-end: var(--space-7);
+  }
+
+  :global(.scroll-to-top__button) {
+    box-shadow: var(--elevation-floating);
+  }
+
+  @media (max-width: 767px) {
+    .scroll-to-top {
+      inset-block-end: var(--space-5);
+      inset-inline-end: var(--space-5);
+    }
+  }
+</style>
