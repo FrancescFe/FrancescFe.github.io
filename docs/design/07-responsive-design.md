@@ -17,8 +17,10 @@ Multi-column project layouts should collapse progressively as available width de
 
 Long-form content such as project descriptions, Resume entries, and the Privacy Policy should maintain a comfortable reading width rather than expanding to the entire viewport.
 
-The mobile experience preserves the same project discovery sequence as desktop:
+The mobile experience preserves the same Homepage sequence as desktop:
 
-`Hero → Projects List → Project Details → Footer`
+`Hero → Projects List → Footer`
 
-Exact breakpoints and spacing rules are intentionally deferred to Stage 2.
+Dedicated project pages preserve the same content hierarchy across viewport sizes while adapting multi-column technical content and media to the available width.
+
+Exact breakpoints and spacing rules are defined in the implementation-ready design-system documents.

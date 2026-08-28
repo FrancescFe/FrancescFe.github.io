@@ -14,6 +14,6 @@ Implementation should preserve the following principles established during desig
 - no information communicated exclusively through color;
 - support for `prefers-reduced-motion`;
 - sufficiently large interactive targets;
-- semantic anchor-based project navigation.
+- semantic link-based navigation to dedicated project routes.
 
-The final implementation palette must be validated against WCAG contrast requirements during Stage 2.
+The implementation palette must be validated against WCAG contrast requirements wherever a shared or project-specific theme is introduced.

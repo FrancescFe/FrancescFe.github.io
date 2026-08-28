@@ -18,24 +18,28 @@ The active destination must have a visually distinct state.
 
 ## Project navigation
 
-Projects support two complementary navigation mechanisms.
+Projects use normal document navigation between the Homepage catalogue and dedicated case-study routes.
 
 ### Sequential discovery
 
 Users scrolling through the Homepage naturally progress through:
 
-`Introduction → Projects List → Project Details`
+`Introduction → Projects List → Footer`
 
-This is the primary exploratory experience.
+The catalogue is the primary project-discovery experience.
 
 ### Direct navigation
 
-Selecting a project card from the Projects List navigates directly to the corresponding project-detail section.
+Selecting a project card from the Projects List navigates to its dedicated project page:
 
-Implementation should preserve normal web navigation semantics where possible so that:
+- NumPairs: `/projects/numpairs/`;
+- Book Publishing Platform: `/projects/book-publishing/`.
+
+Implementation must preserve normal web navigation semantics so that:
 
 - keyboard users can activate project links;
-- project sections have stable anchors;
-- sections can be linked directly;
+- project routes can be opened, copied and visited directly;
 - browser behavior remains predictable;
 - navigation does not depend on JavaScript-only interaction.
+
+Every project page must provide a clear route back to the portfolio.

@@ -183,21 +183,22 @@ Compact project representation used by the Homepage project catalogue.
 ### Required content
 
 - project name;
-- short description or category;
-- status;
-- representative visual or preview where available.
+- concise description;
+- selected technical metadata.
+
+The v1 Homepage uses compact, text-first cards. Large previews and project-status badges are intentionally excluded from this catalogue and should not be added merely to reproduce the exploratory mockup.
 
 ### Interaction
 
-The primary card interaction navigates to the corresponding stable project-detail anchor.
+The primary card interaction navigates to the corresponding dedicated project route.
 
 The card must expose link semantics and must remain keyboard accessible.
 
-Hover must not be the only indication that the card is interactive.
+Hover must not be the only indication that the card is interactive. Navigation must use a standard link and must not depend on JavaScript.
 
-### Archived state
+### Optional archived state
 
-Archived status must be communicated textually and not only through muted colors.
+If a future catalogue exposes archived projects, that status must be communicated textually and not only through muted colors. The v1 catalogue does not expose project statuses.
 
 ### Responsive behavior
 
@@ -213,7 +214,7 @@ one card per row.
 
 ## 7. ProjectDetail
 
-Reusable long-form project case-study structure.
+Reusable long-form structure for dedicated project case-study pages.
 
 ### Slots
 
@@ -232,6 +233,8 @@ The component pattern supports:
 Slots are optional unless required by the content.
 
 Projects should not be forced to display empty sections merely to maintain visual symmetry.
+
+The structure is rendered within the shared portfolio shell and may adopt scoped project colors, imagery and editorial treatment without weakening shared navigation or accessibility requirements.
 
 ### Desktop
 

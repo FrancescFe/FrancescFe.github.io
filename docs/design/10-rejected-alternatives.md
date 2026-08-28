@@ -8,15 +8,19 @@ This was superseded by integrating project discovery directly into the Homepage.
 
 The integrated approach reduces navigation depth and creates a more continuous portfolio experience.
 
-### Separate project-detail pages
+### Project details embedded in the Homepage
 
-The original architecture proposed dedicated routes such as `/projects/numpairs/`.
+The original approved mockup placed long-form project details sequentially within the Homepage.
 
-The approved design instead places project details sequentially within the Homepage.
+This was superseded by a more minimal Homepage that ends after its project catalogue and footer.
 
-This allows visitors to move naturally from project discovery into case-study content while stable anchors preserve direct navigation to individual projects.
+Each project now uses a dedicated route such as `/projects/numpairs/` or `/projects/book-publishing/`. This keeps discovery concise and allows each case study to adopt a scoped project identity while preserving the shared portfolio shell and accessibility foundations.
 
-Dedicated project pages may be reconsidered in a future version if the number or complexity of projects makes the single-page model impractical.
+### Separate Book Publishing repository entries
+
+Presenting the Book Publishing backend, Android app and API specification as separate portfolio projects was considered.
+
+This was rejected because they are complementary parts of one platform. The portfolio presents a single backend-led case study and links each repository as a related resource.
 
 ### Privacy Policy in primary navigation
 
