@@ -2,8 +2,25 @@
 import PageContainer from "../components/PageContainer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "FrancescFe Portfolio";
-const description = "The technical portfolio of FrancescFe.";
+const title = "Fran Ferrer | Software Engineer, Backend";
+const description =
+  "Fran Ferrer is a backend software engineer building reliable cloud services with Java and Kotlin across the full software delivery cycle.";
+
+const coreStack = [
+  "Java",
+  "Kotlin",
+  "Spring Boot",
+  "REST APIs",
+  "PostgreSQL",
+  "Cloud",
+];
+
+const engineeringCompetencies = [
+  "API-first",
+  "Event-driven systems",
+  "DDD",
+  "Clean architecture",
+];
 ---
 
 <BaseLayout
@@ -13,39 +30,72 @@ const description = "The technical portfolio of FrancescFe.";
   currentPath="/"
   headerVariant="default"
   footerVariant="full"
-  showScrollToTop
-  social={{ title, description, type: "website" }}
+  social={{ title, description, type: "profile" }}
 >
   <PageContainer>
-    <section class="foundation" aria-labelledby="foundation-title">
-      <div class="foundation__content">
-        <p class="foundation__label">Foundation ready</p>
-        <h1 id="foundation-title">FrancescFe Portfolio</h1>
-        <p class="foundation__summary">
-          The global design tokens and shared responsive shell are ready for the
-          portfolio experience.
-        </p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <header class="hero__introduction">
+          <p class="hero__eyebrow">Backend · Cloud · Product</p>
+          <h1 id="hero-title">Fran Ferrer</h1>
+          <p class="hero__role">Software Engineer | Backend</p>
+          <p class="hero__summary">
+            I build reliable cloud services and work across the full software
+            delivery cycle—from shaping requirements with stakeholders to
+            collaborating with product, design, and frontend teams, taking
+            solutions into production and improving them over time.
+          </p>
+        </header>
+
+        <dl class="hero__facts">
+          <div class="hero__fact">
+            <dt>Core stack</dt>
+            <dd>
+              <ul class="hero__fact-values" aria-label="Core stack">
+                {coreStack.map((item) => <li>{item}</li>)}
+              </ul>
+            </dd>
+          </div>
+
+          <div class="hero__fact">
+            <dt>Engineering</dt>
+            <dd>
+              <ul
+                class="hero__fact-values"
+                aria-label="Engineering competencies"
+              >
+                {engineeringCompetencies.map((item) => <li>{item}</li>)}
+              </ul>
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
   </PageContainer>
 </BaseLayout>
 
 <style>
-  .foundation {
+  .hero {
     display: grid;
     min-block-size: 100vh;
     padding-block: var(--space-10);
     align-items: center;
   }
 
-  .foundation__content {
+  .hero__content {
+    display: grid;
+    max-inline-size: var(--content-reading-max);
+    gap: var(--space-10);
+  }
+
+  .hero__introduction {
     display: grid;
     max-inline-size: var(--content-prose-max);
     gap: var(--space-4);
   }
 
-  .foundation__label {
-    color: var(--color-accent-default);
+  .hero__eyebrow {
+    color: var(--color-text-secondary);
     font-size: var(--type-label-size);
     font-weight: var(--type-label-weight);
     letter-spacing: var(--letter-spacing-uppercase);
@@ -54,13 +104,87 @@ const description = "The technical portfolio of FrancescFe.";
   }
 
   h1 {
+    color: var(--color-text-primary);
     font-size: var(--type-display-size);
     font-weight: var(--type-display-weight);
     line-height: var(--type-display-line-height);
   }
 
-  .foundation__summary {
-    max-inline-size: var(--content-prose-max);
+  .hero__role {
+    color: var(--color-accent-default);
+    font-size: var(--type-h3-size);
+    font-weight: var(--type-h3-weight);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .hero__summary {
+    max-inline-size: 72ch;
     color: var(--color-text-secondary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .hero__facts {
+    display: grid;
+    margin: 0;
+    border-block-end: var(--border-default) var(--color-border-subtle);
+  }
+
+  .hero__fact {
+    display: grid;
+    padding-block: var(--space-5);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+    gap: var(--space-3);
+  }
+
+  .hero__fact dt {
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-meta-line-height);
+    text-transform: uppercase;
+  }
+
+  .hero__fact dd {
+    margin: 0;
+  }
+
+  .hero__fact-values {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-2) var(--space-4);
+    flex-wrap: wrap;
+    color: var(--color-text-primary);
+    list-style: none;
+  }
+
+  .hero__fact-values li {
+    display: inline-flex;
+    gap: var(--space-4);
+    align-items: baseline;
+  }
+
+  .hero__fact-values li:not(:last-child)::after {
+    color: var(--color-text-secondary);
+    content: "·";
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: var(--space-11);
+    }
+
+    .hero__fact {
+      grid-template-columns: 144px minmax(0, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .hero {
+      padding-block: var(--space-12);
+    }
   }
 </style>
