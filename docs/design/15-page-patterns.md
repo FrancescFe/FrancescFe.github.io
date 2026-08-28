@@ -1,6 +1,6 @@
 # Page and Content Patterns
 
-This document defines the implementation-ready composition patterns for the Homepage, Resume and NumPairs Privacy Policy.
+This document defines the implementation-ready composition patterns for the Homepage, dedicated project pages, Resume and NumPairs Privacy Policy.
 
 These patterns describe hierarchy and reusable composition rather than hard-coding page content into individual components.
 
@@ -8,25 +8,22 @@ These patterns describe hierarchy and reusable composition rather than hard-codi
 
 ## 1. Homepage
 
-The Homepage is the main portfolio experience.
+The Homepage is the main portfolio discovery experience.
 
 Its editorial pattern is:
 
-`introduction → catalogue → technical evidence`
+`introduction → catalogue`
 
 The page follows this sequence:
 
 ```text
 SiteHeader
 Hero
-Capabilities / Terminal
 Projects List
-Project Detail*
 SiteFooter
-ScrollToTop
 ```
 
-`Project Detail*` represents one or more project case-study sections.
+Long-form project case studies are intentionally excluded from the Homepage.
 
 ---
 
@@ -34,48 +31,46 @@ ScrollToTop
 
 The Hero establishes identity and professional positioning.
 
-Recommended content structure:
+Content structure:
 
 - Identity;
 - Professional tagline;
 - Short introduction;
-- Availability / professional status;
-- Primary technical motif.
+- Core stack;
+- Engineering competencies.
 
-The technical motif may use `TerminalPanel` but should remain secondary to the identity and introduction.
+Availability claims and decorative terminal simulation are not part of the v1 Hero.
 
 ---
 
 ## 3. Capabilities
 
-A compact technical area may communicate representative capabilities or competencies.
+A compact technical area within the Hero communicates representative capabilities or competencies.
 
 The pattern should use structured technical content rather than decorative code with no informational purpose.
 
-Suitable representations include:
-
-- command output;
-- capability matrix;
-- compact terminal log;
-- technology metadata.
+The v1 representation uses concise technology metadata rather than a separate decorative terminal or code panel.
 
 ---
 
 ## 4. Projects List
 
-The Projects List begins with a `SectionHeader`.
+The Projects List begins with a `SectionHeader` titled `Selected projects`.
 
-The catalogue follows with one or more `ProjectCard` instances.
+The catalogue contains exactly two `ProjectCard` instances in this order:
 
-Each card links directly to its corresponding project-detail anchor.
+1. NumPairs, linking to `/projects/numpairs/`;
+2. Book Publishing Platform, linking to `/projects/book-publishing/`.
 
-The structure must remain usable with a single project while scaling naturally to additional projects.
+Cards use the approved concise description and selected technical metadata. They are compact and text-first, without large previews, project-status badges or long-form narrative.
+
+Each card uses a standard semantic link to its dedicated route. The structure should scale naturally to additional projects.
 
 ---
 
 ## 5. Project Detail
 
-Each project case study follows this conceptual hierarchy:
+Each project case study is published on a dedicated route and follows this conceptual hierarchy:
 
 - Project metadata / breadcrumb;
 - Title;
@@ -91,6 +86,8 @@ The exact content may vary by project.
 
 The design system must not require artificial benchmark or metric content where none is meaningful.
 
+Every project page uses the shared portfolio shell, provides a clear route back to the portfolio and may apply a scoped project identity.
+
 Actions may include:
 
 - source repository;
@@ -103,7 +100,7 @@ Actions may include:
 
 ## 6. NumPairs case study
 
-NumPairs is the initial project used to validate the Project Detail pattern.
+NumPairs is one of the two v1 projects using the Project Detail pattern.
 
 Its content should focus on authentic information such as:
 
@@ -121,7 +118,25 @@ Placeholder benchmarks or fictional system metrics from the exploratory mockups 
 
 ---
 
-## 7. Resume
+## 7. Book Publishing Platform case study
+
+Book Publishing is presented as one end-to-end platform at `/projects/book-publishing/`.
+
+The case study uses a backend-led narrative and should cover authentic information such as:
+
+- Kotlin and Spring Boot implementation;
+- domain modelling and architecture;
+- persistence, security and testing;
+- delivery practices;
+- the Android administration app as the platform client;
+- the versioned OpenAPI specification as the contract across system boundaries;
+- backend, app, API-spec and documentation repositories as separately labelled resources.
+
+The Android app, API specification and documentation are supporting parts of the platform story rather than independent portfolio projects.
+
+---
+
+## 8. Resume
 
 The Resume uses a professional-document pattern:
 
@@ -174,7 +189,7 @@ They should remain readable by assistive technologies and must not depend solely
 
 ---
 
-## 8. Privacy Policy
+## 9. Privacy Policy
 
 The Privacy Policy uses a legal-document pattern:
 
@@ -194,7 +209,7 @@ Legal sections use the `LegalSection` pattern.
 
 ---
 
-## 9. Legal section hierarchy
+## 10. Legal section hierarchy
 
 Each legal section contains:
 
@@ -209,7 +224,7 @@ Section numbers are supporting information and do not replace semantic headings.
 
 ---
 
-## 10. Global footer
+## 11. Global footer
 
 Homepage: `SiteFooter/full`.
 
@@ -223,9 +238,9 @@ Email is intentionally excluded.
 
 ---
 
-## 11. Scroll-to-top
+## 12. Scroll-to-top
 
-The Homepage and any other page whose content exceeds the normal viewport significantly use `ScrollToTop`.
+Any page whose final content length significantly exceeds the normal viewport may use `ScrollToTop`. The compact Homepage does not require it merely because the original mockup included long-form project sections.
 
 The control is not part of document flow and does not replace normal navigation.
 

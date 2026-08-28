@@ -1,6 +1,6 @@
 # Responsive and Navigation Rules
 
-This document formalizes layout adaptation, anchor navigation and responsive interaction behavior.
+This document formalizes layout adaptation, project-route navigation and responsive interaction behavior.
 
 ---
 
@@ -15,7 +15,7 @@ Characteristics:
 - maximum site width of `1280px`;
 - horizontal page padding of `80px`;
 - two-column project catalogue where appropriate;
-- project detail may use main-content and sidebar columns;
+- dedicated project pages may use main-content and sidebar columns;
 - full supporting navigation labels may be displayed.
 
 ### Tablet
@@ -26,7 +26,7 @@ Characteristics:
 
 - horizontal page padding of `40px`;
 - project layouts reduce column width and gaps;
-- project detail may retain a narrower sidebar where usable;
+- dedicated project pages may retain a narrower sidebar where usable;
 - supporting labels may be simplified.
 
 ### Mobile
@@ -49,7 +49,7 @@ Characteristics:
 The Hero display typography adapts across layout ranges.
 
 | Range   | Hero size |
-|---------|----------:|
+| ------- | --------: |
 | Desktop |      56px |
 | Tablet  |      44px |
 | Mobile  |      36px |
@@ -147,39 +147,26 @@ Normal prose inside technical panels may still wrap naturally.
 
 ---
 
-## 8. Anchor navigation
+## 8. Project route navigation
 
-Every project-detail section must expose a stable HTML fragment target.
+Every project card must link to a stable dedicated route using a standard anchor element.
 
-Recommended naming:
+The v1 destinations are:
 
-- `#projects`
-- `#project-numpairs`
+- NumPairs: `/projects/numpairs/`;
+- Book Publishing Platform: `/projects/book-publishing/`.
 
-Future projects should follow `#project-{slug}`.
+Future project pages should follow `/projects/{project-slug}/`.
 
-Project cards should use standard links to those fragment identifiers.
+Each destination must render when visited directly and expose an appropriate canonical URL. Dedicated project pages must provide a clear route back to the portfolio.
 
-JavaScript must not be required for basic project navigation.
-
----
-
-## 9. Header offset
-
-Because the shared header may occupy the top of the viewport, anchor targets must provide sufficient scroll margin.
-
-Recommended contract:
-
-- Desktop: `scroll-margin-top: 96px;`
-- Tablet and mobile: `scroll-margin-top: 80px;`
-
-This prevents section headings from being obscured after fragment navigation.
+JavaScript must not be required for project navigation.
 
 ---
 
-## 10. Scroll behavior
+## 9. Scroll behavior
 
-Normal motion preference may use:
+Scroll-to-top behavior may use:
 
 ```
 scroll-behavior: smooth;
@@ -195,11 +182,11 @@ When the user requests reduced motion:
 }
 ```
 
-Fragment navigation must remain functional regardless of motion preference.
+Scroll-to-top must remain functional regardless of motion preference.
 
 ---
 
-## 11. Touch targets
+## 10. Touch targets
 
 Interactive controls must provide at least `44 × 44px` of usable target area.
 
@@ -207,7 +194,7 @@ This requirement applies even where the visible graphic is smaller.
 
 ---
 
-## 12. Focus and keyboard navigation
+## 11. Focus and keyboard navigation
 
 All interactive elements must:
 
@@ -216,11 +203,11 @@ All interactive elements must:
 - retain a logical tab order;
 - use native semantic elements wherever possible.
 
-Project-card anchor navigation, Resume navigation, footer links and scroll-to-top must not depend on pointer interaction.
+Project-card links, Resume navigation, professional-profile links and scroll-to-top must not depend on pointer interaction.
 
 ---
 
-## 13. Responsive simplification principle
+## 12. Responsive simplification principle
 
 When space becomes constrained, the interface should simplify in this order:
 

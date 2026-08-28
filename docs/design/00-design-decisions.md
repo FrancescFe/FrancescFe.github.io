@@ -8,9 +8,11 @@ When a decision in these documents conflicts with an implementation assumption, 
 
 This directory records the main visual, structural, and interaction decisions established during the initial design phase of the portfolio.
 
-The goal is to preserve the intent behind the approved mockups without prematurely defining the complete design-token and component specification.
+The goal is to preserve the visual intent behind the approved mockups without prematurely defining the complete design-token and component specification.
 
-Exact implementation values and reusable component contracts will be formalized during Stage 2.
+Later milestone and issue decisions may supersede structural assumptions shown in those mockups. The documents in this directory record the current approved behavior and take precedence where that happens.
+
+Exact implementation values and reusable component contracts were formalized during Stage 2.
 
 ## Design source
 

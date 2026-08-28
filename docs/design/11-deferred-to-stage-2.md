@@ -7,7 +7,7 @@ Stage 2 resolves those decisions through the implementation handoff documented i
 ## Resolution index
 
 | Stage 1 deferred decision                          | Resolution                                                                                                          |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | Definitive semantic color tokens                   | [Design Tokens](./12-design-tokens.md#2-color)                                                                      |
 | Complete typography scale                          | [Design Tokens](./12-design-tokens.md#3-typography)                                                                 |
 | Spacing scale                                      | [Design Tokens](./12-design-tokens.md#4-spacing)                                                                    |
@@ -24,10 +24,10 @@ Stage 2 resolves those decisions through the implementation handoff documented i
 | Focus-ring specification                           | [Design Tokens](./12-design-tokens.md#12-focus)                                                                     |
 | Hover, active and disabled states                  | [Shared Components](./13-components.md)                                                                             |
 | Scroll-to-top visibility threshold and positioning | [Shared Components](./13-components.md#15-scrolltotop)                                                              |
-| Anchor scrolling behavior                          | [Responsive and Navigation Rules](./14-responsive-and-navigation.md#8-anchor-navigation)                            |
+| Project route navigation                           | [Responsive and Navigation Rules](./14-responsive-and-navigation.md#8-project-route-navigation)                     |
 | Responsive project behavior                        | [Responsive and Navigation Rules](./14-responsive-and-navigation.md#3-project-catalogue)                            |
 | Responsive Resume behavior                         | [Responsive and Navigation Rules](./14-responsive-and-navigation.md#5-resume)                                       |
-| Long-form Privacy Policy layout                    | [Page Patterns](./15-page-patterns.md#8-privacy-policy)                                                             |
+| Long-form Privacy Policy layout                    | [Page Patterns](./15-page-patterns.md#9-privacy-policy)                                                             |
 | Required fonts, icons and imagery                  | [Assets and Implementation Handoff](./16-assets-and-handoff.md)                                                     |
 
 ## Remaining implementation decisions

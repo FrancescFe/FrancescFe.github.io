@@ -1,16 +1,16 @@
 ## Information architecture
 
-The portfolio uses a deliberately compact information architecture built around one primary portfolio surface and two dedicated pages.
+The portfolio uses a deliberately compact information architecture built around a primary discovery surface and dedicated content routes.
 
 ### Homepage
 
-The Homepage is the primary portfolio experience.
+The Homepage is the primary portfolio discovery experience.
 
-Rather than separating project discovery and project details across multiple pages, the Homepage presents them as a continuous vertical sequence:
+It follows a deliberately short sequence:
 
-`Hero → Projects List → Project Details → Footer`
+`Hero → Projects List → Footer`
 
-This structure allows visitors to understand the developer profile, discover available projects, and continue directly into detailed case studies without unnecessary page transitions.
+This structure allows visitors to understand the developer profile and choose a featured project without turning the Homepage into a collection of long-form case studies.
 
 ### Hero
 
@@ -27,20 +27,22 @@ It should establish both professional positioning and the visual identity of the
 
 The Projects List provides a compact overview of the featured projects.
 
-Each project card acts as an entry point into the corresponding project-detail section further down the Homepage.
+Each project card acts as an entry point into the corresponding dedicated project page.
 
-Users can therefore discover projects in two complementary ways:
+The v1 catalogue contains two compact, text-first cards:
 
-1. by continuing to scroll naturally through the page;
-2. by selecting a project card and navigating directly to its detail section.
+- NumPairs, linking to `/projects/numpairs/`;
+- Book Publishing Platform, linking to `/projects/book-publishing/`.
 
-The initial portfolio contains NumPairs as its first featured project, but the structure should support additional projects without requiring a redesign.
+The Book Publishing Platform is represented as one end-to-end project. Its backend, Android app, OpenAPI specification and supporting documentation are parts or resources of the same platform rather than separate portfolio projects.
+
+The catalogue should support additional projects without requiring a redesign.
 
 ### Project Details
 
-Each featured project receives a substantial case-study section within the Homepage.
+Each featured project receives a substantial case study on a stable dedicated route.
 
-Project sections may contain:
+Project pages may contain:
 
 - project description;
 - engineering context;
@@ -52,13 +54,13 @@ Project sections may contain:
 - product links where applicable;
 - related resources such as a Privacy Policy where appropriate.
 
-Project sections should use stable anchors so they can be linked and navigated to directly.
+Dedicated project pages retain the shared portfolio shell and may extend it with a scoped visual identity suited to the project.
 
 ### Resume
 
 The Resume remains a dedicated page at `/resume/`.
 
-It is intentionally separated from the scrolling portfolio because it serves a different purpose: presenting structured professional information that should be easy to read, reference, print, or export.
+It is intentionally separated from the Homepage because it serves a different purpose: presenting structured professional information that should be easy to read, reference, print, or export.
 
 ### Privacy Policy
 

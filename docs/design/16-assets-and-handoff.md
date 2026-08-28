@@ -63,6 +63,14 @@ For NumPairs, preferred sources include:
 - relevant generated puzzle examples;
 - official store artwork where applicable.
 
+For the Book Publishing Platform, preferred sources include:
+
+- screenshots from the Android administration app;
+- architecture or API diagrams derived from the public repositories;
+- relevant Editorial Denes brand assets where their reuse is authorized.
+
+The compact Homepage cards do not require project imagery. Screenshots and other substantial visual evidence belong on the dedicated project pages.
+
 Raster images should be exported at sufficient resolution for high-density displays and compressed appropriately for web delivery.
 
 Decorative imagery should not be required to understand project content.
@@ -126,24 +134,18 @@ They should not override exact values documented in the design system.
 
 ---
 
-## 8. Intentional Stage 1 changes
+## 8. Approved post-handoff changes
 
-No visual redesign is introduced by Stage 2.
+Stage 2 formalized the visual system without changing the information architecture shown in the original mockups.
 
-Stage 2 formalizes values, component behavior and responsive rules derived from the approved Stage 1 direction.
+Later milestone decisions supersede the original project-page composition in the following ways:
 
-Where an implementation-level detail was absent from Stage 1, Stage 2 defines the missing contract while preserving the original visual intent.
+- the Homepage ends after a compact, text-first project catalogue and footer;
+- long-form project case studies use dedicated routes;
+- v1 features NumPairs and the Book Publishing Platform;
+- Book Publishing is represented as one platform rather than separate repository entries.
 
-Examples include:
-
-- exact breakpoint values;
-- scroll-to-top visibility threshold;
-- anchor scroll offset;
-- focus-ring dimensions;
-- motion durations;
-- elevation values.
-
-These additions are specifications, not changes to the approved information architecture.
+These changes preserve the established visual language while replacing the mockup's information-architecture assumptions. The current repository documentation takes precedence over the original Homepage composition.
 
 ---
 
@@ -163,16 +165,16 @@ Decorative assets should use empty alternative text or equivalent presentation s
 
 ---
 
-## 10. Stage 3 readiness
+## 10. Implementation readiness
 
-The design handoff is implementation-ready when Stage 3 can determine, without measuring the mockups:
+The design handoff is implementation-ready when contributors can determine, without measuring the mockups:
 
 - which semantic color to use;
 - which typography token applies;
 - which spacing scale values are valid;
 - how containers respond at each breakpoint;
 - how shared components behave in all applicable states;
-- how anchor navigation behaves;
+- how project route navigation behaves;
 - when and where scroll-to-top appears;
 - how Resume and legal content adapt to mobile;
 - which local assets are required;
