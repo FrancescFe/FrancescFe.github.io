@@ -1,4 +1,6 @@
 ---
+import githubIcon from "../assets/icons/brands/github-invertocat-white.svg";
+import linkedinIcon from "../assets/icons/brands/linkedin-in-white.svg";
 import { SITE } from "../config/site";
 import type { HeaderNavigationItem, SiteHeaderVariant } from "../types/shell";
 import PageContainer from "./PageContainer.astro";
@@ -17,6 +19,19 @@ const {
   navigation = [],
   secondaryLabel = SITE.secondaryIdentity,
 } = Astro.props;
+
+const professionalProfiles = [
+  {
+    label: "GitHub profile",
+    href: SITE.socialLinks.github,
+    icon: githubIcon,
+  },
+  {
+    label: "LinkedIn profile",
+    href: SITE.socialLinks.linkedin,
+    icon: linkedinIcon,
+  },
+] as const;
 ---
 
 <header class:list={["site-header", `site-header--${variant}`]}>
@@ -41,26 +56,55 @@ const {
         }
       </div>
 
-      {
-        navigation.length > 0 && (
-          <nav class="site-header__navigation" aria-label="Primary navigation">
-            <ul>
-              {navigation.map((item) => (
+      <div class="site-header__actions">
+        {
+          navigation.length > 0 && (
+            <nav
+              class="site-header__navigation"
+              aria-label="Primary navigation"
+            >
+              <ul>
+                {navigation.map((item) => (
+                  <li>
+                    <TextLink
+                      href={item.href}
+                      variant="navigation"
+                      selected={currentPath === item.href}
+                      disabled={item.disabled}
+                    >
+                      {item.label}
+                    </TextLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+
+        <nav aria-label="Professional profiles">
+          <ul class="site-header__profiles">
+            {
+              professionalProfiles.map((profile) => (
                 <li>
-                  <TextLink
-                    href={item.href}
-                    variant="navigation"
-                    selected={currentPath === item.href}
-                    disabled={item.disabled}
+                  <a
+                    class="site-header__profile-link"
+                    href={profile.href}
+                    aria-label={profile.label}
+                    rel="me"
                   >
-                    {item.label}
-                  </TextLink>
+                    <img
+                      src={profile.icon.src}
+                      alt=""
+                      width={profile.icon.width}
+                      height={profile.icon.height}
+                    />
+                  </a>
                 </li>
-              ))}
-            </ul>
-          </nav>
-        )
-      }
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
     </div>
   </PageContainer>
 </header>
@@ -102,19 +146,73 @@ const {
     white-space: nowrap;
   }
 
-  .site-header__navigation ul {
+  .site-header__actions,
+  .site-header__navigation ul,
+  .site-header__profiles {
     display: flex;
+    align-items: center;
+  }
+
+  .site-header__actions {
+    gap: var(--space-3);
+  }
+
+  .site-header__navigation ul,
+  .site-header__profiles {
     margin: 0;
     padding: 0;
-    gap: var(--space-3);
-    align-items: center;
     list-style: none;
+  }
+
+  .site-header__navigation ul {
+    gap: var(--space-3);
+  }
+
+  .site-header__profiles {
+    gap: var(--space-1);
+  }
+
+  .site-header__profile-link {
+    display: inline-grid;
+    min-block-size: var(--interactive-target-min);
+    min-inline-size: var(--interactive-target-min);
+    border-radius: var(--radius-sm);
+    place-items: center;
+    text-decoration: none;
+    transition: background-color var(--motion-duration-fast)
+      var(--motion-easing-standard);
+  }
+
+  .site-header__profile-link:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .site-header__profile-link:active {
+    background: var(--color-surface-default);
+  }
+
+  .site-header__profile-link img {
+    inline-size: var(--space-5);
+    block-size: var(--space-5);
+    object-fit: contain;
+    opacity: 0.68;
+    transition: opacity var(--motion-duration-fast)
+      var(--motion-easing-standard);
+  }
+
+  .site-header__profile-link:hover img {
+    opacity: 1;
+  }
+
+  .site-header__profile-link:active img {
+    opacity: 0.8;
   }
 
   @media (max-width: 767px) {
     .site-header__inner {
       min-block-size: 76px;
       gap: var(--space-3);
+      flex-wrap: wrap;
     }
 
     .site-header__secondary {

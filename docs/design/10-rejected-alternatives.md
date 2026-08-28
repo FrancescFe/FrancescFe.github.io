@@ -28,7 +28,9 @@ It remains available through its stable direct URL and relevant contextual links
 
 An email link was considered but removed.
 
-The footer is intentionally limited to GitHub and LinkedIn to keep the persistent navigation surface minimal.
+GitHub and LinkedIn remain the only persistent professional-profile links and
+are exposed as monochrome icons in the global header. The footer is limited to
+copyright information.
 
 ### Light mode
 
