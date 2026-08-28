@@ -19,7 +19,7 @@ const engineeringCompetencies = [
   "API-first",
   "Event-driven systems",
   "DDD",
-  "Clean architecture",
+  "Agile",
 ];
 ---
 
@@ -39,12 +39,14 @@ const engineeringCompetencies = [
           <p class="hero__eyebrow">Backend · Cloud · Product</p>
           <h1 id="hero-title">Fran Ferrer</h1>
           <p class="hero__role">Software Engineer | Backend</p>
-          <p class="hero__summary">
-            I build reliable cloud services and work across the full software
-            delivery cycle—from shaping requirements with stakeholders to
-            collaborating with product, design, and frontend teams, taking
-            solutions into production and improving them over time.
-          </p>
+          <div class="hero__summary">
+            <p>I build reliable cloud services from idea to production.</p>
+            <p>
+              I work across the full software delivery cycle—shaping
+              requirements with stakeholders, collaborating across product,
+              design, and engineering, and improving solutions over time.
+            </p>
+          </div>
         </header>
 
         <dl class="hero__facts">
@@ -77,9 +79,7 @@ const engineeringCompetencies = [
 <style>
   .hero {
     display: grid;
-    min-block-size: 100vh;
-    padding-block: var(--space-10);
-    align-items: center;
+    padding-block: var(--space-9) var(--space-10);
   }
 
   .hero__content {
@@ -105,9 +105,9 @@ const engineeringCompetencies = [
 
   h1 {
     color: var(--color-text-primary);
-    font-size: var(--type-display-size);
+    font-size: clamp(var(--type-h1-size), 4vw, 48px);
     font-weight: var(--type-display-weight);
-    line-height: var(--type-display-line-height);
+    line-height: clamp(var(--type-h1-line-height), 4.67vw, 56px);
   }
 
   .hero__role {
@@ -118,7 +118,9 @@ const engineeringCompetencies = [
   }
 
   .hero__summary {
+    display: grid;
     max-inline-size: 72ch;
+    gap: var(--space-4);
     color: var(--color-text-secondary);
     font-size: var(--type-title-size);
     line-height: var(--type-h3-line-height);
@@ -173,7 +175,7 @@ const engineeringCompetencies = [
 
   @media (min-width: 768px) {
     .hero {
-      padding-block: var(--space-11);
+      padding-block: var(--space-10) var(--space-11);
     }
 
     .hero__fact {
@@ -184,7 +186,7 @@ const engineeringCompetencies = [
 
   @media (min-width: 1200px) {
     .hero {
-      padding-block: var(--space-12);
+      padding-block: var(--space-11) var(--space-12);
     }
   }
 </style>
