@@ -215,11 +215,9 @@ Homepage: `SiteFooter/full`.
 
 Resume and Privacy Policy: `SiteFooter/minimal`.
 
-The footer contains:
+The footer contains copyright information.
 
-- copyright;
-- GitHub;
-- LinkedIn.
+GitHub and LinkedIn are available from the global header.
 
 Email is intentionally excluded.
 

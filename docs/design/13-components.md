@@ -8,7 +8,8 @@ The purpose of these specifications is to ensure that Stage 3 can implement comp
 
 ## 1. SiteHeader
 
-The shared site header provides portfolio identity and access to the Resume.
+The shared site header provides portfolio identity, access to the Resume, and
+icon-only links to GitHub and LinkedIn.
 
 ### Variants
 
@@ -20,6 +21,9 @@ The shared site header provides portfolio identity and access to the Resume.
 Used where sufficient vertical space is available.
 
 May include the full portfolio identity and secondary technical labels defined by the approved mockups.
+
+GitHub and LinkedIn use recognizable monochrome brand marks. Each icon-only
+link must expose an explicit accessible name.
 
 ### Compact
 
@@ -45,7 +49,7 @@ As viewport width decreases:
 
 1. secondary labels are reduced first;
 2. primary identity remains visible;
-3. the Resume destination remains available.
+3. the Resume destination and professional-profile links remain available.
 
 Primary navigation actions must not disappear solely because the viewport becomes narrow.
 
@@ -64,11 +68,7 @@ Shared footer displayed at the end of public pages.
 
 Used on the Homepage.
 
-Contains:
-
-- copyright information;
-- GitHub link;
-- LinkedIn link.
+Contains copyright information.
 
 ### Minimal
 
@@ -76,9 +76,10 @@ Used where a quieter footer is appropriate, including Resume and Privacy Policy.
 
 ### Responsive behavior
 
-Desktop may arrange copyright and external links horizontally.
+Desktop presents the copyright information in a single aligned row.
 
-Mobile may stack or wrap them while preserving their reading order.
+Mobile preserves the copyright information without introducing unnecessary
+empty layout regions.
 
 ---
 

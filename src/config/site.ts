@@ -1,6 +1,6 @@
 export const SITE = {
   name: "FrancescFe",
-  identity: "francesc_fe.sh",
+  identity: "fran_ferrer.sh",
   secondaryIdentity: "// technical_portfolio",
   themeColor: "#090d16",
   socialLinks: {

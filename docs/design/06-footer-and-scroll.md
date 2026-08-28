@@ -2,20 +2,12 @@
 
 The footer is a consistent visual pattern across the portfolio.
 
-Its content is deliberately limited to:
-
-**Left**
-
-- copyright information.
-
-**Right**
-
-- GitHub;
-- LinkedIn.
+Its content is deliberately limited to copyright information.
 
 Email is intentionally excluded.
 
-The footer should remain visually secondary to page content while providing predictable access to external professional profiles.
+The footer should remain visually secondary to page content. Predictable access
+to GitHub and LinkedIn is provided by the global header instead.
 
 ## Scroll-to-top interaction
 

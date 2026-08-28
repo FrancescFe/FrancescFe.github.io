@@ -46,7 +46,9 @@ Icons must:
 - expose no redundant accessible text when decorative;
 - receive an accessible name through their control when they represent an icon-only action.
 
-Brand links such as GitHub and LinkedIn may use text labels or appropriately licensed official brand assets.
+GitHub and LinkedIn links use locally embedded or bundled monochrome vector
+marks. They must not require a remote asset request, and each icon-only link
+must expose an accessible name through its anchor.
 
 ---
 

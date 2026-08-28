@@ -2,7 +2,11 @@
 
 The global navigation is intentionally minimal.
 
-The main navigation exposes only the **Resume** destination.
+The internal navigation exposes only the **Resume** destination.
+
+The global header also provides icon-only links to Fran's **GitHub** and
+**LinkedIn** profiles. These professional-profile links use recognizable
+monochrome brand marks and expose explicit accessible names.
 
 The Homepage itself acts as the project-discovery surface, so a separate Projects destination is unnecessary.
 
