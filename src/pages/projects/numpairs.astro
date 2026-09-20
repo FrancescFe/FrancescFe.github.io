@@ -6,45 +6,71 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const canonicalPath = "/projects/numpairs/";
 const title = "NumPairs — Android puzzle game | FrancescFe";
 const description =
-  "NumPairs is an open-source Android arithmetic deduction puzzle built with Kotlin and Jetpack Compose, with a domain model for generated puzzles and local sessions.";
+  "NumPairs is an open-source Android arithmetic deduction puzzle shaped by a calm product vision, a minimalist visual direction, and an iterative delivery workflow.";
 const sourceUrl = "https://github.com/CescFe/numpairs";
 
 const sections = [
   { id: "product", label: "The product" },
-  { id: "implementation", label: "Android implementation" },
-  { id: "domain", label: "Domain model" },
-  { id: "generation", label: "Puzzle generation" },
-  { id: "delivery", label: "Persistence and delivery" },
+  { id: "vision", label: "Product vision" },
+  { id: "visual-direction", label: "Visual direction" },
+  { id: "engineering", label: "Engineering decisions" },
+  { id: "workflow", label: "Delivery workflow" },
 ] as const;
 
-const architectureLayers = [
+const productPrinciples = [
   {
-    name: "domain",
+    name: "Calm challenge",
     description:
-      "Puzzle models, rules, assignments, validation, and generation.",
+      "A thoughtful arithmetic puzzle that rewards deduction without turning the experience into an arcade or an educational exercise.",
   },
   {
-    name: "data",
+    name: "Clarity first",
     description:
-      "Seed puzzles, preferences, generated sessions, and Daily state.",
+      "The board, number strip, and completion feedback carry the experience; every other element stays in service of solving.",
   },
   {
-    name: "feature",
-    description: "Menu, tutorials, play modes, routes, and presentation state.",
+    name: "A complete product",
+    description:
+      "Tutorial, Quick, Classic, Daily Challenge, personalization, and local progress form one coherent app rather than isolated features.",
   },
   {
-    name: "ui",
-    description: "Navigation composition, themes, and shared visual defaults.",
+    name: "Respectful by default",
+    description:
+      "No account, ads, analytics, or developer-operated gameplay service is required to play.",
   },
 ] as const;
 
-const generatedProfiles = [
-  "3 Pairs Low",
-  "3 Pairs Medium",
-  "4 Pairs Low",
-  "4 Pairs Medium",
-  "8 Pairs Medium",
-  "8 Pairs Hard",
+const deliveryWorkflow = [
+  {
+    name: "Agile board",
+    detail:
+      "A GitHub Project makes priorities, status, stage, and delivery context visible across the product.",
+  },
+  {
+    name: "Functional refinement",
+    detail:
+      "A milestone defines the product outcome, scope, success criteria, delivery stages, and explicit exclusions.",
+  },
+  {
+    name: "Atomic tasks",
+    detail:
+      "The milestone is divided into dependency-ordered tasks, each with one observable outcome and one Pull Request.",
+  },
+  {
+    name: "Technical refinement",
+    detail:
+      "GitHub Issues turn each task into an implementable contract with context, constraints, approach, and acceptance criteria.",
+  },
+  {
+    name: "Branch implementation",
+    detail:
+      "The change is implemented in a focused branch while unrelated product work and repository changes remain separate.",
+  },
+  {
+    name: "Review and merge",
+    detail:
+      "Validation, review, and a Pull Request provide the delivery gate before the change is merged into the main branch.",
+  },
 ] as const;
 ---
 
@@ -81,7 +107,7 @@ const generatedProfiles = [
                 target="_blank"
                 rel="noreferrer"
               >
-                View source repository <span aria-hidden="true">↗</span>
+                View source repository{" "}<span aria-hidden="true">↗</span>
               </TextLink>
               <TextLink href="/numpairs/privacy-policy/" variant="navigation">
                 Read the Privacy Policy
@@ -95,19 +121,19 @@ const generatedProfiles = [
           >
             <div>
               <dt>Platform</dt>
-              <dd>Android</dd>
+              <dd>Android phones and tablets</dd>
             </div>
             <div>
-              <dt>Stack</dt>
-              <dd>Kotlin · Jetpack Compose</dd>
+              <dt>Product</dt>
+              <dd>Arithmetic deduction puzzle</dd>
             </div>
             <div>
-              <dt>Distribution</dt>
+              <dt>Availability</dt>
               <dd>Google Play release path in progress</dd>
             </div>
             <div>
-              <dt>License</dt>
-              <dd>MIT</dd>
+              <dt>Source</dt>
+              <dd>Open source · MIT License</dd>
             </div>
           </dl>
         </header>
@@ -368,38 +394,40 @@ const generatedProfiles = [
             </section>
 
             <section
-              id="implementation"
+              id="vision"
               class="case-study__section"
-              aria-labelledby="implementation-title"
+              aria-labelledby="vision-title"
             >
-              <p class="case-study__section-label">02 / implementation</p>
-              <h2 id="implementation-title">A native Android implementation</h2>
+              <p class="case-study__section-label">02 / product vision</p>
+              <h2 id="vision-title">A calm, complete puzzle product</h2>
               <div class="case-study__prose">
                 <p>
-                  NumPairs is built as a native Android application with Kotlin,
-                  Jetpack Compose, Gradle Kotlin DSL, and Android Studio.
-                  Compose provides the UI layer while the puzzle rules remain
-                  independent of Android and persistence concerns.
+                  NumPairs is designed as a polished mobile puzzle rather than a
+                  collection of isolated mechanics. The experience starts with a
+                  clear entry point, teaches the rules through a guided
+                  tutorial, and then gives players distinct ways to return:
+                  Quick for a shorter session, Classic for the full board, and
+                  Daily Challenge for a local-date ritual.
                 </p>
                 <p>
-                  The project keeps the app usable as a local product. There are
-                  no user accounts, developer-operated gameplay servers, or
-                  analytics in the current product contract; preferences,
-                  progress, and challenge history are handled on the device.
+                  The product deliberately avoids pressure systems that do not
+                  support the puzzle. There is no account, advertising,
+                  analytics, or developer-operated server behind the core loop.
+                  Progress, preferences, and Daily history belong to the local
+                  installation, keeping the game available without a network
+                  dependency.
                 </p>
               </div>
 
               <div
-                class="case-study__architecture"
-                aria-label="NumPairs architecture layers"
+                class="case-study__principles"
+                aria-label="NumPairs product principles"
               >
                 {
-                  architectureLayers.map((layer) => (
-                    <article class="architecture-card">
-                      <h3>
-                        <code>{layer.name}</code>
-                      </h3>
-                      <p>{layer.description}</p>
+                  productPrinciples.map((principle) => (
+                    <article class="principle-card">
+                      <h3>{principle.name}</h3>
+                      <p>{principle.description}</p>
                     </article>
                   ))
                 }
@@ -407,132 +435,165 @@ const generatedProfiles = [
             </section>
 
             <section
-              id="domain"
+              id="visual-direction"
               class="case-study__section"
-              aria-labelledby="domain-title"
+              aria-labelledby="visual-direction-title"
             >
-              <p class="case-study__section-label">03 / domain</p>
-              <h2 id="domain-title">
-                The rules live in an explicit domain model
+              <p class="case-study__section-label">03 / design</p>
+              <h2 id="visual-direction-title">
+                A quiet, shape-first visual language
               </h2>
               <div class="case-study__prose">
                 <p>
-                  The core uses a small ubiquitous language inspired by
-                  domain-driven design. <code>Puzzle</code>, <code>Board</code>,
-                  <code>Tile</code>, <code>Expression</code>,
-                  <code>Operator</code>, and <code>Strip</code> describe the problem
-                  directly instead of reducing it to UI state.
+                  The visual direction aims for something elegant, minimalist,
+                  intelligent, calm, modern, and premium. It avoids the usual
+                  shortcuts of a childish, arcade-like, or overly educational
+                  number game. The interface should feel like a considered
+                  product, while remaining approachable enough for a casual
+                  puzzle session.
                 </p>
                 <p>
-                  This separation keeps arithmetic validation, assignments, and
-                  completion rules testable without Compose. It also makes an
-                  important distinction explicit: two equal numbers can still be
-                  different strip entries, so identity—not only displayed
-                  value—controls usage and pairing.
+                  The board is the protagonist. Spacing comes before decoration,
+                  typography before color, and hierarchy before effects. The
+                  design system uses Material 3 as a platform foundation but
+                  adds its own decisions for surfaces, states, density, and
+                  reusable components instead of looking like a raw template.
                 </p>
               </div>
 
-              <div class="case-study__callout">
-                <p class="case-study__callout-label">Design decision</p>
-                <p>
-                  A generated puzzle starts from a fully solved model. The app
-                  then creates the player-facing state by masking expressions
-                  and selected strip entries, keeping one authoritative source
-                  for generation and validation.
-                </p>
+              <div class="case-study__logo-concept">
+                <div class="case-study__logo-mark" aria-hidden="true">
+                  <span>?</span><span>[+×]</span><span>?</span>
+                </div>
+                <div>
+                  <h3>A logo built from the unresolved expression</h3>
+                  <p>
+                    The mark reduces the game to its universal idea:
+                    <code>? [+×] ?</code>. The question marks represent unknown
+                    operands and the central operator group carries the two core
+                    operations, addition and multiplication.
+                  </p>
+                  <p>
+                    Its identity is shape-first rather than color-first, so it
+                    remains recognizable in monochrome, across themes, and at
+                    launcher-icon size. The visual language stays flat and
+                    legible: no gradients, heavy shadows, decorative containers,
+                    or detail that competes with the puzzle.
+                  </p>
+                </div>
               </div>
             </section>
 
             <section
-              id="generation"
+              id="engineering"
               class="case-study__section"
-              aria-labelledby="generation-title"
+              aria-labelledby="engineering-title"
             >
-              <p class="case-study__section-label">04 / generation</p>
-              <h2 id="generation-title">Generate, assess, and validate</h2>
+              <p class="case-study__section-label">04 / engineering</p>
+              <h2 id="engineering-title">
+                Simple architecture, deliberate constraints
+              </h2>
               <div class="case-study__prose">
                 <p>
-                  Puzzle generation is treated as a bounded search problem. A
-                  profile describes the size, value constraints, result
-                  constraints, masking shape, variety, and difficulty policy. A
-                  candidate is only shown after it passes the shared validation
-                  rules.
+                  The engineering decisions follow the product's scale and
+                  purpose. NumPairs is a native Android app written in Kotlin;
+                  Android is the natural medium for a focused mobile puzzle and
+                  the native approach keeps the first product direct to build,
+                  debug, and iterate.
                 </p>
                 <p>
-                  Difficulty assessment reasons about pair-to-result facts,
-                  forced deductions, ambiguity, branching, and cross-pair usage.
-                  The evaluator can reject unsatisfiable or trivial candidates
-                  without becoming part of the Compose UI or changing the rules
-                  used to complete a puzzle.
+                  Jetpack Compose provides a declarative UI suited to a dynamic
+                  board, a compact number strip, and state-driven feedback. The
+                  puzzle rules remain separate from the UI so gameplay can be
+                  reasoned about and tested without making the screen the source
+                  of truth.
                 </p>
               </div>
 
-              <h3>Implemented generated profiles</h3>
-              <ul
-                class="case-study__tag-list"
-                aria-label="Implemented generated profiles"
-              >
-                {generatedProfiles.map((profile) => <li>{profile}</li>)}
-              </ul>
+              <div class="case-study__decisions">
+                <article class="decision-card">
+                  <h3>Self-contained product</h3>
+                  <p>
+                    The app is intentionally a single local product. It has no
+                    remote gameplay API, account system, or external service
+                    required to start or complete a puzzle.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Local persistence</h3>
+                  <p>
+                    Preferences DataStore stores the versioned generated-session
+                    aggregate and the separate Daily Challenge aggregate. A
+                    relational database is unnecessary for these small,
+                    application-private state boundaries.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Recoverable progress</h3>
+                  <p>
+                    The exact puzzle and current progress are persisted before a
+                    session is presented as ready, so resuming does not silently
+                    regenerate a different challenge after process death.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Validated content</h3>
+                  <p>
+                    Generated puzzles start from a solved model, are masked for
+                    play, and pass shared validation before they reach the
+                    player. Explicit seeds and limits keep the process
+                    reproducible.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section
+              id="workflow"
+              class="case-study__section"
+              aria-labelledby="workflow-title"
+            >
+              <p class="case-study__section-label">05 / methodology</p>
+              <h2 id="workflow-title">From product intent to merged change</h2>
+              <div class="case-study__prose">
+                <p>
+                  NumPairs is developed through a documentation-first workflow
+                  that keeps product intent and implementation detail connected.
+                  The process is deliberately incremental: every level adds
+                  enough clarity for the next decision without turning planning
+                  into a substitute for delivery.
+                </p>
+              </div>
+
+              <ol class="case-study__workflow">
+                {
+                  deliveryWorkflow.map((step, index) => (
+                    <li class="workflow-step">
+                      <span class="workflow-step__number" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3>{step.name}</h3>
+                        <p>{step.detail}</p>
+                      </div>
+                    </li>
+                  ))
+                }
+              </ol>
 
               <p>
-                Generation receives explicit seeds and execution limits. That
-                gives tests reproducible inputs, makes failure and cancellation
-                observable, and prevents an unbounded search from becoming a
-                hidden dependency of the player-facing flow.
+                This workflow creates a traceable path from an idea on the board
+                to a reviewed change in the main branch, while keeping the
+                product small enough to evolve one meaningful decision at a
+                time.
               </p>
-            </section>
-
-            <section
-              id="delivery"
-              class="case-study__section"
-              aria-labelledby="delivery-title"
-            >
-              <p class="case-study__section-label">05 / delivery</p>
-              <h2 id="delivery-title">
-                Local state, recoverable sessions, deliberate delivery
-              </h2>
-              <div class="case-study__prose">
-                <p>
-                  Generated play persists an exact session snapshot rather than
-                  regenerating a historical puzzle from its seed. The current
-                  puzzle, progress, mode, profile, and seed stay tied to the
-                  stored session, so process death does not silently change the
-                  challenge being resumed.
-                </p>
-                <p>
-                  Daily Challenge uses a separate versioned local aggregate for
-                  the active puzzle and completion history. Normal generated
-                  play and Daily progress can therefore be resumed
-                  independently, and a replacement is stored before it becomes
-                  playable.
-                </p>
-              </div>
-
-              <h3>Evidence in the repository</h3>
-              <ul class="case-study__list">
-                <li>
-                  Deterministic unit tests cover domain rules, profiles,
-                  generation, persistence codecs, and session transitions.
-                </li>
-                <li>
-                  Compose and instrumented tests exercise navigation, game
-                  semantics, accessibility behavior, Daily Challenge, and
-                  generated-play flows.
-                </li>
-                <li>
-                  Product requirements, architecture decisions, and delivery
-                  documentation are kept alongside the implementation.
-                </li>
-              </ul>
             </section>
 
             <div class="case-study__closing">
               <p>
-                NumPairs is a small game with deliberately explicit engineering
-                boundaries: a local Android product, a domain model that owns
-                puzzle rules, and a generator whose output is validated before
-                play.
+                NumPairs is a small game with a clear point of view: a calm
+                puzzle experience, a restrained visual language, and a delivery
+                process that makes each product decision visible.
               </p>
               <TextLink href="/" variant="standalone"
                 >← Back to portfolio</TextLink
@@ -595,19 +656,11 @@ const generatedProfiles = [
               <dl class="case-study__facts">
                 <div>
                   <dt>App type</dt>
-                  <dd>Native Android</dd>
+                  <dd>Android game</dd>
                 </div>
                 <div>
-                  <dt>Minimum API</dt>
-                  <dd>26</dd>
-                </div>
-                <div>
-                  <dt>Data model</dt>
-                  <dd>Local persistence</dd>
-                </div>
-                <div>
-                  <dt>Runtime service</dt>
-                  <dd>None required</dd>
+                  <dt>Marketplace</dt>
+                  <dd>Google Play · phones and tablets</dd>
                 </div>
               </dl>
             </section>
@@ -640,8 +693,7 @@ const generatedProfiles = [
   }
 
   .case-study__eyebrow,
-  .case-study__section-label,
-  .case-study__callout-label {
+  .case-study__section-label {
     color: var(--color-text-secondary);
     font-size: var(--type-label-size);
     font-weight: var(--type-label-weight);
@@ -815,59 +867,118 @@ const generatedProfiles = [
     font-size: 0.95em;
   }
 
-  .case-study__architecture {
+  .case-study__principles,
+  .case-study__decisions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-4);
     margin-block-start: var(--space-6);
   }
 
-  .architecture-card {
+  .principle-card,
+  .decision-card {
     padding: var(--space-5);
     border: var(--border-default) var(--color-border-subtle);
     border-radius: var(--radius-md);
     background: var(--color-surface-default);
   }
 
-  .architecture-card h3 {
+  .principle-card h3,
+  .decision-card h3 {
     margin: 0 0 var(--space-2);
     font-size: var(--type-title-size);
     line-height: var(--type-title-line-height);
   }
 
-  .architecture-card p {
+  .principle-card p,
+  .decision-card p {
     color: var(--color-text-secondary);
     font-size: var(--type-body-sm-size);
     line-height: var(--type-body-sm-line-height);
   }
 
-  .case-study__callout {
+  .case-study__logo-concept {
+    display: grid;
+    grid-template-columns: minmax(160px, 0.45fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: center;
     margin-block-start: var(--space-7);
     padding: var(--space-6);
-    border-inline-start: 3px solid var(--color-accent-default);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
     background: var(--color-surface-default);
   }
 
-  .case-study__callout > p:last-child {
-    margin-block-start: var(--space-3);
+  .case-study__logo-mark {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-mono);
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.08em;
+  }
+
+  .case-study__logo-mark span:nth-child(2) {
+    color: var(--color-accent-default);
+    font-size: 0.72em;
+    letter-spacing: -0.12em;
+  }
+
+  .case-study__logo-concept h3 {
+    margin-block: 0 var(--space-3);
+  }
+
+  .case-study__logo-concept p {
     color: var(--color-text-secondary);
   }
 
-  .case-study__tag-list {
-    display: flex;
-    gap: var(--space-2);
-    margin-block: var(--space-4) 0;
-    padding: 0;
-    flex-wrap: wrap;
-    list-style: none;
+  .case-study__logo-concept p + p {
+    margin-block-start: var(--space-4);
   }
 
-  .case-study__tag-list li {
-    padding: var(--space-2) var(--space-3);
+  .case-study__workflow {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: workflow;
+  }
+
+  .workflow-step {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--space-4);
     border: var(--border-default) var(--color-border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     background: var(--color-surface-default);
-    color: var(--color-text-primary);
+  }
+
+  .workflow-step__number {
+    display: inline-grid;
+    min-block-size: var(--interactive-target-min);
+    min-inline-size: var(--interactive-target-min);
+    border-radius: var(--radius-full);
+    place-items: center;
+    background: var(--color-accent-subtle);
+    color: var(--color-accent-default);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-label-weight);
+  }
+
+  .workflow-step h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .workflow-step p {
+    color: var(--color-text-secondary);
     font-size: var(--type-body-sm-size);
     line-height: var(--type-body-sm-line-height);
   }
@@ -1011,7 +1122,9 @@ const generatedProfiles = [
       padding-block: var(--space-8);
     }
 
-    .case-study__architecture,
+    .case-study__principles,
+    .case-study__decisions,
+    .case-study__logo-concept,
     .case-study__sidebar {
       grid-template-columns: 1fr;
     }
