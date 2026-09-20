@@ -1,0 +1,88 @@
+/*
+ * NumPairs product theme.
+ *
+ * The Warm values are mapped from the NumPairs Android implementation. Keep
+ * this contract scoped so it cannot change the portfolio's global tokens.
+ * See docs/design/17-numpairs-brand-foundations.md for the source mapping.
+ */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/inter/InterVariable.woff2") format("woff2");
+}
+
+:where([data-product-theme="numpairs"]) {
+  color-scheme: dark;
+
+  /* Warm appearance roles */
+  --numpairs-color-background: #2f332a;
+  --numpairs-color-surface: #3a3f34;
+  --numpairs-color-surface-raised: #454b3e;
+  --numpairs-color-surface-subtle: #363b31;
+  --numpairs-color-text-primary: #f2ede2;
+  --numpairs-color-text-secondary: #c8c1b4;
+  --numpairs-color-border: #5b6253;
+  --numpairs-color-border-subtle: #4a5145;
+  --numpairs-color-brand-primary: #9cbd7b;
+  --numpairs-color-on-brand-primary: #25301d;
+  --numpairs-color-brand-container: #46583a;
+  --numpairs-color-on-brand-container: #e3f0d4;
+  --numpairs-color-accent-secondary: #afc7e8;
+  --numpairs-color-on-accent-secondary: #162538;
+  --numpairs-color-accent-supporting: #d7b56d;
+  --numpairs-color-on-accent-supporting: #33270e;
+  --numpairs-color-scrim: rgb(0 0 0 / 80%);
+
+  /* Warm general content roles */
+  --numpairs-color-status-success: var(--numpairs-color-brand-primary);
+  --numpairs-color-on-status-success: var(--numpairs-color-on-brand-primary);
+  --numpairs-color-status-success-container: var(
+    --numpairs-color-brand-container
+  );
+  --numpairs-color-on-status-success-container: var(
+    --numpairs-color-on-brand-container
+  );
+  --numpairs-color-status-error: #e58a7a;
+  --numpairs-color-on-status-error: var(--numpairs-color-background);
+  --numpairs-color-status-error-container: #5a3733;
+  --numpairs-color-on-status-error-container: #ffdad4;
+
+  /* Product typography */
+  --numpairs-font-family-ui:
+    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --numpairs-font-family-puzzle: var(--font-family-mono);
+  --numpairs-font-weight-regular: 400;
+  --numpairs-font-weight-medium: 500;
+  --numpairs-font-weight-semibold: 600;
+  --numpairs-font-weight-bold: 700;
+
+  --numpairs-type-ui-heading-size: 24px;
+  --numpairs-type-ui-heading-line-height: 32px;
+  --numpairs-type-ui-heading-weight: var(--numpairs-font-weight-semibold);
+  --numpairs-type-ui-title-size: 22px;
+  --numpairs-type-ui-title-line-height: 28px;
+  --numpairs-type-ui-title-weight: var(--numpairs-font-weight-semibold);
+  --numpairs-type-ui-body-size: 16px;
+  --numpairs-type-ui-body-line-height: 24px;
+  --numpairs-type-ui-body-weight: var(--numpairs-font-weight-regular);
+  --numpairs-type-ui-label-size: 14px;
+  --numpairs-type-ui-label-line-height: 20px;
+  --numpairs-type-ui-label-weight: var(--numpairs-font-weight-medium);
+  --numpairs-type-ui-caption-size: 12px;
+  --numpairs-type-ui-caption-line-height: 16px;
+  --numpairs-type-ui-caption-weight: var(--numpairs-font-weight-regular);
+  --numpairs-type-puzzle-expression-size: 18px;
+  --numpairs-type-puzzle-expression-line-height: 24px;
+  --numpairs-type-puzzle-expression-weight: var(--numpairs-font-weight-bold);
+  --numpairs-type-puzzle-result-size: 32px;
+  --numpairs-type-puzzle-result-line-height: 48px;
+  --numpairs-type-puzzle-result-weight: var(--numpairs-font-weight-bold);
+  --numpairs-type-puzzle-strip-size: 14px;
+  --numpairs-type-puzzle-strip-line-height: 20px;
+  --numpairs-type-puzzle-strip-weight: var(--numpairs-font-weight-medium);
+  --numpairs-type-puzzle-label-size: 11px;
+  --numpairs-type-puzzle-label-line-height: 16px;
+  --numpairs-type-puzzle-label-weight: var(--numpairs-font-weight-medium);
+}
