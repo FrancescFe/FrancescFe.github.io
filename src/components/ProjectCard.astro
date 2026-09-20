@@ -1,0 +1,94 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  metadata: string;
+  href: string;
+}
+
+const { name, description, metadata, href } = Astro.props;
+---
+
+<article class="project-card">
+  <a class="project-card__link" href={href}>
+    <div class="project-card__heading">
+      <h3 class="project-card__title">{name}</h3>
+      <span class="project-card__indicator" aria-hidden="true">↗</span>
+    </div>
+    <p class="project-card__description">{description}</p>
+    <p class="project-card__metadata">{metadata}</p>
+  </a>
+</article>
+
+<style>
+  .project-card {
+    min-inline-size: 0;
+  }
+
+  .project-card__link {
+    display: grid;
+    block-size: 100%;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-default);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition:
+      background-color var(--motion-duration-default)
+        var(--motion-easing-standard),
+      border-color var(--motion-duration-default) var(--motion-easing-standard);
+  }
+
+  .project-card__link:hover {
+    border-color: var(--color-accent-default);
+    background: var(--color-surface-hover);
+  }
+
+  .project-card__link:active {
+    background: var(--color-accent-subtle);
+  }
+
+  .project-card__heading {
+    display: flex;
+    gap: var(--space-4);
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .project-card__title {
+    color: var(--color-accent-default);
+    font-size: var(--type-title-size);
+    font-weight: var(--type-title-weight);
+    line-height: var(--type-title-line-height);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .project-card__indicator {
+    flex: 0 0 auto;
+    color: var(--color-accent-default);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .project-card__link:hover .project-card__title,
+  .project-card__link:hover .project-card__indicator {
+    color: var(--color-accent-hover);
+  }
+
+  .project-card__description {
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-line-height);
+  }
+
+  .project-card__metadata {
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import PageContainer from "../components/PageContainer.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Fran Ferrer | Software Engineer, Backend";
@@ -21,6 +22,16 @@ const engineeringCompetencies = [
   "DDD",
   "Agile",
 ];
+
+const selectedProjects = [
+  {
+    name: "NumPairs",
+    description:
+      "A thoughtfully designed Android number puzzle game built with Kotlin, Jetpack Compose, and a domain-driven core.",
+    metadata: "Kotlin · Jetpack Compose · DDD",
+    href: "/projects/numpairs/",
+  },
+] as const;
 ---
 
 <BaseLayout
@@ -71,6 +82,24 @@ const engineeringCompetencies = [
             </dd>
           </div>
         </dl>
+      </div>
+    </section>
+
+    <section class="projects" aria-labelledby="projects-title">
+      <div class="projects__content">
+        <header class="projects__header">
+          <h2 id="projects-title">Selected projects</h2>
+        </header>
+
+        <ul class="projects__list">
+          {
+            selectedProjects.map((project) => (
+              <li>
+                <ProjectCard {...project} />
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
   </PageContainer>
@@ -171,6 +200,43 @@ const engineeringCompetencies = [
   .hero__fact-values li:not(:last-child)::after {
     color: var(--color-text-secondary);
     content: "·";
+  }
+
+  .projects {
+    padding-block: var(--space-9) var(--space-12);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  .projects__content {
+    max-inline-size: var(--content-reading-max);
+  }
+
+  .projects__header {
+    margin-block-end: var(--space-6);
+  }
+
+  .projects__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-inline-size: var(--content-reading-max);
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .projects__list > li {
+    min-inline-size: 0;
+  }
+
+  .projects__list > li:only-child {
+    display: grid;
+    grid-column: 1 / -1;
+  }
+
+  .projects__list > li:only-child :global(.project-card) {
+    inline-size: min(100%, 640px);
+    margin-inline: auto;
   }
 
   @media (min-width: 768px) {
