@@ -1,0 +1,1292 @@
+---
+import PageContainer from "../../components/PageContainer.astro";
+import TextLink from "../../components/TextLink.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const canonicalPath = "/projects/book-publishing/";
+const title = "Book Publishing Platform — Backend case study | FrancescFe";
+const description =
+  "Book Publishing Platform is an API-first back-office system for Editorial Denes, delivered end to end from domain modelling and persistence to a secured Android client and cloud deployment.";
+
+const backendUrl = "https://github.com/CescFe/book-publishing-backend";
+const androidUrl = "https://github.com/CescFe/book-publishing-app";
+const apiSpecUrl = "https://github.com/CescFe/book-publishing-api-spec";
+const docsUrl = "https://github.com/CescFe/book-publishing-docs";
+
+const sections = [
+  { id: "product", label: "From workflow to software" },
+  { id: "architecture", label: "System boundaries" },
+  { id: "backend", label: "Backend and domain" },
+  { id: "api-first", label: "API-first contract" },
+  { id: "quality", label: "Quality and automation" },
+  { id: "delivery", label: "Delivery to production" },
+  { id: "evolution", label: "The next client" },
+] as const;
+
+const architectureParts = [
+  {
+    name: "OpenAPI contract",
+    description:
+      "A versioned repository defines the public boundary independently from any one client or implementation.",
+  },
+  {
+    name: "Backend service",
+    description:
+      "Kotlin and Spring Boot keep the domain, use cases, adapters, security, and persistence concerns explicit.",
+  },
+  {
+    name: "Administrative client",
+    description:
+      "A native Android app consumes the secured API for day-to-day catalog management; it is one client of the platform.",
+  },
+  {
+    name: "Persistent catalog",
+    description:
+      "PostgreSQL stores the publishing domain, with Liquibase making schema evolution repeatable and reviewable.",
+  },
+] as const;
+
+const qualityEvidence = [
+  {
+    name: "Domain boundaries",
+    description:
+      "Isolated domain and use-case tests exercise business rules without requiring the web or database layers.",
+  },
+  {
+    name: "HTTP boundaries",
+    description:
+      "Mapper and controller tests cover serialization, validation, security, and response behavior through Spring and MockMvc.",
+  },
+  {
+    name: "Production-shaped integration",
+    description:
+      "PostgreSQL integration tests use Testcontainers, while higher-level API and integration validation checks the assembled system.",
+  },
+  {
+    name: "Android confidence",
+    description:
+      "The client is tested at the ViewModel, repository, and Compose UI boundaries rather than only through manual checks.",
+  },
+] as const;
+
+const deliverySteps = [
+  {
+    name: "Build an immutable service",
+    detail:
+      "The backend is packaged as a Docker image and validated in automated pull-request and CI workflows.",
+  },
+  {
+    name: "Deploy the same artifact",
+    detail:
+      "Cloud Build and Artifact Registry support automated delivery to Google Cloud Run, where the API runs as a managed service.",
+  },
+  {
+    name: "Evolve data safely",
+    detail:
+      "Neon hosts PostgreSQL and Liquibase applies controlled migrations; secrets and environment configuration stay outside source code.",
+  },
+] as const;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  currentPath={canonicalPath}
+  headerVariant="compact"
+  footerVariant="minimal"
+  showScrollToTop
+  social={{ title, description, type: "article" }}
+>
+  <div class="book-publishing-page">
+    <PageContainer>
+      <article class="book-publishing" aria-labelledby="book-publishing-title">
+        <header class="book-publishing__hero">
+          <div class="book-publishing__hero-content">
+            <p class="book-publishing__eyebrow">[ project / backend ]</p>
+            <p class="book-publishing__category">
+              In-house publishing back-office platform
+            </p>
+            <h1 id="book-publishing-title">Book Publishing Platform</h1>
+            <p class="book-publishing__lead">
+              Book Publishing Platform is an API-first back-office system for
+              managing a publisher's catalog, designed and delivered end to end
+              from domain modelling and persistence to a secured Android client
+              and cloud deployment.
+            </p>
+
+            <div
+              class="book-publishing__actions"
+              aria-label="Book Publishing Platform primary resources"
+            >
+              <TextLink
+                href={backendUrl}
+                variant="navigation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View backend{" "}<span aria-hidden="true">↗</span>
+              </TextLink>
+              <TextLink
+                href={apiSpecUrl}
+                variant="navigation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read API specification{" "}<span aria-hidden="true">↗</span>
+              </TextLink>
+            </div>
+          </div>
+
+          <dl
+            class="book-publishing__metadata"
+            aria-label="Book Publishing Platform project metadata"
+          >
+            <div>
+              <dt>Project type</dt>
+              <dd>In-house back office</dd>
+            </div>
+            <div>
+              <dt>Client</dt>
+              <dd>Editorial Denes</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>In production</dd>
+            </div>
+            <div>
+              <dt>Core stack</dt>
+              <dd>Kotlin · Spring Boot · PostgreSQL · OpenAPI</dd>
+            </div>
+          </dl>
+        </header>
+
+        <figure class="book-publishing__visual">
+          <svg
+            role="img"
+            aria-labelledby="architecture-visual-title architecture-visual-description"
+            viewBox="0 0 1200 520"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title id="architecture-visual-title">
+              Book Publishing Platform system boundaries
+            </title>
+            <desc id="architecture-visual-description">
+              The native Android administration client communicates with a
+              Kotlin and Spring Boot backend through a versioned OpenAPI
+              contract. The backend persists the catalog in PostgreSQL, with
+              Liquibase, Docker, Cloud Run, and Neon supporting delivery and
+              operations.
+            </desc>
+
+            <rect
+              width="1200"
+              height="520"
+              rx="12"
+              fill="var(--book-color-background)"></rect>
+            <text
+              x="64"
+              y="52"
+              fill="var(--book-color-text-secondary)"
+              font-family="var(--font-family-mono)"
+              font-size="18"
+              font-weight="700"
+              letter-spacing="1.2"
+            >
+              SYSTEM BOUNDARIES
+            </text>
+
+            <rect
+              x="64"
+              y="78"
+              width="1072"
+              height="84"
+              rx="8"
+              fill="var(--book-color-contract)"
+              stroke="var(--book-color-accent)"></rect>
+            <text
+              x="92"
+              y="114"
+              fill="var(--book-color-accent)"
+              font-family="var(--font-family-mono)"
+              font-size="16"
+              font-weight="700"
+              letter-spacing="0.7"
+            >
+              VERSIONED OPENAPI SPECIFICATION
+            </text>
+            <text
+              x="92"
+              y="140"
+              fill="var(--book-color-text-primary)"
+              font-family="var(--font-family-mono)"
+              font-size="15"
+            >
+              source of truth · generated Kotlin interfaces + DTOs
+            </text>
+            <text
+              x="1108"
+              y="128"
+              fill="var(--book-color-accent-secondary)"
+              font-family="var(--font-family-mono)"
+              font-size="24"
+              text-anchor="end"
+            >
+              API boundary
+            </text>
+
+            <g transform="translate(64 208)">
+              <rect
+                width="280"
+                height="178"
+                rx="8"
+                fill="var(--book-color-surface)"
+                stroke="var(--book-color-border)"></rect>
+              <text
+                x="24"
+                y="42"
+                fill="var(--book-color-accent-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+                font-weight="700"
+              >
+                ADMINISTRATION CLIENT
+              </text>
+              <text
+                x="24"
+                y="84"
+                fill="var(--book-color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="23"
+                font-weight="700"
+              >
+                Native Android
+              </text>
+              <text
+                x="24"
+                y="122"
+                fill="var(--book-color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="15"
+              >
+                secured catalog workflows
+              </text>
+              <text
+                x="24"
+                y="151"
+                fill="var(--book-color-text-tertiary)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+              >
+                one platform client
+              </text>
+            </g>
+
+            <path
+              d="M360 297H414"
+              fill="none"
+              stroke="var(--book-color-accent)"
+              stroke-width="3"></path>
+            <path
+              d="m400 283 18 14-18 14"
+              fill="none"
+              stroke="var(--book-color-accent)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <text
+              x="387"
+              y="272"
+              fill="var(--book-color-text-tertiary)"
+              font-family="var(--font-family-mono)"
+              font-size="13"
+              text-anchor="middle"
+            >
+              REST / JSON
+            </text>
+
+            <g transform="translate(434 208)">
+              <rect
+                width="338"
+                height="178"
+                rx="8"
+                fill="var(--book-color-surface-raised)"
+                stroke="var(--book-color-accent)"></rect>
+              <text
+                x="24"
+                y="42"
+                fill="var(--book-color-accent)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+                font-weight="700"
+              >
+                SERVICE CORE
+              </text>
+              <text
+                x="24"
+                y="84"
+                fill="var(--book-color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="23"
+                font-weight="700"
+              >
+                Kotlin / Spring Boot
+              </text>
+              <text
+                x="24"
+                y="122"
+                fill="var(--book-color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="15"
+              >
+                domain · application · infrastructure
+              </text>
+              <text
+                x="24"
+                y="151"
+                fill="var(--book-color-accent-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+              >
+                JWT + role-based authorization
+              </text>
+            </g>
+
+            <path
+              d="M788 297H842"
+              fill="none"
+              stroke="var(--book-color-accent)"
+              stroke-width="3"></path>
+            <path
+              d="m828 283 18 14-18 14"
+              fill="none"
+              stroke="var(--book-color-accent)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <text
+              x="814"
+              y="272"
+              fill="var(--book-color-text-tertiary)"
+              font-family="var(--font-family-mono)"
+              font-size="13"
+              text-anchor="middle"
+            >
+              persistence port
+            </text>
+
+            <g transform="translate(862 208)">
+              <rect
+                width="274"
+                height="178"
+                rx="8"
+                fill="var(--book-color-surface)"
+                stroke="var(--book-color-border)"></rect>
+              <text
+                x="24"
+                y="42"
+                fill="var(--book-color-accent-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+                font-weight="700"
+              >
+                PERSISTENCE
+              </text>
+              <text
+                x="24"
+                y="84"
+                fill="var(--book-color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="23"
+                font-weight="700"
+              >
+                PostgreSQL
+              </text>
+              <text
+                x="24"
+                y="122"
+                fill="var(--book-color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="15"
+              >
+                catalog and users
+              </text>
+              <text
+                x="24"
+                y="151"
+                fill="var(--book-color-text-tertiary)"
+                font-family="var(--font-family-mono)"
+                font-size="14"
+              >
+                Liquibase migrations
+              </text>
+            </g>
+
+            <line
+              x1="64"
+              y1="430"
+              x2="1136"
+              y2="430"
+              stroke="var(--book-color-border)"></line>
+            <text
+              x="64"
+              y="468"
+              fill="var(--book-color-text-tertiary)"
+              font-family="var(--font-family-mono)"
+              font-size="14"
+              font-weight="700"
+              letter-spacing="0.7"
+            >
+              DELIVERY CONTEXT
+            </text>
+            <text
+              x="310"
+              y="468"
+              fill="var(--book-color-text-secondary)"
+              font-family="var(--font-family-mono)"
+              font-size="15"
+            >
+              Docker · CI/CD · Cloud Run · Artifact Registry · Neon
+            </text>
+          </svg>
+          <figcaption>
+            One platform, with the OpenAPI contract defining the boundary
+            between the administrative client and the backend service.
+          </figcaption>
+        </figure>
+
+        <div class="book-publishing__body">
+          <div class="book-publishing__main">
+            <section
+              id="product"
+              class="book-publishing__section"
+              aria-labelledby="product-title"
+            >
+              <p class="book-publishing__section-label">01 / product</p>
+              <h2 id="product-title">
+                From publishing workflow to working software
+              </h2>
+              <div class="book-publishing__prose">
+                <p>
+                  Editorial Denes needed an internal catalog-management workflow
+                  that could keep books, authors, and collections in one
+                  dependable place. Book Publishing Platform centralizes that
+                  work as an in-house back-office system used in production,
+                  rather than treating each repository as a separate product.
+                </p>
+                <p>
+                  The work spans the complete delivery path: understanding the
+                  requirements, modelling the publishing domain, designing the
+                  API, implementing persistence and security, integrating the
+                  client, testing the boundaries, and deploying the resulting
+                  service to the cloud.
+                </p>
+              </div>
+
+              <h3>One workflow, two permission levels</h3>
+              <ul class="book-publishing__list">
+                <li>
+                  <strong>Administrator users</strong> can manage catalog data, including
+                  books, authors, and collections.
+                </li>
+                <li>
+                  <strong>Read-only users</strong> can consume the information without
+                  modifying it.
+                </li>
+              </ul>
+              <p>
+                That distinction is a product rule and a backend responsibility:
+                the client can guide the experience, but it is not the security
+                boundary.
+              </p>
+            </section>
+
+            <section
+              id="architecture"
+              class="book-publishing__section"
+              aria-labelledby="architecture-title"
+            >
+              <p class="book-publishing__section-label">02 / architecture</p>
+              <h2 id="architecture-title">
+                One platform, clear system boundaries
+              </h2>
+              <div class="book-publishing__prose">
+                <p>
+                  The platform is a set of cooperating components with explicit
+                  responsibilities: a versioned OpenAPI specification, a Kotlin
+                  and Spring Boot backend, PostgreSQL persistence with Liquibase
+                  schema evolution, and a native Android administration client.
+                </p>
+                <p>
+                  The Android application is the current secured client for the
+                  internal workflow, not the center of the architecture. The
+                  contract and backend remain useful independently, which keeps
+                  the platform open to future consumers.
+                </p>
+              </div>
+
+              <div class="book-publishing__cards">
+                {
+                  architectureParts.map((part) => (
+                    <article class="book-publishing__card">
+                      <h3>{part.name}</h3>
+                      <p>{part.description}</p>
+                    </article>
+                  ))
+                }
+              </div>
+            </section>
+
+            <section
+              id="backend"
+              class="book-publishing__section"
+              aria-labelledby="backend-title"
+            >
+              <p class="book-publishing__section-label">03 / backend</p>
+              <h2 id="backend-title">Keeping the domain at the center</h2>
+              <div class="book-publishing__prose">
+                <p>
+                  Kotlin and Spring Boot provide the service foundation, while
+                  Hexagonal / Ports and Adapters Architecture keeps the domain
+                  independent from web frameworks, databases, and other delivery
+                  mechanisms. Domain-Driven Design gives the model a language
+                  that follows the publishing problem instead of the shape of
+                  the transport layer.
+                </p>
+                <p>
+                  The code is organized in vertical slices by business context,
+                  with domain, application, and infrastructure responsibilities
+                  separated inside those slices. PostgreSQL provides durable
+                  persistence, and Liquibase makes database evolution explicit,
+                  ordered, and repeatable across environments.
+                </p>
+                <p>
+                  Spring Security handles authentication with JWTs, while
+                  role-based authorization is enforced by the backend at the
+                  protected use cases and endpoints. An administrator and a
+                  read-only user therefore receive different capabilities even
+                  if they reach the API through a client other than Android.
+                </p>
+              </div>
+
+              <div class="book-publishing__decisions">
+                <article class="book-publishing__card">
+                  <h3>Domain first</h3>
+                  <p>
+                    Business rules stay testable without requiring Spring MVC or
+                    a running database.
+                  </p>
+                </article>
+                <article class="book-publishing__card">
+                  <h3>Adapters at the edge</h3>
+                  <p>
+                    HTTP, persistence, and generated contract types connect to
+                    the application without becoming the domain model.
+                  </p>
+                </article>
+                <article class="book-publishing__card">
+                  <h3>Security in the service</h3>
+                  <p>
+                    JWT authentication and role checks are enforced server-side,
+                    not trusted to UI visibility alone.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section
+              id="api-first"
+              class="book-publishing__section"
+              aria-labelledby="api-first-title"
+            >
+              <p class="book-publishing__section-label">04 / api-first</p>
+              <h2 id="api-first-title">
+                Treating the contract as a product boundary
+              </h2>
+              <div class="book-publishing__prose">
+                <p>
+                  The OpenAPI specification lives in its own versioned
+                  repository and acts as the source of truth for the API. That
+                  separation makes the boundary a product artifact that can be
+                  discussed, reviewed, and changed explicitly before an
+                  implementation or client is updated.
+                </p>
+                <p>
+                  Generated Kotlin interfaces and DTOs are published from the
+                  contract and consumed by the backend. The implementation is
+                  therefore aligned with the public shape of the service, while
+                  contract changes remain visible in code review instead of
+                  being hidden in an informal agreement between repositories.
+                </p>
+              </div>
+
+              <ol class="book-publishing__flow">
+                <li>
+                  <span class="book-publishing__flow-number" aria-hidden="true"
+                    >01</span
+                  >
+                  <div>
+                    <h3>Define the boundary</h3>
+                    <p>
+                      Endpoints, payloads, validation, and error shapes are
+                      maintained in the versioned OpenAPI specification.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="book-publishing__flow-number" aria-hidden="true"
+                    >02</span
+                  >
+                  <div>
+                    <h3>Generate the shared types</h3>
+                    <p>
+                      Kotlin interfaces and DTOs turn the reviewed contract into
+                      an implementation-facing artifact.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="book-publishing__flow-number" aria-hidden="true"
+                    >03</span
+                  >
+                  <div>
+                    <h3>Implement behind the boundary</h3>
+                    <p>
+                      The Spring Boot backend consumes the generated artifact,
+                      keeping transport changes explicit and reviewable.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section
+              id="quality"
+              class="book-publishing__section"
+              aria-labelledby="quality-title"
+            >
+              <p class="book-publishing__section-label">05 / quality</p>
+              <h2 id="quality-title">
+                Confidence through boundaries, tests, and automation
+              </h2>
+              <div class="book-publishing__prose">
+                <p>
+                  Testing follows the same boundaries as the architecture. The
+                  aim is not to turn the case study into a test report, but to
+                  make changes dependable at the places where behavior can
+                  drift: domain rules, mappings, HTTP contracts, persistence,
+                  security, and the Android client.
+                </p>
+              </div>
+
+              <div class="book-publishing__cards">
+                {
+                  qualityEvidence.map((item) => (
+                    <article class="book-publishing__card">
+                      <h3>{item.name}</h3>
+                      <p>{item.description}</p>
+                    </article>
+                  ))
+                }
+              </div>
+
+              <p>
+                Automated validation runs in pull requests, with higher-level
+                API and integration checks where the assembled behavior matters.
+                This gives the platform a delivery gate that is broader than a
+                local happy-path check.
+              </p>
+            </section>
+
+            <section
+              id="delivery"
+              class="book-publishing__section"
+              aria-labelledby="delivery-title"
+            >
+              <p class="book-publishing__section-label">06 / delivery</p>
+              <h2 id="delivery-title">From repository to production</h2>
+              <div class="book-publishing__prose">
+                <p>
+                  The production path is treated as part of the engineering
+                  work. A Dockerized backend is built and delivered through
+                  Google Cloud Platform, with Cloud Run executing the service
+                  and Artifact Registry storing the deployable image.
+                </p>
+                <p>
+                  Cloud Build and CI workflows automate the path from validated
+                  change to deployment. PostgreSQL is hosted on Neon, and
+                  Liquibase-controlled migrations keep the database evolution
+                  coupled to deliberate application changes. Secrets and
+                  environment-specific configuration remain outside source code.
+                </p>
+              </div>
+
+              <ol class="book-publishing__delivery">
+                {
+                  deliverySteps.map((step, index) => (
+                    <li>
+                      <span
+                        class="book-publishing__flow-number"
+                        aria-hidden="true"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3>{step.name}</h3>
+                        <p>{step.detail}</p>
+                      </div>
+                    </li>
+                  ))
+                }
+              </ol>
+
+              <p>
+                Agile planning and measurable OKRs/KPIs provided the delivery
+                context around that technical path, keeping progress visible
+                without making the project evaluation itself the story.
+              </p>
+            </section>
+
+            <section
+              id="evolution"
+              class="book-publishing__section"
+              aria-labelledby="evolution-title"
+            >
+              <p class="book-publishing__section-label">07 / evolution</p>
+              <h2 id="evolution-title">
+                Built for the next client, not only the first one
+              </h2>
+              <div class="book-publishing__prose">
+                <p>
+                  The Android application is the current administrative client,
+                  chosen for the internal workflow and secured through the API.
+                  It is not the architectural center of the platform: the
+                  versioned contract and backend domain define the durable core.
+                </p>
+                <p>
+                  That leaves room for another consumer, such as a future
+                  public-facing publisher website, without redesigning the
+                  domain around a new frontend. The next client would meet the
+                  same explicit boundary and authorization rules rather than
+                  requiring a second version of the platform.
+                </p>
+              </div>
+            </section>
+
+            <div class="book-publishing__closing">
+              <p>
+                Book Publishing Platform is one end-to-end engineering story: a
+                production back office whose domain, API boundary, client, and
+                delivery path are designed to evolve together.
+              </p>
+            </div>
+          </div>
+
+          <aside class="book-publishing__sidebar">
+            <nav
+              class="book-publishing__sidebar-block"
+              aria-labelledby="book-publishing-navigation-title"
+            >
+              <h2 id="book-publishing-navigation-title">On this page</h2>
+              <ol>
+                {
+                  sections.map((section) => (
+                    <li>
+                      <a href={"#" + section.id}>{section.label}</a>
+                    </li>
+                  ))
+                }
+              </ol>
+            </nav>
+
+            <section
+              class="book-publishing__sidebar-block"
+              aria-labelledby="resources-title"
+            >
+              <h2 id="resources-title">Resources</h2>
+              <ul class="book-publishing__resources">
+                <li>
+                  <TextLink
+                    href={backendUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Backend
+                  </TextLink>
+                  <span>Kotlin and Spring Boot service</span>
+                </li>
+                <li>
+                  <TextLink
+                    href={androidUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Android client
+                  </TextLink>
+                  <span>Secured administrative application</span>
+                </li>
+                <li>
+                  <TextLink
+                    href={apiSpecUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    API specification
+                  </TextLink>
+                  <span>Versioned OpenAPI contract</span>
+                </li>
+                <li>
+                  <TextLink
+                    href={docsUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Documentation
+                  </TextLink>
+                  <span>Project and engineering documentation</span>
+                </li>
+              </ul>
+            </section>
+
+            <section
+              class="book-publishing__sidebar-block"
+              aria-labelledby="facts-title"
+            >
+              <h2 id="facts-title">At a glance</h2>
+              <dl class="book-publishing__facts">
+                <div>
+                  <dt>Platform</dt>
+                  <dd>In-house publishing back office</dd>
+                </div>
+                <div>
+                  <dt>Client</dt>
+                  <dd>Editorial Denes</dd>
+                </div>
+                <div>
+                  <dt>Boundary</dt>
+                  <dd>Versioned OpenAPI contract</dd>
+                </div>
+                <div>
+                  <dt>Deployment</dt>
+                  <dd>Cloud Run + Neon PostgreSQL</dd>
+                </div>
+              </dl>
+            </section>
+          </aside>
+        </div>
+      </article>
+    </PageContainer>
+  </div>
+</BaseLayout>
+
+<style>
+  .book-publishing-page {
+    --book-color-background: #0a1118;
+    --book-color-surface: #0f1d29;
+    --book-color-surface-raised: #132b36;
+    --book-color-contract: #123b45;
+    --book-color-border: #285563;
+    --book-color-accent: #72ded0;
+    --book-color-accent-secondary: #9ac8ec;
+    --book-color-text-primary: #f0faf8;
+    --book-color-text-secondary: #aec3c6;
+    --book-color-text-tertiary: #7f9ba1;
+    background: var(--book-color-background);
+  }
+
+  .book-publishing {
+    padding-block: var(--space-10) var(--space-12);
+  }
+
+  .book-publishing__hero {
+    display: grid;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .book-publishing__hero-content {
+    display: grid;
+    max-inline-size: 76ch;
+    gap: var(--space-4);
+  }
+
+  .book-publishing__eyebrow,
+  .book-publishing__section-label {
+    color: var(--book-color-text-secondary);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-label-line-height);
+    text-transform: uppercase;
+  }
+
+  .book-publishing__section-label {
+    color: var(--book-color-accent-secondary);
+  }
+
+  .book-publishing__category {
+    color: var(--book-color-accent);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .book-publishing h1 {
+    color: var(--book-color-text-primary);
+    font-size: var(--type-display-size);
+    font-weight: var(--type-display-weight);
+    line-height: var(--type-display-line-height);
+  }
+
+  .book-publishing__lead {
+    max-inline-size: 72ch;
+    color: var(--book-color-text-secondary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .book-publishing__actions {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+    margin-block-start: var(--space-3);
+  }
+
+  .book-publishing__metadata,
+  .book-publishing__facts {
+    display: grid;
+    margin: 0;
+    border-block-start: var(--border-default) var(--book-color-border);
+  }
+
+  .book-publishing__metadata {
+    max-inline-size: 760px;
+  }
+
+  .book-publishing__metadata > div,
+  .book-publishing__facts > div {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.55fr) minmax(0, 1fr);
+    gap: var(--space-4);
+    padding-block: var(--space-4);
+    border-block-end: var(--border-default) var(--book-color-border);
+  }
+
+  .book-publishing__metadata dt,
+  .book-publishing__facts dt {
+    color: var(--book-color-text-tertiary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .book-publishing__metadata dd,
+  .book-publishing__facts dd {
+    margin: 0;
+    color: var(--book-color-text-primary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .book-publishing__visual {
+    margin: var(--space-11) 0;
+    overflow-x: auto;
+  }
+
+  .book-publishing__visual svg {
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 760px;
+    block-size: auto;
+    border: var(--border-default) var(--book-color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .book-publishing__visual figcaption {
+    max-inline-size: var(--content-prose-max);
+    margin-block-start: var(--space-3);
+    color: var(--book-color-text-tertiary);
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-line-height);
+  }
+
+  .book-publishing__body {
+    display: grid;
+    gap: var(--space-11);
+    align-items: start;
+  }
+
+  .book-publishing__main {
+    min-inline-size: 0;
+  }
+
+  .book-publishing__section {
+    max-inline-size: 80ch;
+    padding-block: var(--space-10);
+    border-block-start: var(--border-default) var(--book-color-border);
+    scroll-margin-block-start: var(--anchor-scroll-offset);
+  }
+
+  .book-publishing__section:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .book-publishing__section h2 {
+    margin-block: var(--space-3) var(--space-6);
+    color: var(--book-color-text-primary);
+  }
+
+  .book-publishing__section h3 {
+    margin-block: var(--space-8) var(--space-3);
+    color: var(--book-color-text-primary);
+  }
+
+  .book-publishing__prose,
+  .book-publishing__section > p:not(.book-publishing__section-label),
+  .book-publishing__section > ul,
+  .book-publishing__section > ol {
+    color: var(--book-color-text-secondary);
+  }
+
+  .book-publishing__prose,
+  .book-publishing__list,
+  .book-publishing__flow,
+  .book-publishing__delivery {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .book-publishing__prose p,
+  .book-publishing__section > p:not(.book-publishing__section-label) {
+    max-inline-size: var(--content-prose-max);
+  }
+
+  .book-publishing__list {
+    margin-block: var(--space-4) 0;
+    padding-inline-start: var(--space-6);
+  }
+
+  .book-publishing__list li {
+    padding-inline-start: var(--space-2);
+  }
+
+  .book-publishing strong,
+  .book-publishing code {
+    color: var(--book-color-text-primary);
+  }
+
+  .book-publishing code {
+    padding-inline: 0.25em;
+    border-radius: var(--radius-sm);
+    background: var(--book-color-surface);
+    font-size: 0.95em;
+  }
+
+  .book-publishing__cards,
+  .book-publishing__decisions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-block-start: var(--space-6);
+  }
+
+  .book-publishing__card {
+    padding: var(--space-5);
+    border: var(--border-default) var(--book-color-border);
+    border-radius: var(--radius-md);
+    background: var(--book-color-surface);
+  }
+
+  .book-publishing__card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .book-publishing__card p {
+    color: var(--book-color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .book-publishing__flow,
+  .book-publishing__delivery {
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .book-publishing__flow li,
+  .book-publishing__delivery li {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--space-4);
+    border: var(--border-default) var(--book-color-border);
+    border-radius: var(--radius-md);
+    background: var(--book-color-surface);
+  }
+
+  .book-publishing__flow-number {
+    display: inline-grid;
+    min-block-size: var(--interactive-target-min);
+    min-inline-size: var(--interactive-target-min);
+    border-radius: var(--radius-full);
+    place-items: center;
+    background: var(--book-color-contract);
+    color: var(--book-color-accent);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-label-weight);
+  }
+
+  .book-publishing__flow h3,
+  .book-publishing__delivery h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .book-publishing__flow p,
+  .book-publishing__delivery p {
+    color: var(--book-color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .book-publishing__sidebar {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .book-publishing__sidebar-block {
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-default) var(--book-color-border);
+  }
+
+  .book-publishing__sidebar-block h2 {
+    margin-block-end: var(--space-4);
+    color: var(--book-color-text-primary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .book-publishing__sidebar nav ol,
+  .book-publishing__resources {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding-inline-start: var(--space-5);
+  }
+
+  .book-publishing__sidebar nav a {
+    color: var(--book-color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .book-publishing__sidebar nav a:hover {
+    color: var(--book-color-accent);
+  }
+
+  .book-publishing__resources {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  .book-publishing__resources li {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .book-publishing__resources span {
+    color: var(--book-color-text-tertiary);
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-line-height);
+  }
+
+  .book-publishing__facts {
+    border-block-start: 0;
+  }
+
+  .book-publishing__facts > div {
+    display: block;
+  }
+
+  .book-publishing__facts dd {
+    margin-block-start: var(--space-1);
+  }
+
+  .book-publishing__closing {
+    display: grid;
+    gap: var(--space-5);
+    max-inline-size: 80ch;
+    padding-block: var(--space-8) 0;
+    border-block-start: var(--border-default) var(--book-color-border);
+    color: var(--book-color-text-secondary);
+  }
+
+  @media (min-width: 960px) {
+    .book-publishing__body {
+      grid-template-columns: minmax(0, 1fr) minmax(236px, 280px);
+    }
+
+    .book-publishing__sidebar {
+      position: sticky;
+      inset-block-start: calc(var(--space-6) + 64px);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .book-publishing__hero {
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .book-publishing {
+      padding-block: var(--space-8) var(--space-12);
+    }
+
+    .book-publishing__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .book-publishing__actions :global(.text-link--navigation) {
+      inline-size: 100%;
+    }
+
+    .book-publishing__metadata > div {
+      grid-template-columns: minmax(104px, 0.6fr) minmax(0, 1fr);
+    }
+
+    .book-publishing__visual {
+      margin-block: var(--space-9);
+      margin-inline: calc(var(--viewport-padding-inline) * -1);
+    }
+
+    .book-publishing__visual figcaption {
+      margin-inline: var(--viewport-padding-inline);
+    }
+
+    .book-publishing__section {
+      padding-block: var(--space-9);
+    }
+
+    .book-publishing__cards,
+    .book-publishing__decisions {
+      grid-template-columns: 1fr;
+    }
+
+    .book-publishing__sidebar {
+      margin-block-start: var(--space-4);
+    }
+  }
+</style>
