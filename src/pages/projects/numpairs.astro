@@ -1,0 +1,1136 @@
+---
+import PageContainer from "../../components/PageContainer.astro";
+import TextLink from "../../components/TextLink.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const canonicalPath = "/projects/numpairs/";
+const title = "NumPairs — Android puzzle game | FrancescFe";
+const description =
+  "NumPairs is an open-source Android arithmetic deduction puzzle shaped by a calm product vision, a minimalist visual direction, and an iterative delivery workflow.";
+const sourceUrl = "https://github.com/CescFe/numpairs";
+
+const sections = [
+  { id: "product", label: "The product" },
+  { id: "vision", label: "Product vision" },
+  { id: "visual-direction", label: "Visual direction" },
+  { id: "engineering", label: "Engineering decisions" },
+  { id: "workflow", label: "Delivery workflow" },
+] as const;
+
+const productPrinciples = [
+  {
+    name: "Calm challenge",
+    description:
+      "A thoughtful arithmetic puzzle that rewards deduction without turning the experience into an arcade or an educational exercise.",
+  },
+  {
+    name: "Clarity first",
+    description:
+      "The board, number strip, and completion feedback carry the experience; every other element stays in service of solving.",
+  },
+  {
+    name: "A complete product",
+    description:
+      "Tutorial, Quick, Classic, Daily Challenge, personalization, and local progress form one coherent app rather than isolated features.",
+  },
+  {
+    name: "Respectful by default",
+    description:
+      "No account, ads, analytics, or developer-operated gameplay service is required to play.",
+  },
+] as const;
+
+const deliveryWorkflow = [
+  {
+    name: "Agile board",
+    detail:
+      "A GitHub Project makes priorities, status, stage, and delivery context visible across the product.",
+  },
+  {
+    name: "Functional refinement",
+    detail:
+      "A milestone defines the product outcome, scope, success criteria, delivery stages, and explicit exclusions.",
+  },
+  {
+    name: "Atomic tasks",
+    detail:
+      "The milestone is divided into dependency-ordered tasks, each with one observable outcome and one Pull Request.",
+  },
+  {
+    name: "Technical refinement",
+    detail:
+      "GitHub Issues turn each task into an implementable contract with context, constraints, approach, and acceptance criteria.",
+  },
+  {
+    name: "Branch implementation",
+    detail:
+      "The change is implemented in a focused branch while unrelated product work and repository changes remain separate.",
+  },
+  {
+    name: "Review and merge",
+    detail:
+      "Validation, review, and a Pull Request provide the delivery gate before the change is merged into the main branch.",
+  },
+] as const;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  currentPath={canonicalPath}
+  headerVariant="compact"
+  footerVariant="minimal"
+  showScrollToTop
+  social={{ title, description, type: "article" }}
+>
+  <div class="case-study-page">
+    <PageContainer>
+      <article class="case-study" aria-labelledby="case-study-title">
+        <header class="case-study__hero">
+          <div class="case-study__hero-content">
+            <p class="case-study__eyebrow">[ project / android ]</p>
+            <p class="case-study__category">
+              Open-source arithmetic deduction puzzle
+            </p>
+            <h1 id="case-study-title">NumPairs</h1>
+            <p class="case-study__lead">
+              NumPairs is a native Android puzzle where players complete hidden
+              expressions by deducing how numbers from a strip pair across a
+              result grid.
+            </p>
+
+            <div class="case-study__actions" aria-label="NumPairs actions">
+              <TextLink
+                href={sourceUrl}
+                variant="navigation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View source repository{" "}<span aria-hidden="true">↗</span>
+              </TextLink>
+              <TextLink href="/numpairs/privacy-policy/" variant="navigation">
+                Read the Privacy Policy
+              </TextLink>
+            </div>
+          </div>
+
+          <dl
+            class="case-study__metadata"
+            aria-label="NumPairs project metadata"
+          >
+            <div>
+              <dt>Platform</dt>
+              <dd>Android phones and tablets</dd>
+            </div>
+            <div>
+              <dt>Product</dt>
+              <dd>Arithmetic deduction puzzle</dd>
+            </div>
+            <div>
+              <dt>Availability</dt>
+              <dd>Google Play release path in progress</dd>
+            </div>
+            <div>
+              <dt>Source</dt>
+              <dd>Open source · MIT License</dd>
+            </div>
+          </dl>
+        </header>
+
+        <figure class="case-study__visual">
+          <svg
+            role="img"
+            aria-labelledby="puzzle-visual-title puzzle-visual-description"
+            viewBox="0 0 1200 480"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title id="puzzle-visual-title">NumPairs puzzle anatomy</title>
+            <desc id="puzzle-visual-description">
+              An illustrative number strip feeds a result grid. A pair such as 2
+              and 3 creates an addition result of 5 and a multiplication result
+              of 6.
+            </desc>
+            <rect width="1200" height="480" rx="12" fill="var(--color-bg-deep)"
+            ></rect>
+            <text
+              x="64"
+              y="68"
+              fill="var(--color-text-secondary)"
+              font-family="var(--font-family-mono)"
+              font-size="18"
+              font-weight="700"
+              letter-spacing="1.2"
+            >
+              PUZZLE LOOP
+            </text>
+            <g transform="translate(64 112)">
+              <rect
+                width="380"
+                height="260"
+                rx="8"
+                fill="var(--color-surface-default)"
+                stroke="var(--color-border-strong)"></rect>
+              <text
+                x="28"
+                y="48"
+                fill="var(--color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="16"
+                font-weight="700"
+              >
+                NUMBER STRIP
+              </text>
+              <text
+                x="28"
+                y="112"
+                fill="var(--color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="30"
+                font-weight="700"
+              >
+                1 2 ? 4 4 ? 7 9
+              </text>
+              <line
+                x1="28"
+                y1="144"
+                x2="352"
+                y2="144"
+                stroke="var(--color-border-subtle)"></line>
+              <text
+                x="28"
+                y="190"
+                fill="var(--color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="16"
+              >
+                hidden values are deduced
+              </text>
+              <text
+                x="28"
+                y="222"
+                fill="var(--color-accent-default)"
+                font-family="var(--font-family-mono)"
+                font-size="16"
+                font-weight="700"
+              >
+                stable entry identity
+              </text>
+            </g>
+            <path
+              d="M480 242H642"
+              fill="none"
+              stroke="var(--color-accent-default)"
+              stroke-width="3"></path>
+            <path
+              d="m626 226 20 16-20 16"
+              fill="none"
+              stroke="var(--color-accent-default)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <text
+              x="522"
+              y="214"
+              fill="var(--color-text-secondary)"
+              font-family="var(--font-family-mono)"
+              font-size="15"
+              text-anchor="middle"
+            >
+              pair facts
+            </text>
+            <g transform="translate(704 112)">
+              <rect
+                width="432"
+                height="260"
+                rx="8"
+                fill="var(--color-surface-default)"
+                stroke="var(--color-border-strong)"></rect>
+              <text
+                x="28"
+                y="48"
+                fill="var(--color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="16"
+                font-weight="700"
+              >
+                RESULT GRID
+              </text>
+              <rect
+                x="28"
+                y="76"
+                width="172"
+                height="136"
+                rx="6"
+                fill="var(--color-surface-raised)"
+                stroke="var(--color-border-subtle)"></rect>
+              <text
+                x="114"
+                y="126"
+                fill="var(--color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="22"
+                text-anchor="middle"
+              >
+                ? + ?
+              </text>
+              <text
+                x="114"
+                y="174"
+                fill="var(--color-accent-default)"
+                font-family="var(--font-family-mono)"
+                font-size="28"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                5
+              </text>
+              <rect
+                x="228"
+                y="76"
+                width="176"
+                height="136"
+                rx="6"
+                fill="var(--color-surface-raised)"
+                stroke="var(--color-border-subtle)"></rect>
+              <text
+                x="316"
+                y="126"
+                fill="var(--color-text-primary)"
+                font-family="var(--font-family-mono)"
+                font-size="22"
+                text-anchor="middle"
+              >
+                ? × ?
+              </text>
+              <text
+                x="316"
+                y="174"
+                fill="var(--color-accent-default)"
+                font-family="var(--font-family-mono)"
+                font-size="28"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                6
+              </text>
+              <text
+                x="28"
+                y="238"
+                fill="var(--color-text-secondary)"
+                font-family="var(--font-family-mono)"
+                font-size="15"
+              >
+                one pair → one sum + one product
+              </text>
+            </g>
+          </svg>
+          <figcaption>
+            An illustrative view of the core rule: a solution pair contributes
+            one addition tile and one multiplication tile.
+          </figcaption>
+        </figure>
+
+        <div class="case-study__body">
+          <div class="case-study__main">
+            <section
+              id="product"
+              class="case-study__section"
+              aria-labelledby="product-title"
+            >
+              <p class="case-study__section-label">01 / product</p>
+              <h2 id="product-title">A puzzle built around deduction</h2>
+              <div class="case-study__prose">
+                <p>
+                  NumPairs turns arithmetic into a constraint-solving puzzle.
+                  The player sees a strip of positive integers in ascending
+                  order and a board of visible results. The expressions that
+                  produced those results are hidden, so progress comes from
+                  finding consistent pairings rather than guessing a sequence of
+                  moves.
+                </p>
+                <p>
+                  Each solution pair is used twice: once to produce a sum and
+                  once to produce a product. For example, the pair
+                  <code>(2, 3)</code> accounts for result tiles <code>5</code>
+                  and <code>6</code>. A strip entry is a distinct game element
+                  even when another entry displays the same numeric value.
+                </p>
+              </div>
+
+              <h3>What a completed puzzle means</h3>
+              <ol class="case-study__steps">
+                <li>
+                  <strong>Reveal the strip.</strong> Deduce every hidden value while
+                  preserving the strip's ordering rules.
+                </li>
+                <li>
+                  <strong>Resolve the grid.</strong> Assign operands and operators
+                  to the hidden expressions beneath each known result.
+                </li>
+                <li>
+                  <strong>Validate the pairings.</strong> Use each strip entry once
+                  for an addition and once for a multiplication across the board.
+                </li>
+              </ol>
+
+              <h3>Play options</h3>
+              <p>
+                The current app groups generated play into Quick and Classic,
+                while keeping the exact puzzle-size families explicit in the
+                domain. Daily Challenge adds a deterministic, device-local
+                challenge without requiring an account or a server.
+              </p>
+              <ul class="case-study__list">
+                <li><strong>Quick:</strong> shorter generated challenges.</li>
+                <li>
+                  <strong>Classic:</strong> the original full-board challenge sizes.
+                </li>
+                <li>
+                  <strong>Daily Challenge:</strong> one reproducible local-date puzzle
+                  and completion history.
+                </li>
+              </ul>
+            </section>
+
+            <section
+              id="vision"
+              class="case-study__section"
+              aria-labelledby="vision-title"
+            >
+              <p class="case-study__section-label">02 / product vision</p>
+              <h2 id="vision-title">A calm, complete puzzle product</h2>
+              <div class="case-study__prose">
+                <p>
+                  NumPairs is designed as a polished mobile puzzle rather than a
+                  collection of isolated mechanics. The experience starts with a
+                  clear entry point, teaches the rules through a guided
+                  tutorial, and then gives players distinct ways to return:
+                  Quick for a shorter session, Classic for the full board, and
+                  Daily Challenge for a local-date ritual.
+                </p>
+                <p>
+                  The product deliberately avoids pressure systems that do not
+                  support the puzzle. There is no account, advertising,
+                  analytics, or developer-operated server behind the core loop.
+                  Progress, preferences, and Daily history belong to the local
+                  installation, keeping the game available without a network
+                  dependency.
+                </p>
+              </div>
+
+              <div
+                class="case-study__principles"
+                aria-label="NumPairs product principles"
+              >
+                {
+                  productPrinciples.map((principle) => (
+                    <article class="principle-card">
+                      <h3>{principle.name}</h3>
+                      <p>{principle.description}</p>
+                    </article>
+                  ))
+                }
+              </div>
+            </section>
+
+            <section
+              id="visual-direction"
+              class="case-study__section"
+              aria-labelledby="visual-direction-title"
+            >
+              <p class="case-study__section-label">03 / design</p>
+              <h2 id="visual-direction-title">
+                A quiet, shape-first visual language
+              </h2>
+              <div class="case-study__prose">
+                <p>
+                  The visual direction aims for something elegant, minimalist,
+                  intelligent, calm, modern, and premium. It avoids the usual
+                  shortcuts of a childish, arcade-like, or overly educational
+                  number game. The interface should feel like a considered
+                  product, while remaining approachable enough for a casual
+                  puzzle session.
+                </p>
+                <p>
+                  The board is the protagonist. Spacing comes before decoration,
+                  typography before color, and hierarchy before effects. The
+                  design system uses Material 3 as a platform foundation but
+                  adds its own decisions for surfaces, states, density, and
+                  reusable components instead of looking like a raw template.
+                </p>
+              </div>
+
+              <div class="case-study__logo-concept">
+                <div class="case-study__logo-mark" aria-hidden="true">
+                  <span>?</span><span>[+×]</span><span>?</span>
+                </div>
+                <div>
+                  <h3>A logo built from the unresolved expression</h3>
+                  <p>
+                    The mark reduces the game to its universal idea:
+                    <code>? [+×] ?</code>. The question marks represent unknown
+                    operands and the central operator group carries the two core
+                    operations, addition and multiplication.
+                  </p>
+                  <p>
+                    Its identity is shape-first rather than color-first, so it
+                    remains recognizable in monochrome, across themes, and at
+                    launcher-icon size. The visual language stays flat and
+                    legible: no gradients, heavy shadows, decorative containers,
+                    or detail that competes with the puzzle.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="engineering"
+              class="case-study__section"
+              aria-labelledby="engineering-title"
+            >
+              <p class="case-study__section-label">04 / engineering</p>
+              <h2 id="engineering-title">
+                Simple architecture, deliberate constraints
+              </h2>
+              <div class="case-study__prose">
+                <p>
+                  The engineering decisions follow the product's scale and
+                  purpose. NumPairs is a native Android app written in Kotlin;
+                  Android is the natural medium for a focused mobile puzzle and
+                  the native approach keeps the first product direct to build,
+                  debug, and iterate.
+                </p>
+                <p>
+                  Jetpack Compose provides a declarative UI suited to a dynamic
+                  board, a compact number strip, and state-driven feedback. The
+                  puzzle rules remain separate from the UI so gameplay can be
+                  reasoned about and tested without making the screen the source
+                  of truth.
+                </p>
+              </div>
+
+              <div class="case-study__decisions">
+                <article class="decision-card">
+                  <h3>Self-contained product</h3>
+                  <p>
+                    The app is intentionally a single local product. It has no
+                    remote gameplay API, account system, or external service
+                    required to start or complete a puzzle.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Local persistence</h3>
+                  <p>
+                    Preferences DataStore stores the versioned generated-session
+                    aggregate and the separate Daily Challenge aggregate. A
+                    relational database is unnecessary for these small,
+                    application-private state boundaries.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Recoverable progress</h3>
+                  <p>
+                    The exact puzzle and current progress are persisted before a
+                    session is presented as ready, so resuming does not silently
+                    regenerate a different challenge after process death.
+                  </p>
+                </article>
+                <article class="decision-card">
+                  <h3>Validated content</h3>
+                  <p>
+                    Generated puzzles start from a solved model, are masked for
+                    play, and pass shared validation before they reach the
+                    player. Explicit seeds and limits keep the process
+                    reproducible.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section
+              id="workflow"
+              class="case-study__section"
+              aria-labelledby="workflow-title"
+            >
+              <p class="case-study__section-label">05 / methodology</p>
+              <h2 id="workflow-title">From product intent to merged change</h2>
+              <div class="case-study__prose">
+                <p>
+                  NumPairs is developed through a documentation-first workflow
+                  that keeps product intent and implementation detail connected.
+                  The process is deliberately incremental: every level adds
+                  enough clarity for the next decision without turning planning
+                  into a substitute for delivery.
+                </p>
+              </div>
+
+              <ol class="case-study__workflow">
+                {
+                  deliveryWorkflow.map((step, index) => (
+                    <li class="workflow-step">
+                      <span class="workflow-step__number" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3>{step.name}</h3>
+                        <p>{step.detail}</p>
+                      </div>
+                    </li>
+                  ))
+                }
+              </ol>
+
+              <p>
+                This workflow creates a traceable path from an idea on the board
+                to a reviewed change in the main branch, while keeping the
+                product small enough to evolve one meaningful decision at a
+                time.
+              </p>
+            </section>
+
+            <div class="case-study__closing">
+              <p>
+                NumPairs is a small game with a clear point of view: a calm
+                puzzle experience, a restrained visual language, and a delivery
+                process that makes each product decision visible.
+              </p>
+              <TextLink href="/" variant="standalone"
+                >← Back to portfolio</TextLink
+              >
+            </div>
+          </div>
+
+          <aside class="case-study__sidebar">
+            <nav
+              class="case-study__sidebar-block"
+              aria-labelledby="case-study-navigation-title"
+            >
+              <h2 id="case-study-navigation-title">On this page</h2>
+              <ol>
+                {
+                  sections.map((section) => (
+                    <li>
+                      <a href={`#${section.id}`}>{section.label}</a>
+                    </li>
+                  ))
+                }
+              </ol>
+            </nav>
+
+            <section
+              class="case-study__sidebar-block"
+              aria-labelledby="resources-title"
+            >
+              <h2 id="resources-title">Resources</h2>
+              <ul class="case-study__resources">
+                <li>
+                  <TextLink
+                    href={sourceUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Source repository
+                  </TextLink>
+                  <span>Android app · MIT License</span>
+                </li>
+                <li>
+                  <TextLink href="/numpairs/privacy-policy/" variant="inline">
+                    Privacy Policy
+                  </TextLink>
+                  <span>Product and website data practices</span>
+                </li>
+                <li>
+                  <span class="case-study__resource-title">Google Play</span>
+                  <span>Listing not yet published</span>
+                </li>
+              </ul>
+            </section>
+
+            <section
+              class="case-study__sidebar-block"
+              aria-labelledby="facts-title"
+            >
+              <h2 id="facts-title">At a glance</h2>
+              <dl class="case-study__facts">
+                <div>
+                  <dt>App type</dt>
+                  <dd>Android game</dd>
+                </div>
+                <div>
+                  <dt>Marketplace</dt>
+                  <dd>Google Play · phones and tablets</dd>
+                </div>
+              </dl>
+            </section>
+          </aside>
+        </div>
+      </article>
+    </PageContainer>
+  </div>
+</BaseLayout>
+
+<style>
+  .case-study-page {
+    background: var(--color-bg-deep);
+  }
+
+  .case-study {
+    padding-block: var(--space-10) var(--space-12);
+  }
+
+  .case-study__hero {
+    display: grid;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .case-study__hero-content {
+    display: grid;
+    max-inline-size: 76ch;
+    gap: var(--space-4);
+  }
+
+  .case-study__eyebrow,
+  .case-study__section-label {
+    color: var(--color-text-secondary);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-label-line-height);
+    text-transform: uppercase;
+  }
+
+  .case-study__category {
+    color: var(--color-accent-default);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .case-study h1 {
+    color: var(--color-text-primary);
+    font-size: var(--type-display-size);
+    font-weight: var(--type-display-weight);
+    line-height: var(--type-display-line-height);
+  }
+
+  .case-study__lead {
+    max-inline-size: 72ch;
+    color: var(--color-text-secondary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .case-study__actions {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+    margin-block-start: var(--space-3);
+  }
+
+  .case-study__metadata,
+  .case-study__facts {
+    display: grid;
+    margin: 0;
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  .case-study__metadata {
+    max-inline-size: 760px;
+  }
+
+  .case-study__metadata > div,
+  .case-study__facts > div {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.55fr) minmax(0, 1fr);
+    gap: var(--space-4);
+    padding-block: var(--space-4);
+    border-block-end: var(--border-default) var(--color-border-subtle);
+  }
+
+  .case-study__metadata dt,
+  .case-study__facts dt {
+    color: var(--color-text-tertiary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .case-study__metadata dd,
+  .case-study__facts dd {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .case-study__visual {
+    margin: var(--space-11) 0;
+  }
+
+  .case-study__visual svg {
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 760px;
+    block-size: auto;
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .case-study__visual {
+    overflow-x: auto;
+  }
+
+  .case-study__visual figcaption {
+    max-inline-size: var(--content-prose-max);
+    margin-block-start: var(--space-3);
+    color: var(--color-text-tertiary);
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-line-height);
+  }
+
+  .case-study__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(236px, 280px);
+    gap: var(--space-11);
+    align-items: start;
+  }
+
+  .case-study__main {
+    min-inline-size: 0;
+  }
+
+  .case-study__section {
+    max-inline-size: 80ch;
+    padding-block: var(--space-10);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+    scroll-margin-block-start: var(--anchor-scroll-offset);
+  }
+
+  .case-study__section:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .case-study__section h2 {
+    margin-block: var(--space-3) var(--space-6);
+    color: var(--color-text-primary);
+  }
+
+  .case-study__section h3 {
+    margin-block: var(--space-8) var(--space-3);
+    color: var(--color-text-primary);
+  }
+
+  .case-study__prose,
+  .case-study__section > p:not(.case-study__section-label),
+  .case-study__section > ul,
+  .case-study__section > ol {
+    color: var(--color-text-secondary);
+  }
+
+  .case-study__prose,
+  .case-study__steps,
+  .case-study__list {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .case-study__prose p,
+  .case-study__section > p:not(.case-study__section-label) {
+    max-inline-size: var(--content-prose-max);
+  }
+
+  .case-study__steps,
+  .case-study__list {
+    margin-block: var(--space-4) 0;
+    padding-inline-start: var(--space-6);
+  }
+
+  .case-study__steps li,
+  .case-study__list li {
+    padding-inline-start: var(--space-2);
+  }
+
+  .case-study strong,
+  .case-study code {
+    color: var(--color-text-primary);
+  }
+
+  .case-study code {
+    padding-inline: 0.25em;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-default);
+    font-size: 0.95em;
+  }
+
+  .case-study__principles,
+  .case-study__decisions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-block-start: var(--space-6);
+  }
+
+  .principle-card,
+  .decision-card {
+    padding: var(--space-5);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-default);
+  }
+
+  .principle-card h3,
+  .decision-card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .principle-card p,
+  .decision-card p {
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .case-study__logo-concept {
+    display: grid;
+    grid-template-columns: minmax(160px, 0.45fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: center;
+    margin-block-start: var(--space-7);
+    padding: var(--space-6);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-default);
+  }
+
+  .case-study__logo-mark {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-mono);
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.08em;
+  }
+
+  .case-study__logo-mark span:nth-child(2) {
+    color: var(--color-accent-default);
+    font-size: 0.72em;
+    letter-spacing: -0.12em;
+  }
+
+  .case-study__logo-concept h3 {
+    margin-block: 0 var(--space-3);
+  }
+
+  .case-study__logo-concept p {
+    color: var(--color-text-secondary);
+  }
+
+  .case-study__logo-concept p + p {
+    margin-block-start: var(--space-4);
+  }
+
+  .case-study__workflow {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: workflow;
+  }
+
+  .workflow-step {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--space-4);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-default);
+  }
+
+  .workflow-step__number {
+    display: inline-grid;
+    min-block-size: var(--interactive-target-min);
+    min-inline-size: var(--interactive-target-min);
+    border-radius: var(--radius-full);
+    place-items: center;
+    background: var(--color-accent-subtle);
+    color: var(--color-accent-default);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-label-weight);
+  }
+
+  .workflow-step h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .workflow-step p {
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .case-study__sidebar {
+    position: sticky;
+    inset-block-start: var(--space-6);
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .case-study__sidebar-block {
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  .case-study__sidebar-block h2 {
+    margin-block-end: var(--space-4);
+    color: var(--color-text-primary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-title-line-height);
+  }
+
+  .case-study__sidebar nav ol,
+  .case-study__resources {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding-inline-start: var(--space-5);
+  }
+
+  .case-study__sidebar nav a {
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .case-study__sidebar nav a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .case-study__resources {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  .case-study__resources li {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .case-study__resources span {
+    color: var(--color-text-tertiary);
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-line-height);
+  }
+
+  .case-study__resource-title {
+    color: var(--color-text-primary) !important;
+    font-size: var(--type-body-sm-size) !important;
+    line-height: var(--type-body-sm-line-height) !important;
+  }
+
+  .case-study__facts {
+    border-block-start: 0;
+  }
+
+  .case-study__facts > div {
+    display: block;
+  }
+
+  .case-study__facts dd {
+    margin-block-start: var(--space-1);
+  }
+
+  .case-study__closing {
+    display: grid;
+    gap: var(--space-5);
+    max-inline-size: 80ch;
+    padding-block: var(--space-8) 0;
+    border-block-start: var(--border-default) var(--color-border-subtle);
+    color: var(--color-text-secondary);
+  }
+
+  @media (min-width: 1200px) {
+    .case-study__hero {
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.65fr);
+      gap: var(--space-12);
+    }
+  }
+
+  @media (max-width: 959px) {
+    .case-study__body {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .case-study__sidebar {
+      position: static;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .case-study__sidebar-block:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .case-study {
+      padding-block: var(--space-8) var(--space-10);
+    }
+
+    .case-study__hero {
+      gap: var(--space-8);
+    }
+
+    .case-study__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .case-study__actions :global(.text-link--navigation) {
+      inline-size: 100%;
+    }
+
+    .case-study__metadata > div {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+
+    .case-study__visual {
+      margin-block: var(--space-9);
+    }
+
+    .case-study__visual svg {
+      min-inline-size: 720px;
+    }
+
+    .case-study__section {
+      padding-block: var(--space-8);
+    }
+
+    .case-study__principles,
+    .case-study__decisions,
+    .case-study__logo-concept,
+    .case-study__sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .case-study__sidebar-block:last-child {
+      grid-column: auto;
+    }
+  }
+</style>
