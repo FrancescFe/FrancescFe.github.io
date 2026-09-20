@@ -1,4 +1,5 @@
 ---
+import NumPairsSymbol from "../../components/NumPairsSymbol.astro";
 import PageContainer from "../../components/PageContainer.astro";
 import TextLink from "../../components/TextLink.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -42,24 +43,19 @@ const productPrinciples = [
 
 const deliveryWorkflow = [
   {
-    name: "Agile board",
+    name: "Agile board -> GitHub Project",
     detail:
       "A GitHub Project makes priorities, status, stage, and delivery context visible across the product.",
   },
   {
-    name: "Functional refinement",
+    name: "Functional refinement -> Milestone",
     detail:
       "A milestone defines the product outcome, scope, success criteria, delivery stages, and explicit exclusions.",
   },
   {
-    name: "Atomic tasks",
+    name: "Technical refinement -> atomic GitHub Issues",
     detail:
-      "The milestone is divided into dependency-ordered tasks, each with one observable outcome and one Pull Request.",
-  },
-  {
-    name: "Technical refinement",
-    detail:
-      "GitHub Issues turn each task into an implementable contract with context, constraints, approach, and acceptance criteria.",
+      "The milestone is divided into dependency-ordered GitHub Issues, each with one observable outcome, then refined with context, approach, and acceptance criteria.",
   },
   {
     name: "Branch implementation",
@@ -78,6 +74,7 @@ const deliveryWorkflow = [
   title={title}
   description={description}
   canonicalPath={canonicalPath}
+  productTheme="numpairs"
   currentPath={canonicalPath}
   headerVariant="compact"
   footerVariant="minimal"
@@ -205,16 +202,6 @@ const deliveryWorkflow = [
                 font-size="16"
               >
                 hidden values are deduced
-              </text>
-              <text
-                x="28"
-                y="222"
-                fill="var(--color-accent-default)"
-                font-family="var(--font-family-mono)"
-                font-size="16"
-                font-weight="700"
-              >
-                stable entry identity
               </text>
             </g>
             <path
@@ -462,8 +449,8 @@ const deliveryWorkflow = [
               </div>
 
               <div class="case-study__logo-concept">
-                <div class="case-study__logo-mark" aria-hidden="true">
-                  <span>?</span><span>[+×]</span><span>?</span>
+                <div class="case-study__logo-mark">
+                  <NumPairsSymbol size={144} label="NumPairs symbol" />
                 </div>
                 <div>
                   <h3>A logo built from the unresolved expression</h3>
@@ -595,9 +582,6 @@ const deliveryWorkflow = [
                 puzzle experience, a restrained visual language, and a delivery
                 process that makes each product decision visible.
               </p>
-              <TextLink href="/" variant="standalone"
-                >← Back to portfolio</TextLink
-              >
             </div>
           </div>
 
@@ -700,6 +684,10 @@ const deliveryWorkflow = [
     letter-spacing: var(--letter-spacing-uppercase);
     line-height: var(--type-label-line-height);
     text-transform: uppercase;
+  }
+
+  .case-study__section-label {
+    color: var(--numpairs-color-accent-supporting);
   }
 
   .case-study__category {
@@ -911,20 +899,9 @@ const deliveryWorkflow = [
 
   .case-study__logo-mark {
     display: flex;
-    gap: var(--space-2);
     align-items: center;
     justify-content: center;
-    color: var(--color-text-primary);
-    font-family: var(--font-family-mono);
-    font-size: clamp(24px, 4vw, 40px);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: -0.08em;
-  }
-
-  .case-study__logo-mark span:nth-child(2) {
-    color: var(--color-accent-default);
-    font-size: 0.72em;
-    letter-spacing: -0.12em;
+    color: var(--numpairs-color-brand-primary);
   }
 
   .case-study__logo-concept h3 {

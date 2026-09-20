@@ -1,0 +1,36 @@
+---
+import numpairsSymbol from "../assets/icons/brands/numpairs-symbol.svg";
+
+interface Props {
+  size?: number;
+  label?: string;
+  class?: string;
+}
+
+const { size = 96, label, class: className } = Astro.props;
+---
+
+<span
+  class:list={["numpairs-symbol", className]}
+  style={`--numpairs-symbol-image: url("${numpairsSymbol.src}"); --numpairs-symbol-size: ${size}px;`}
+  role={label ? "img" : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : "true"}></span>
+
+<style>
+  .numpairs-symbol {
+    display: block;
+    flex: 0 0 auto;
+    inline-size: var(--numpairs-symbol-size);
+    block-size: var(--numpairs-symbol-size);
+    background-color: currentColor;
+    -webkit-mask-image: var(--numpairs-symbol-image);
+    mask-image: var(--numpairs-symbol-image);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+</style>
