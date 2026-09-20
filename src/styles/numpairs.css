@@ -86,3 +86,36 @@
   --numpairs-type-puzzle-label-line-height: 16px;
   --numpairs-type-puzzle-label-weight: var(--numpairs-font-weight-medium);
 }
+
+/* These aliases must outrank the global :root token declarations. */
+html[data-product-theme="numpairs"] {
+  --color-bg-canvas: var(--numpairs-color-background);
+  --color-bg-deep: var(--numpairs-color-background);
+  --color-surface-default: var(--numpairs-color-surface);
+  --color-surface-raised: var(--numpairs-color-surface-raised);
+  --color-surface-hover: var(--numpairs-color-surface-raised);
+  --color-text-primary: var(--numpairs-color-text-primary);
+  --color-text-secondary: var(--numpairs-color-text-secondary);
+  --color-text-tertiary: var(--numpairs-color-text-secondary);
+  --color-text-disabled: var(--numpairs-color-border-subtle);
+  --color-border-subtle: var(--numpairs-color-border-subtle);
+  --color-border-strong: var(--numpairs-color-border);
+  --color-accent-default: var(--numpairs-color-brand-primary);
+  --color-accent-subtle: var(--numpairs-color-brand-container);
+  --color-accent-hover: var(--numpairs-color-on-brand-container);
+  --color-status-success: var(--numpairs-color-status-success);
+  --color-status-info: var(--numpairs-color-accent-secondary);
+  --color-status-warning: var(--numpairs-color-accent-supporting);
+  --color-status-error: var(--numpairs-color-status-error);
+  --color-overlay: var(--numpairs-color-scrim);
+}
+
+/* Give the themed document Inter for general UI and editorial content. */
+html[data-product-theme="numpairs"] body {
+  font-family: var(--numpairs-font-family-ui);
+}
+
+/* Keep expressions, numeric examples, and code-like content in JetBrains Mono. */
+html[data-product-theme="numpairs"] :where(code, kbd, samp, pre) {
+  font-family: var(--numpairs-font-family-puzzle);
+}

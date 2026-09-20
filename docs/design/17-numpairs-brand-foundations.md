@@ -18,11 +18,13 @@ explicit product boundary:
 
 Future pages should consume the `--numpairs-*` semantic variables from that
 scope. They should not copy Warm color values or redefine the product palette.
-No current portfolio page sets `data-product-theme="numpairs"`.
+The scoped theme also aliases the shared portfolio `--color-*` roles within
+that document boundary, so reusable shell components inherit Warm without
+changing the global portfolio tokens.
 
-The shared portfolio shell remains governed by the global tokens unless a
-future issue explicitly expands the product boundary. The scoped selector is
-defined in [`src/styles/numpairs.css`](../../src/styles/numpairs.css).
+The shared portfolio shell remains governed by the global tokens on all other
+pages. The scoped selector and aliases are defined in
+[`src/styles/numpairs.css`](../../src/styles/numpairs.css).
 
 ## Warm source mapping
 

@@ -24,6 +24,7 @@ interface Props {
   description: string;
   canonicalPath?: string;
   social?: SocialMetadata;
+  productTheme?: "numpairs";
   currentPath?: string;
   headerVariant?: SiteHeaderVariant;
   headerNavigation?: readonly HeaderNavigationItem[];
@@ -36,6 +37,7 @@ const {
   description,
   canonicalPath = Astro.url.pathname,
   social = {},
+  productTheme,
   currentPath = Astro.url.pathname,
   headerVariant = "default",
   headerNavigation = [],
@@ -54,7 +56,7 @@ const socialImageUrl = social.image
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-product-theme={productTheme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

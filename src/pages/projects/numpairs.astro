@@ -1,4 +1,5 @@
 ---
+import NumPairsSymbol from "../../components/NumPairsSymbol.astro";
 import PageContainer from "../../components/PageContainer.astro";
 import TextLink from "../../components/TextLink.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -78,6 +79,7 @@ const deliveryWorkflow = [
   title={title}
   description={description}
   canonicalPath={canonicalPath}
+  productTheme="numpairs"
   currentPath={canonicalPath}
   headerVariant="compact"
   footerVariant="minimal"
@@ -462,8 +464,8 @@ const deliveryWorkflow = [
               </div>
 
               <div class="case-study__logo-concept">
-                <div class="case-study__logo-mark" aria-hidden="true">
-                  <span>?</span><span>[+×]</span><span>?</span>
+                <div class="case-study__logo-mark">
+                  <NumPairsSymbol size={144} label="NumPairs symbol" />
                 </div>
                 <div>
                   <h3>A logo built from the unresolved expression</h3>
@@ -702,6 +704,10 @@ const deliveryWorkflow = [
     text-transform: uppercase;
   }
 
+  .case-study__section-label {
+    color: var(--numpairs-color-accent-supporting);
+  }
+
   .case-study__category {
     color: var(--color-accent-default);
     font-size: var(--type-meta-size);
@@ -911,20 +917,9 @@ const deliveryWorkflow = [
 
   .case-study__logo-mark {
     display: flex;
-    gap: var(--space-2);
     align-items: center;
     justify-content: center;
-    color: var(--color-text-primary);
-    font-family: var(--font-family-mono);
-    font-size: clamp(24px, 4vw, 40px);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: -0.08em;
-  }
-
-  .case-study__logo-mark span:nth-child(2) {
-    color: var(--color-accent-default);
-    font-size: 0.72em;
-    letter-spacing: -0.12em;
+    color: var(--numpairs-color-brand-primary);
   }
 
   .case-study__logo-concept h3 {
