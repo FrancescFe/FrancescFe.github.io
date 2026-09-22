@@ -585,13 +585,21 @@ const deliveryWorkflow = [
                       <div>
                         <h3>
                           {step.href ? (
-                            <a
-                              href={step.href}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {step.name} <span aria-hidden="true">↗</span>
-                            </a>
+                            <span class="workflow-step__external-link">
+                              <a
+                                href={step.href}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {step.name}
+                              </a>
+                              <span
+                                class="workflow-step__external-indicator"
+                                aria-hidden="true"
+                              >
+                                ↗
+                              </span>
+                            </span>
                           ) : (
                             step.name
                           )}
@@ -1024,6 +1032,18 @@ const deliveryWorkflow = [
 
   .workflow-step h3 a:hover {
     color: var(--color-accent-hover);
+  }
+
+  .workflow-step__external-link {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
+  .workflow-step__external-indicator {
+    color: var(--color-accent-default);
+    font-size: 0.85em;
+    text-decoration: none;
   }
 
   .workflow-step p {
