@@ -49,26 +49,31 @@ const deliveryWorkflow = [
     name: "Agile board -> GitHub Project",
     detail:
       "A GitHub Project makes priorities, status, stage, and delivery context visible across the product.",
+    href: "https://github.com/users/FrancescFe/projects/4/views/1",
   },
   {
     name: "Functional refinement -> Milestone",
     detail:
       "A milestone defines the product outcome, scope, success criteria, delivery stages, and explicit exclusions.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/milestone/1",
   },
   {
     name: "Technical refinement -> atomic GitHub Issues",
     detail:
       "The milestone is divided into dependency-ordered GitHub Issues, each with one observable outcome, then refined with context, approach, and acceptance criteria.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/issues/28",
   },
   {
     name: "Branch implementation",
     detail:
       "The change is implemented in a focused branch while unrelated product work and repository changes remain separate.",
+    href: undefined,
   },
   {
     name: "Review and merge",
     detail:
       "Validation, review, and a Pull Request provide the delivery gate before the change is merged into the main branch.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/pull/33",
   },
 ] as const;
 ---
@@ -578,7 +583,19 @@ const deliveryWorkflow = [
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <h3>{step.name}</h3>
+                        <h3>
+                          {step.href ? (
+                            <a
+                              href={step.href}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {step.name} <span aria-hidden="true">↗</span>
+                            </a>
+                          ) : (
+                            step.name
+                          )}
+                        </h3>
                         <p>{step.detail}</p>
                       </div>
                     </li>
@@ -999,6 +1016,14 @@ const deliveryWorkflow = [
     margin: 0 0 var(--space-2);
     font-size: var(--type-title-size);
     line-height: var(--type-title-line-height);
+  }
+
+  .workflow-step h3 a {
+    color: var(--color-text-primary);
+  }
+
+  .workflow-step h3 a:hover {
+    color: var(--color-accent-hover);
   }
 
   .workflow-step p {
