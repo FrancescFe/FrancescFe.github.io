@@ -3,12 +3,15 @@ import NumPairsSymbol from "../../components/NumPairsSymbol.astro";
 import PageContainer from "../../components/PageContainer.astro";
 import TextLink from "../../components/TextLink.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import googlePlayLogo from "../../assets/icons/brands/google-play.png";
 
 const canonicalPath = "/projects/numpairs/";
 const title = "NumPairs — Android puzzle game | FrancescFe";
 const description =
   "NumPairs is an open-source Android arithmetic deduction puzzle shaped by a calm product vision, a minimalist visual direction, and an iterative delivery workflow.";
 const sourceUrl = "https://github.com/CescFe/numpairs";
+const googlePlayUrl =
+  "https://play.google.com/store/apps/details?id=org.cescfe.numpairs";
 
 const sections = [
   { id: "product", label: "The product" },
@@ -46,26 +49,31 @@ const deliveryWorkflow = [
     name: "Agile board -> GitHub Project",
     detail:
       "A GitHub Project makes priorities, status, stage, and delivery context visible across the product.",
+    href: "https://github.com/users/FrancescFe/projects/4/views/1",
   },
   {
     name: "Functional refinement -> Milestone",
     detail:
       "A milestone defines the product outcome, scope, success criteria, delivery stages, and explicit exclusions.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/milestone/1",
   },
   {
     name: "Technical refinement -> atomic GitHub Issues",
     detail:
       "The milestone is divided into dependency-ordered GitHub Issues, each with one observable outcome, then refined with context, approach, and acceptance criteria.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/issues/28",
   },
   {
     name: "Branch implementation",
     detail:
       "The change is implemented in a focused branch while unrelated product work and repository changes remain separate.",
+    href: undefined,
   },
   {
     name: "Review and merge",
     detail:
       "Validation, review, and a Pull Request provide the delivery gate before the change is merged into the main branch.",
+    href: "https://github.com/FrancescFe/FrancescFe.github.io/pull/33",
   },
 ] as const;
 ---
@@ -99,15 +107,30 @@ const deliveryWorkflow = [
 
             <div class="case-study__actions" aria-label="NumPairs actions">
               <TextLink
+                href={googlePlayUrl}
+                variant="navigation"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Get it on Google Play (opens in a new tab)"
+              >
+                <img
+                  class="case-study__store-icon"
+                  src={googlePlayLogo.src}
+                  alt=""
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+                <span>Get it on Google Play</span>{" "}
+                <span aria-hidden="true">↗</span>
+              </TextLink>
+              <TextLink
                 href={sourceUrl}
                 variant="navigation"
                 target="_blank"
                 rel="noreferrer"
               >
                 View source repository{" "}<span aria-hidden="true">↗</span>
-              </TextLink>
-              <TextLink href="/numpairs/privacy-policy/" variant="navigation">
-                Read the Privacy Policy
               </TextLink>
             </div>
           </div>
@@ -126,7 +149,7 @@ const deliveryWorkflow = [
             </div>
             <div>
               <dt>Availability</dt>
-              <dd>Google Play release path in progress</dd>
+              <dd>Available on Google Play</dd>
             </div>
             <div>
               <dt>Source</dt>
@@ -560,7 +583,27 @@ const deliveryWorkflow = [
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <h3>{step.name}</h3>
+                        <h3>
+                          {step.href ? (
+                            <span class="workflow-step__external-link">
+                              <a
+                                href={step.href}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {step.name}
+                              </a>
+                              <span
+                                class="workflow-step__external-indicator"
+                                aria-hidden="true"
+                              >
+                                ↗
+                              </span>
+                            </span>
+                          ) : (
+                            step.name
+                          )}
+                        </h3>
                         <p>{step.detail}</p>
                       </div>
                     </li>
@@ -610,6 +653,28 @@ const deliveryWorkflow = [
               <ul class="case-study__resources">
                 <li>
                   <TextLink
+                    href={googlePlayUrl}
+                    variant="inline"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Get it on Google Play (opens in a new tab)"
+                  >
+                    <img
+                      class="case-study__store-icon"
+                      src={googlePlayLogo.src}
+                      alt=""
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    />
+                    <span class="case-study__resource-title">
+                      Google Play
+                    </span>
+                  </TextLink>
+                  <span>Download the Android app</span>
+                </li>
+                <li>
+                  <TextLink
                     href={sourceUrl}
                     variant="inline"
                     target="_blank"
@@ -624,10 +689,6 @@ const deliveryWorkflow = [
                     Privacy Policy
                   </TextLink>
                   <span>Product and website data practices</span>
-                </li>
-                <li>
-                  <span class="case-study__resource-title">Google Play</span>
-                  <span>Listing not yet published</span>
                 </li>
               </ul>
             </section>
@@ -717,6 +778,17 @@ const deliveryWorkflow = [
     align-items: center;
     flex-wrap: wrap;
     margin-block-start: var(--space-3);
+  }
+
+  .case-study__actions :global(.text-link--navigation) {
+    gap: var(--space-2);
+  }
+
+  .case-study__store-icon {
+    display: block;
+    flex: 0 0 auto;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
   }
 
   .case-study__metadata,
@@ -954,6 +1026,26 @@ const deliveryWorkflow = [
     line-height: var(--type-title-line-height);
   }
 
+  .workflow-step h3 a {
+    color: var(--color-text-primary);
+  }
+
+  .workflow-step h3 a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .workflow-step__external-link {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
+  .workflow-step__external-indicator {
+    color: var(--color-accent-default);
+    font-size: 0.85em;
+    text-decoration: none;
+  }
+
   .workflow-step p {
     color: var(--color-text-secondary);
     font-size: var(--type-body-sm-size);
@@ -1005,6 +1097,12 @@ const deliveryWorkflow = [
   .case-study__resources li {
     display: grid;
     gap: var(--space-1);
+  }
+
+  .case-study__resources :global(.text-link) {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
   }
 
   .case-study__resources span {
