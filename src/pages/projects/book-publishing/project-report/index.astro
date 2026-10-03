@@ -1,0 +1,153 @@
+---
+import * as reportCover from "../../../../content/project-report/00-cover-toc-abstract.md";
+import PageContainer from "../../../../components/PageContainer.astro";
+import TextLink from "../../../../components/TextLink.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+
+const canonicalPath = "/projects/book-publishing/project-report/";
+const title = "Project Report — Book Publishing Platform | FrancescFe";
+const description =
+  "Project report on the design and implementation of a back-office system for publishing management.";
+
+const source = reportCover.rawContent();
+const cover = source.split(/^## Table of Contents\s*$/m, 1)[0] ?? "";
+const abstract = source.split(/^## Abstract\s*$/m)[1]?.trim() ?? "";
+
+const reportTitle = cover.match(/^#\s+(.+)$/m)?.[1] ?? "Project Report";
+const reportSubtitle = cover.match(/^##\s+(.+)$/m)?.[1] ?? "";
+const author = cover.match(/^\*\*Author:\*\*\s*(.+)$/m)?.[1] ?? "";
+const version = cover.match(/^\*\*Version:\*\*\s*(.+)$/m)?.[1] ?? "";
+const reportDate = cover.match(/^\*\*Date:\*\*\s*(.+)$/m)?.[1] ?? "";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  currentPath={canonicalPath}
+  headerVariant="compact"
+  footerVariant="minimal"
+>
+  <PageContainer>
+    <article class="project-report" aria-labelledby="project-report-title">
+      <nav class="project-report__breadcrumb" aria-label="Breadcrumb">
+        <TextLink href="/projects/book-publishing/" variant="standalone">
+          ← Book Publishing Platform
+        </TextLink>
+      </nav>
+
+      <header class="project-report__cover">
+        <p class="project-report__eyebrow">[ project / report ]</p>
+        <h1 id="project-report-title">{reportTitle}</h1>
+        <p class="project-report__subtitle">{reportSubtitle}</p>
+
+        <dl class="project-report__metadata" aria-label="Report details">
+          <div>
+            <dt>Author</dt>
+            <dd>{author}</dd>
+          </div>
+          <div>
+            <dt>Version</dt>
+            <dd>{version}</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>{reportDate}</dd>
+          </div>
+        </dl>
+      </header>
+
+      <section
+        class="project-report__abstract"
+        aria-labelledby="abstract-title"
+      >
+        <h2 id="abstract-title">Abstract</h2>
+        <p>{abstract}</p>
+      </section>
+    </article>
+  </PageContainer>
+</BaseLayout>
+
+<style>
+  .project-report {
+    max-inline-size: var(--content-reading-max);
+    margin-inline: auto;
+    padding-block: var(--space-8) var(--space-12);
+  }
+
+  .project-report__breadcrumb {
+    margin-block-end: var(--space-8);
+  }
+
+  .project-report__cover {
+    display: grid;
+    gap: var(--space-4);
+    padding-block-end: var(--space-8);
+    border-block-end: var(--border-default) var(--color-border-subtle);
+  }
+
+  .project-report__eyebrow {
+    color: var(--color-text-tertiary);
+    font-size: var(--type-label-size);
+    font-weight: var(--type-label-weight);
+    letter-spacing: var(--letter-spacing-uppercase);
+    line-height: var(--type-label-line-height);
+    text-transform: uppercase;
+  }
+
+  .project-report h1 {
+    max-inline-size: 24ch;
+  }
+
+  .project-report__subtitle {
+    max-inline-size: 64ch;
+    color: var(--color-text-secondary);
+    font-size: var(--type-title-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .project-report__metadata {
+    display: grid;
+    max-inline-size: 760px;
+    margin: var(--space-3) 0 0;
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  .project-report__metadata > div {
+    display: grid;
+    grid-template-columns: minmax(96px, 0.3fr) minmax(0, 1fr);
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+    border-block-end: var(--border-default) var(--color-border-subtle);
+  }
+
+  .project-report__metadata dt {
+    color: var(--color-text-tertiary);
+    font-size: var(--type-meta-size);
+    font-weight: var(--type-meta-weight);
+    line-height: var(--type-meta-line-height);
+  }
+
+  .project-report__metadata dd {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--type-body-sm-size);
+    line-height: var(--type-body-sm-line-height);
+  }
+
+  .project-report__abstract {
+    display: grid;
+    max-inline-size: var(--content-prose-max);
+    gap: var(--space-4);
+    padding-block-start: var(--space-8);
+  }
+
+  .project-report__abstract h2 {
+    font-size: var(--type-h3-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .project-report__abstract p {
+    color: var(--color-text-secondary);
+  }
+</style>
