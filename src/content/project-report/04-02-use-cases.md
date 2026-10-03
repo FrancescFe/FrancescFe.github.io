@@ -6,40 +6,38 @@
 
 The following diagram shows that the actor (a standard non-administrator user) can log in and perform read-only operations on the three entities: Author, Book, and Collection.
 
-```mermaid
-flowchart LR
-    User["Non-Administrator User"]
-
-    Login(("Log in"))
-    ViewAuthors(("View Authors"))
-    ViewBooks(("View Books"))
-    ViewCollections(("View Collections"))
-
-    User --> Login
-    User --> ViewAuthors
-    User --> ViewBooks
-    User --> ViewCollections
-```
-
-> **Original report asset:** The original use case diagram should be preserved at `../assets/04-requirements-analysis/use-case-non-admin-original.png`.
+<figure class="project-report__diagram">
+  <div
+    class="project-report__diagram-scroll"
+    role="region"
+    aria-label="Scrollable non-administrator use case diagram"
+    tabindex="0"
+  >
+    <img
+      src="/projects/book-publishing/project-report/assets/04-requirements-analysis/use-case-non-admin.svg"
+      alt="Use case diagram: No Admin can log in and access Authors, Books, and Collections. The operations group contains Read By Id and Read All."
+      width="721"
+      height="407"
+    />
+  </div>
+</figure>
 
 ### Use Case Diagram: Administrator User
 
 The following diagram provides an overview showing that the actor (administrator) can log in and perform full CRUD operations on each of the entities: Author, Book, and Collection.
 
-```mermaid
-flowchart LR
-    Admin["Administrator User"]
-
-    Login(("Log in"))
-    Authors(("Manage Authors<br/>Create · View · Update · Delete"))
-    Books(("Manage Books<br/>Create · View · Update · Delete"))
-    Collections(("Manage Collections<br/>Create · View · Update · Delete"))
-
-    Admin --> Login
-    Admin --> Authors
-    Admin --> Books
-    Admin --> Collections
-```
-
-> **Original report asset:** The original use case diagram should be preserved at `../assets/04-requirements-analysis/use-case-admin-original.png`.
+<figure class="project-report__diagram">
+  <div
+    class="project-report__diagram-scroll"
+    role="region"
+    aria-label="Scrollable administrator use case diagram"
+    tabindex="0"
+  >
+    <img
+      src="/projects/book-publishing/project-report/assets/04-requirements-analysis/use-case-admin.svg"
+      alt="Use case diagram: Admin can log in and access Authors, Books, and Collections. The CRUD operations group contains Create, Read by ID, Read All, Update, and Delete."
+      width="662"
+      height="530"
+    />
+  </div>
+</figure>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="721" height="407" viewBox="0 0 721 407" role="img" aria-labelledby="title description">
+  <title id="title">Non-administrator use case diagram</title>
+  <desc id="description">No Admin can log in and use the Authors, Books, and Collections areas. The available CRUD operations are Read By Id and Read All.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#d2d2d2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </marker>
+    <symbol id="user-icon" viewBox="0 0 24 24">
+      <circle cx="12" cy="7" r="3.2"/>
+      <path d="M5.2 20c.6-4.2 3-6.4 6.8-6.4s6.2 2.2 6.8 6.4"/>
+    </symbol>
+    <symbol id="login-icon" viewBox="0 0 24 24">
+      <path d="M10 4H5v16h5M12 12H3m6-4-4 4 4 4m4-11h6v14h-6"/>
+    </symbol>
+    <symbol id="people-icon" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3"/>
+      <path d="M3.5 19c.5-3.4 2.4-5.2 5.5-5.2s5 1.8 5.5 5.2M16 5.4a2.7 2.7 0 0 1 0 5.2m1.2 3c2.1.7 3.3 2.4 3.7 5.4"/>
+    </symbol>
+    <symbol id="book-icon" viewBox="0 0 24 24">
+      <path d="M5 4h13a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2zM5 4v15a2 2 0 0 0 2 2m2-17v14m3-10h5m-5 4h5"/>
+    </symbol>
+    <symbol id="folder-icon" viewBox="0 0 24 24">
+      <path d="M3.5 7a2 2 0 0 1 2-2h5l2 2h6a2 2 0 0 1 2 2v9.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/>
+    </symbol>
+    <symbol id="gear-icon" viewBox="0 0 24 24">
+      <path d="M10 2h4l.6 2.3a8 8 0 0 1 1.8.8l2.1-1.1 2.8 2.8-1.1 2.1a8 8 0 0 1 .8 1.8l2.3.6v4l-2.3.6a8 8 0 0 1-.8 1.8l1.1 2.1-2.8 2.8-2.1-1.1a8 8 0 0 1-1.8.8L14 23h-4l-.6-2.3a8 8 0 0 1-1.8-.8l-2.1 1.1-2.8-2.8 1.1-2.1a8 8 0 0 1-.8-1.8L1 13.7v-4l2.3-.6a8 8 0 0 1 .8-1.8L3 5.2l2.8-2.8 2.1 1.1a8 8 0 0 1 1.8-.8z"/>
+      <circle cx="12" cy="11.7" r="3.2"/>
+    </symbol>
+    <symbol id="search-icon" viewBox="0 0 24 24">
+      <circle cx="10.5" cy="10.5" r="6.5"/>
+      <path d="m15.5 15.5 5 5"/>
+    </symbol>
+    <symbol id="list-icon" viewBox="0 0 24 24">
+      <path d="M9 6h11M9 12h11M9 18h11"/>
+      <circle cx="4.5" cy="6" r=".7"/><circle cx="4.5" cy="12" r=".7"/><circle cx="4.5" cy="18" r=".7"/>
+    </symbol>
+  </defs>
+
+  <rect width="721" height="407" fill="#242424"/>
+
+  <g fill="none" stroke="#d2d2d2" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M160 179h41q18 0 18-18V77q0-18 18-18h12"/>
+    <path d="M160 194h39q18 0 18-18v-3q0-18 18-18h14"/>
+    <path d="M160 215h47q18 0 18 18v19h24"/>
+    <path d="M160 230h44q18 0 18 18v79q0 18 18 18h9"/>
+    <path d="M388 155h24q18 0 18 18v5q0 18 18 18h7"/>
+    <path d="M388 252h67"/>
+    <path d="M388 345h24q18 0 18-18q0-18 18-18h7"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="29" y="162" width="137" height="73" rx="36" fill="#355f6e" stroke="#c6cdd0" stroke-width="1.6"/>
+    <rect x="42" y="148" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+    <use href="#user-icon" x="45" y="151" width="19" height="19" fill="none" stroke="#d0d5d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+    <text x="97" y="204" fill="#f2f2f2" font-size="16" text-anchor="middle">No Admin</text>
+
+    <g>
+      <rect x="253" y="28" width="137" height="72" rx="6" fill="#0e0e0e" opacity=".58"/>
+      <rect x="249" y="23" width="137" height="72" rx="6" fill="#21385b" stroke="#c5c8ce" stroke-width="1.6"/>
+      <rect x="262" y="8" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#login-icon" x="265" y="11" width="19" height="19" fill="none" stroke="#d0d5d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+      <text x="317.5" y="64" fill="#f1f1f1" font-size="16" text-anchor="middle">Login</text>
+    </g>
+
+    <g>
+      <rect x="253" y="124" width="137" height="72" rx="6" fill="#0e0e0e" opacity=".58"/>
+      <rect x="249" y="119" width="137" height="72" rx="6" fill="#5f3c25" stroke="#c5c8ce" stroke-width="1.6"/>
+      <rect x="262" y="104" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#people-icon" x="265" y="107" width="19" height="19" fill="none" stroke="#d0d5d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <text x="317.5" y="160" fill="#f1f1f1" font-size="15" text-anchor="middle">Manage Authors</text>
+    </g>
+
+    <g>
+      <rect x="253" y="221" width="137" height="72" rx="6" fill="#0e0e0e" opacity=".58"/>
+      <rect x="249" y="216" width="137" height="72" rx="6" fill="#2a5d33" stroke="#c5c8ce" stroke-width="1.6"/>
+      <rect x="262" y="201" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#book-icon" x="265" y="204" width="19" height="19" fill="none" stroke="#d0d5d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <text x="317.5" y="256" fill="#f1f1f1" font-size="15" text-anchor="middle">Manage Books</text>
+    </g>
+
+    <g>
+      <rect x="253" y="318" width="137" height="73" rx="6" fill="#0e0e0e" opacity=".58"/>
+      <rect x="249" y="313" width="137" height="73" rx="6" fill="#5c2960" stroke="#c5c8ce" stroke-width="1.6"/>
+      <rect x="262" y="298" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#folder-icon" x="265" y="301" width="19" height="19" fill="none" stroke="#d0d5d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <text x="317.5" y="343" fill="#f1f1f1" font-size="15" text-anchor="middle">
+        <tspan x="317.5">Manage</tspan><tspan x="317.5" dy="17">Collections</tspan>
+      </text>
+    </g>
+
+    <rect x="455" y="135" width="222" height="238" rx="12" fill="#303030" stroke="#777" stroke-width="2"/>
+    <rect x="463" y="141" width="128" height="24" rx="4" fill="#202020" stroke="#777" stroke-width="1"/>
+    <use href="#gear-icon" x="468" y="144" width="17" height="17" fill="none" stroke="#dedede" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+    <text x="489" y="157" fill="#e8e8e8" font-size="10.5" letter-spacing=".25">CRUD OPERATIONS</text>
+
+    <g>
+      <rect x="491" y="188" width="137" height="73" rx="6" fill="#111" opacity=".5"/>
+      <rect x="487" y="183" width="137" height="73" rx="6" fill="#989898" stroke="#c8c8c8" stroke-width="1.5"/>
+      <rect x="498" y="168" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#search-icon" x="501" y="171" width="19" height="19" fill="none" stroke="#ededed" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+      <text x="555" y="224" fill="#171717" font-size="15" text-anchor="middle">Read By Id</text>
+    </g>
+
+    <g>
+      <rect x="491" y="284" width="137" height="73" rx="6" fill="#111" opacity=".5"/>
+      <rect x="487" y="279" width="137" height="73" rx="6" fill="#989898" stroke="#c8c8c8" stroke-width="1.5"/>
+      <rect x="498" y="264" width="25" height="25" rx="5" fill="#303030" stroke="#b8c2c5" stroke-width="1.8"/>
+      <use href="#list-icon" x="501" y="267" width="19" height="19" fill="none" stroke="#ededed" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+      <text x="555" y="322" fill="#171717" font-size="15" text-anchor="middle">Read All</text>
+    </g>
+  </g>
+</svg>
