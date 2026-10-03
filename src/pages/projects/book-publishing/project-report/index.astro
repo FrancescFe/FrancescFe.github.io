@@ -4,6 +4,11 @@ import PageContainer from "../../../../components/PageContainer.astro";
 import TextLink from "../../../../components/TextLink.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 
+interface MarkdownModule {
+  compiledContent: () => Promise<string>;
+  getHeadings: () => Promise<Array<{ depth: number; text: string }>>;
+}
+
 const canonicalPath = "/projects/book-publishing/project-report/";
 const title = "Project Report — Book Publishing Platform | FrancescFe";
 const description =
@@ -18,6 +23,37 @@ const reportSubtitle = cover.match(/^##\s+(.+)$/m)?.[1] ?? "";
 const author = cover.match(/^\*\*Author:\*\*\s*(.+)$/m)?.[1] ?? "";
 const version = cover.match(/^\*\*Version:\*\*\s*(.+)$/m)?.[1] ?? "";
 const reportDate = cover.match(/^\*\*Date:\*\*\s*(.+)$/m)?.[1] ?? "";
+
+const chapterFiles = Object.entries(
+  import.meta.glob<MarkdownModule>("../../../../content/project-report/*.md", {
+    eager: true,
+  }),
+)
+  .filter(([path]) => !path.endsWith("/00-cover-toc-abstract.md"))
+  .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath));
+
+const chapters = await Promise.all(
+  chapterFiles.map(async ([path, chapter]) => {
+    const headings = await chapter.getHeadings();
+    const heading = headings.find(({ depth }) => depth === 1) ?? headings[0];
+    const renderedContent = await chapter.compiledContent();
+    const contentWithoutTitle = renderedContent.replace(
+      /^\s*<h1\b[^>]*>[\s\S]*?<\/h1>\s*/i,
+      "",
+    );
+    const content = contentWithoutTitle.replace(
+      /<(\/?)h([1-5])(?=[\s>])/g,
+      (_match, closingTag: string, level: string) =>
+        `<${closingTag}h${Number(level) + 1}`,
+    );
+
+    return {
+      content,
+      slug: path.split("/").at(-1)?.replace(/\.md$/, "") ?? "chapter",
+      title: heading?.text ?? "Project report chapter",
+    };
+  }),
+);
 ---
 
 <BaseLayout
@@ -63,6 +99,28 @@ const reportDate = cover.match(/^\*\*Date:\*\*\s*(.+)$/m)?.[1] ?? "";
       >
         <h2 id="abstract-title">Abstract</h2>
         <p>{abstract}</p>
+      </section>
+
+      <section
+        class="project-report__chapters"
+        aria-label="Project report chapters"
+      >
+        {
+          chapters.map((chapter) => (
+            <details
+              id={`chapter-${chapter.slug}`}
+              class="project-report__chapter"
+            >
+              <summary>
+                <h2>{chapter.title}</h2>
+              </summary>
+              <div
+                class="project-report__chapter-content"
+                set:html={chapter.content}
+              />
+            </details>
+          ))
+        }
       </section>
     </article>
   </PageContainer>
@@ -149,5 +207,125 @@ const reportDate = cover.match(/^\*\*Date:\*\*\s*(.+)$/m)?.[1] ?? "";
 
   .project-report__abstract p {
     color: var(--color-text-secondary);
+  }
+
+  .project-report__chapters {
+    display: grid;
+    gap: var(--space-4);
+    margin-block-start: var(--space-10);
+  }
+
+  .project-report__chapter {
+    overflow: clip;
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-default);
+  }
+
+  .project-report__chapter[open] {
+    border-color: var(--color-border-strong);
+  }
+
+  .project-report__chapter summary {
+    display: flex;
+    min-block-size: var(--interactive-target-min);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-5);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .project-report__chapter summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .project-report__chapter summary::after {
+    flex: 0 0 auto;
+    color: var(--color-accent-default);
+    content: "+";
+    font-size: var(--type-h3-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .project-report__chapter[open] summary::after {
+    content: "−";
+  }
+
+  .project-report__chapter summary:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .project-report__chapter summary h2 {
+    font-size: var(--type-h3-size);
+    line-height: var(--type-h3-line-height);
+  }
+
+  .project-report__chapter-content {
+    min-inline-size: 0;
+    padding: var(--space-5);
+    border-block-start: var(--border-default) var(--color-border-subtle);
+  }
+
+  .project-report__chapter-content :global(p) {
+    max-inline-size: var(--content-prose-max);
+    margin-block-end: var(--space-4);
+    color: var(--color-text-secondary);
+  }
+
+  .project-report__chapter-content :global(ul),
+  .project-report__chapter-content :global(ol) {
+    display: grid;
+    max-inline-size: var(--content-prose-max);
+    gap: var(--space-3);
+    margin-block: var(--space-4);
+    padding-inline-start: var(--space-6);
+    color: var(--color-text-secondary);
+  }
+
+  .project-report__chapter-content :global(strong) {
+    color: var(--color-text-primary);
+  }
+
+  .project-report__chapter-content :global(code:not(pre code)) {
+    padding-inline: var(--space-1);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
+    overflow-wrap: anywhere;
+  }
+
+  .project-report__chapter-content :global(pre) {
+    max-inline-size: 100%;
+    margin-block: var(--space-4);
+    padding: var(--space-4);
+    border: var(--border-default) var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-deep);
+    color: var(--color-text-primary);
+    overflow-x: auto;
+  }
+
+  .project-report__chapter-content :global(table) {
+    display: block;
+    max-inline-size: 100%;
+    margin-block: var(--space-4);
+    overflow-x: auto;
+  }
+
+  .project-report__chapter-content :global(th),
+  .project-report__chapter-content :global(td) {
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-default) var(--color-border-subtle);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .project-report__chapter-content :global(img) {
+    max-inline-size: 100%;
+    block-size: auto;
+    margin-block: var(--space-4);
+    border-radius: var(--radius-md);
   }
 </style>
