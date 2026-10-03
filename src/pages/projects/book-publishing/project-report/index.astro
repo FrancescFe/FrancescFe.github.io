@@ -344,6 +344,35 @@ const chapters = await Promise.all(
     border-radius: var(--radius-md);
   }
 
+  .project-report__chapter-content :global(.project-report__diagram) {
+    margin-block: var(--space-5);
+  }
+
+  .project-report__chapter-content :global(.project-report__diagram-scroll) {
+    max-inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border-radius: var(--radius-md);
+    background: #242424;
+  }
+
+  .project-report__chapter-content
+    :global(.project-report__diagram-scroll:focus-visible) {
+    outline: 2px solid var(--color-accent-default);
+    outline-offset: 3px;
+  }
+
+  .project-report__chapter-content
+    :global(.project-report__diagram-scroll img) {
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 640px;
+    max-inline-size: 720px;
+    block-size: auto;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+
   .project-report__chapter-content :global(.swot-grid),
   .project-report__chapter-content :global(.cross-swot-grid) {
     display: grid;
