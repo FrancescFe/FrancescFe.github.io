@@ -158,7 +158,7 @@ gantt
     tickInterval 1month
 
     section Phase 0
-    Axis start : vert, axis-start, 2025-09-01, 1d
+    Axis start : vert, axis-start, 2025-09-08, 1d
     M0 :m0, 2025-09-08, 14d
 
     section Phase 1
@@ -175,10 +175,8 @@ gantt
 
     section Phase 5
     M5 :m5, after m4, 14d
-    Axis end : vert, axis-end, 2026-01-01, 1d
+    Axis end : vert, axis-end, 2025-12-15, 1d
 ```
-
-The original Gantt chart is also preserved as a source asset at [`assets/03-methodology-and-planning/gantt-original.png`](assets/03-methodology-and-planning/gantt-original.png).
 
 ### GitHub Projects: Kanban Board and Milestones
 
