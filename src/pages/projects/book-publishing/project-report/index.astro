@@ -1,5 +1,7 @@
 ---
 import * as reportCover from "../../../../content/project-report/00-cover-toc-abstract.md";
+import useCaseAdminUrl from "../../../../content/project-report/assets/04-requirements-analysis/use-case-admin.svg?url";
+import useCaseNonAdminUrl from "../../../../content/project-report/assets/04-requirements-analysis/use-case-non-admin.svg?url";
 import PageContainer from "../../../../components/PageContainer.astro";
 import TextLink from "../../../../components/TextLink.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
@@ -41,11 +43,20 @@ const chapters = await Promise.all(
       /^\s*<h1\b[^>]*>[\s\S]*?<\/h1>\s*/i,
       "",
     );
-    const content = contentWithoutTitle.replace(
-      /<(\/?)h([1-5])(?=[\s>])/g,
-      (_match, closingTag: string, level: string) =>
-        `<${closingTag}h${Number(level) + 1}`,
-    );
+    const content = contentWithoutTitle
+      .replaceAll(
+        'src="assets/04-requirements-analysis/use-case-non-admin.svg"',
+        `src="${useCaseNonAdminUrl}"`,
+      )
+      .replaceAll(
+        'src="assets/04-requirements-analysis/use-case-admin.svg"',
+        `src="${useCaseAdminUrl}"`,
+      )
+      .replace(
+        /<(\/?)h([1-5])(?=[\s>])/g,
+        (_match, closingTag: string, level: string) =>
+          `<${closingTag}h${Number(level) + 1}`,
+      );
 
     return {
       content,

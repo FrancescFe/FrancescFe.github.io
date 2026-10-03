@@ -14,7 +14,7 @@ The following diagram shows that the actor (a standard non-administrator user) c
     tabindex="0"
   >
     <img
-      src="/projects/book-publishing/project-report/assets/04-requirements-analysis/use-case-non-admin.svg"
+      src="assets/04-requirements-analysis/use-case-non-admin.svg"
       alt="Use case diagram: No Admin can log in and access Authors, Books, and Collections. The operations group contains Read By Id and Read All."
       width="721"
       height="407"
@@ -34,7 +34,7 @@ The following diagram provides an overview showing that the actor (administrator
     tabindex="0"
   >
     <img
-      src="/projects/book-publishing/project-report/assets/04-requirements-analysis/use-case-admin.svg"
+      src="assets/04-requirements-analysis/use-case-admin.svg"
       alt="Use case diagram: Admin can log in and access Authors, Books, and Collections. The CRUD operations group contains Create, Read by ID, Read All, Update, and Delete."
       width="662"
       height="530"
