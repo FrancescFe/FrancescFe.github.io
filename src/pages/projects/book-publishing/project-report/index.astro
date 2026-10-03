@@ -211,11 +211,13 @@ const chapters = await Promise.all(
 
   .project-report__chapters {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     margin-block-start: var(--space-10);
   }
 
   .project-report__chapter {
+    min-inline-size: 0;
     overflow: clip;
     border: var(--border-default) var(--color-border-subtle);
     border-radius: var(--radius-md);
@@ -393,6 +395,16 @@ const chapters = await Promise.all(
     --matrix-accent: var(--color-status-warning);
   }
 
+  .project-report__chapter-content :global(pre.mermaid) {
+    max-inline-size: 100%;
+    overflow-x: auto;
+  }
+
+  .project-report__chapter-content :global(pre.mermaid svg) {
+    display: block;
+    max-inline-size: none;
+  }
+
   @media (max-width: 767px) {
     .project-report__chapter-content :global(.swot-grid),
     .project-report__chapter-content :global(.cross-swot-grid) {
@@ -400,3 +412,68 @@ const chapters = await Promise.all(
     }
   }
 </style>
+
+<script>
+  const chaptersWithMermaid = document.querySelectorAll<HTMLDetailsElement>(
+    ".project-report__chapter",
+  );
+
+  for (const chapter of chaptersWithMermaid) {
+    if (!chapter.querySelector("pre[data-language='mermaid']")) continue;
+
+    let rendering: Promise<void> | undefined;
+
+    chapter.addEventListener("toggle", () => {
+      if (!chapter.open || rendering) return;
+      rendering = renderMermaidChapter(chapter);
+    });
+  }
+
+  async function renderMermaidChapter(chapter: HTMLDetailsElement) {
+    const codeBlocks = Array.from(
+      chapter.querySelectorAll("pre[data-language='mermaid'] code"),
+    );
+    const sources = codeBlocks.map((code) => code.textContent ?? "");
+
+    if (sources.length === 0) return;
+
+    let mermaid: typeof import("mermaid").default;
+
+    try {
+      ({ default: mermaid } = await import("mermaid"));
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "dark",
+        themeVariables: {
+          fontFamily: getComputedStyle(document.documentElement).fontFamily,
+        },
+      });
+
+      await Promise.all(sources.map((source) => mermaid.parse(source)));
+    } catch {
+      return;
+    }
+
+    const diagrams = codeBlocks.flatMap((code, index) => {
+      const fallback = code.closest("pre");
+
+      if (!fallback) return [];
+
+      const diagram = document.createElement("pre");
+      diagram.className = "mermaid";
+      diagram.textContent = sources[index];
+      fallback.replaceWith(diagram);
+
+      return [{ diagram, fallback }];
+    });
+
+    try {
+      await mermaid.run({ nodes: diagrams.map(({ diagram }) => diagram) });
+    } catch {
+      diagrams.forEach(({ diagram, fallback }) =>
+        diagram.replaceWith(fallback),
+      );
+    }
+  }
+</script>
