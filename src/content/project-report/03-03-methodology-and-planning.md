@@ -67,8 +67,8 @@ This phased approach is intended to apply best practices from Agile methodologie
 | Phase 1 | **M1: Backend MVP (Authors)** | Basic Author CRUD use cases with full security | October 13 (3 weeks) | Functional Authors RESTful API; authentication and role-based authorization; tests and initial CI/CD |
 | Phase 2 | **M2: Frontend MVP (Authors)** | UI development for author management and API integration | October 27 (2 weeks) | Android app with Authors CRUD; functional login; token management |
 | Phase 3 | **M3: DevOps & Deployment** | Deployment automation through CI/CD | November 3 (1 week) | Deployed environment; CI/CD improvements; Dockerization improvements |
-| Phase 4 | **M4: Full Functionality** | Complete the system's core functionality | November 24 (3 weeks) | Book and Collection workflows; entity relationships; corresponding application screens |
-| Phase 5 | **M5: Polishing and Delivery** | Prepare the project for final delivery and defense | December 15 (3 weeks) | Final usability testing; bug fixes; polished READMEs; final report; presentation |
+| Phase 4 | **M4: Full Functionality** | Complete the system's core functionality | December 1 (4 weeks) | Book and Collection workflows; entity relationships; corresponding application screens |
+| Phase 5 | **M5: Polishing and Delivery** | Prepare the project for final delivery and defense | December 15 (2 weeks) | Final usability testing; bug fixes; polished READMEs; final report; presentation |
 
 ### Detailed Description of the Milestones
 
@@ -145,28 +145,37 @@ This phased approach is intended to apply best practices from Agile methodologie
 The original report included a static Gantt chart. In this Markdown version, the schedule is represented as Mermaid so that it remains maintainable and can be rendered natively by compatible documentation tools.
 
 ```mermaid
+---
+config:
+  gantt:
+    useWidth: 884
+    useMaxWidth: false
+---
 gantt
     title Project Work Schedule
     dateFormat YYYY-MM-DD
-    axisFormat %d %b
+    axisFormat %b '%y
+    tickInterval 1month
 
     section Phase 0
-    M0: Setup and Definition       :m0, 2025-09-08, 14d
+    Axis start : vert, axis-start, 2025-09-01, 1d
+    M0 :m0, 2025-09-08, 14d
 
     section Phase 1
-    M1: Backend MVP (Authors)      :m1, after m0, 21d
+    M1 :m1, after m0, 21d
 
     section Phase 2
-    M2: Frontend MVP (Authors)     :m2, after m1, 14d
+    M2 :m2, after m1, 14d
 
     section Phase 3
-    M3: DevOps & Deployment        :m3, after m2, 7d
+    M3 :m3, after m2, 7d
 
     section Phase 4
-    M4: Full Functionality         :m4, after m3, 21d
+    M4 :m4, after m3, 28d
 
     section Phase 5
-    M5: Polishing and Delivery     :m5, after m4, 21d
+    M5 :m5, after m4, 14d
+    Axis end : vert, axis-end, 2026-01-01, 1d
 ```
 
 The original Gantt chart is also preserved as a source asset at [`assets/03-methodology-and-planning/gantt-original.png`](assets/03-methodology-and-planning/gantt-original.png).
