@@ -341,4 +341,62 @@ const chapters = await Promise.all(
     margin-block: var(--space-4);
     border-radius: var(--radius-md);
   }
+
+  .project-report__chapter-content :global(.swot-grid),
+  .project-report__chapter-content :global(.cross-swot-grid) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+
+  .project-report__chapter-content :global(.swot-card),
+  .project-report__chapter-content :global(.cross-swot-card) {
+    --matrix-accent: var(--color-accent-default);
+
+    display: grid;
+    min-inline-size: 0;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: var(--border-default) var(--color-border-subtle);
+    border-inline-start: var(--border-default) var(--matrix-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+  }
+
+  .project-report__chapter-content :global(.swot-card h3),
+  .project-report__chapter-content :global(.cross-swot-card h3) {
+    color: var(--matrix-accent);
+  }
+
+  .project-report__chapter-content :global(.swot-card--weaknesses) {
+    --matrix-accent: var(--color-status-warning);
+  }
+
+  .project-report__chapter-content :global(.swot-card--strengths),
+  .project-report__chapter-content :global(.cross-swot-card--offensive) {
+    --matrix-accent: var(--color-status-success);
+  }
+
+  .project-report__chapter-content :global(.swot-card--threats),
+  .project-report__chapter-content :global(.cross-swot-card--survival) {
+    --matrix-accent: var(--color-status-error);
+  }
+
+  .project-report__chapter-content :global(.swot-card--opportunities),
+  .project-report__chapter-content :global(.cross-swot-card--defensive) {
+    --matrix-accent: var(--color-status-info);
+  }
+
+  .project-report__chapter-content :global(.cross-swot-card--reorientation) {
+    --matrix-accent: var(--color-status-warning);
+  }
+
+  @media (max-width: 767px) {
+    .project-report__chapter-content :global(.swot-grid),
+    .project-report__chapter-content :global(.cross-swot-grid) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 </style>
