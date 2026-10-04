@@ -4,7 +4,7 @@
 
 **Objective:** Develop production-ready, clean, and maintainable code.
 
-**Conclusion:** L’eina compleix l’objectiu de ser usable i funcional sense dependència tècnica externa. El disseny de la interfície prioritza la simplicitat i redueix la càrrega cognitiva de l’usuari. Es va retallar l’alcanç del CRUD de col·leccions i a l’app mòbil no es pot crear, esborrar o actualitzar una col·lecció, només es poden visualitzar.
+**Conclusion:** The tool meets its goal of being usable and functional without relying on external technical dependencies. Its interface prioritizes simplicity and reduces the user's cognitive load. The scope of collection CRUD was reduced, so the mobile app supports viewing collections only; users cannot create, delete, or update them.
 
 ## OKR 1: Technical Quality and Robustness (88.5%)
 
